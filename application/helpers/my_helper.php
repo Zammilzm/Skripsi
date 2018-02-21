@@ -1,13 +1,4 @@
 <?php
-/**
- * PERHITUNGAN PROMETHEE
- */
- 
- 
-
-/**
- * FUNGSI UMUM
- */
 
 function load_view($view, $data = array())
 {

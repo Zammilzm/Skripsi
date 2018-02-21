@@ -1,7 +1,3 @@
-<?php
-if(!$this->session->has_userdata('login'))
-    redirect('user/login');
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

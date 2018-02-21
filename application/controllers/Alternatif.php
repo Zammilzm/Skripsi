@@ -24,7 +24,7 @@ class Alternatif extends CI_Controller {
         
         if ($this->form_validation->run() === FALSE)
         {
-            load_view('alternatif_tambah', $data);     
+            load_view('alternatif_tambah', $data);
         }
         else
         {

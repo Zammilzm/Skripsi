@@ -15,5 +15,9 @@ class User_model extends CI_Model {
     public function update($data, $user)
     {
         $this->db->update( 'tb_admin', $data, array( 'user' => $user ) );                    
-    }    
+    }
+
+    public function input_pendaftaran($fields, $table){
+            $this->db->insert($table,$fields);
+    }
 }

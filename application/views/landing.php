@@ -35,10 +35,10 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="<?=site_url('user/daftar')?>">Daftar</a>
+                <a class="nav-link" href="<?=site_url('User/daftar')?>">Daftar</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?=site_url('login')?>">Masuk</a>
+                <a class="nav-link" href="<?=site_url('User/login')?>">Masuk</a>
             </li>
           </ul>
         </div>

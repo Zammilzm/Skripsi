@@ -51,4 +51,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 $route['cetak/(:any)'] = 'cetak/show/$1';
-$route['default_controller'] = 'Home';
+$route['default_controller'] = 'Awal';

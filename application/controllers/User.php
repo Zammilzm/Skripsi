@@ -6,6 +6,10 @@ class User extends CI_Controller {
         parent::__construct();
         $this->load->model('user_model');               
     }
+
+    public function daftar(){
+        load_view('daftar');
+    }
         
     public function cetak( $search ='' )
     {

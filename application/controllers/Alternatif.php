@@ -11,7 +11,6 @@ class Alternatif extends CI_Controller {
     {      
         $data['rows'] = $this->alternatif_model->tampil($this->input->get('search'));
         $data['title'] = 'Alternatif';
-
         load_view('alternatif', $data);
     }
     

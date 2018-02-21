@@ -1,6 +1,6 @@
 <?php
 class Hitung extends CI_Controller{
-    
+
     protected $crips = array();
     protected $alternatif = array();
     protected $kriteria = array();
@@ -258,11 +258,7 @@ class Hitung extends CI_Controller{
     }
 
     function get_data(){        
-        $rows = $this->db->query("SELECT a.kode_alternatif, k.kode_kriteria, ra.nilai
-            FROM tb_alternatif a 
-            	INNER JOIN tb_rel_alternatif ra ON ra.kode_alternatif=a.kode_alternatif
-            	INNER JOIN tb_kriteria k ON k.kode_kriteria=ra.kode_kriteria
-            ORDER BY a.kode_alternatif, k.kode_kriteria")->result();
+        $rows = $this->hitung_model->get_data();
         $data = array();
         foreach($rows as $row){
             $data[$row->kode_alternatif][$row->kode_kriteria] = $row->nilai;

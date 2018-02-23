@@ -1,10 +1,10 @@
 <?php
 class User_model extends CI_Model {
 
-    public function login($user, $pass)
+    public function login($data)
     {
-        $query = $this->db->get_where('tb_admin', array ( 'user' => $user, 'pass' => $pass ));   
-        return $row = $query->row();                                      
+        $query = $this->db->get_where('tb_admin', $data);
+        return $query;
     }
     
     public function cek_pass( $level, $user, $pass )

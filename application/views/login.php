@@ -19,7 +19,7 @@
                 <div class="panel-heading text-center">Silahkan Masuk</div>
                 <div class="panel-body">
                     <?=print_error()?>
-                    <form class="form-signin" method="post">        
+                    <form class="form-signin" method="post" action="ceklogin">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Username" name="user" autofocus />
                         </div>

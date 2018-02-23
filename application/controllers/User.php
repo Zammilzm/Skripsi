@@ -16,9 +16,8 @@ class User extends CI_Controller
         $this->form_validation->set_rules('username', 'Username', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
 
-        if ($this->form_validation->run() === false)
-        {
-           $this->load->view('daftar');
+        if ($this->form_validation->run() === false) {
+            $this->load->view('daftar');
 
         } else {
             $fields = array(
@@ -27,7 +26,7 @@ class User extends CI_Controller
                 'nama' => $this->input->post('full_name'),
                 'email' => $this->input->post('email')
             );
-            $this->user_model->input_pendaftaran($fields,'tb_admin');
+            $this->user_model->input_pendaftaran($fields, 'tb_admin');
             redirect('Awal/index');
         }
     }
@@ -45,21 +44,27 @@ class User extends CI_Controller
 
     function ceklogin()
     {
-        $user = $this->input->post('user');
-        $pass = $this->input->post('pass');
 
-        $user_login = $this->user_model->login($user, $pass);
+        $data = array(
+            'user' => $this->input->post('user', TRUE),
+            'pass' => $this->input->post('pass', TRUE)
+        );
 
-        if ($user_login) {
-            $this->session->set_userdata('ID', $user_login->ID);
-            $this->session->set_userdata('login', TRUE);
-            $this->session->set_userdata('user', $user_login->user);
-            $this->session->set_userdata('level', $user_login->level);
+        $user_login = $this->user_model->login($data);
 
-            return true;
+        if ($user_login->num_rows() == 1) {
+            foreach ($user_login->result() as $sesi) {
+                $this->session->set_userdata('id_user', $sesi->id_user);
+                $this->session->set_userdata('user', $sesi->user);
+                $this->session->set_userdata('level', $sesi->level);
+            }
+            if ($this->session->userdata('level') == 'Admin') {
+                redirect('Admin/index');
+            } elseif ($this->session->userdata('level') == 'User') {
+                redirect('Admin/user');
+            }
         } else {
             $this->form_validation->set_message('ceklogin', 'Login gagal');
-            return false;
         }
     }
 

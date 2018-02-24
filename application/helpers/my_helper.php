@@ -8,6 +8,14 @@ function load_view($view, $data = array())
     $CI->load->view('footer', $data);    
 }
 
+function load_view_user($view, $data = array())
+{
+    $CI =&get_instance();
+    $CI->load->view('user/header_user', $data);
+    $CI->load->view($view, $data);
+    $CI->load->view('user/footer_user', $data);
+}
+
 function load_view_cetak($view, $data = array())
 {
     $CI =&get_instance();

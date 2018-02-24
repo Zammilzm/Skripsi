@@ -61,7 +61,7 @@ class User extends CI_Controller
             if ($this->session->userdata('level') == 'Admin') {
                 redirect('Admin/index');
             } elseif ($this->session->userdata('level') == 'User') {
-                redirect('Admin/user');
+                redirect('Member/index');
             }
         } else {
             $this->form_validation->set_message('ceklogin', 'Login gagal');

@@ -19,5 +19,9 @@
         load_view_user('user/home', $data);
     }
 
+    public function profil(){
+        load_view_user('user/profil_user');
+    }
+
 }
 

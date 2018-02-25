@@ -12,16 +12,18 @@
     {
         parent::__construct();
         $this->load->helper('url');
+        $this->load->model('User_model');
     }
 
     public function index(){
-        $data['tittle'] = 'User';
-        load_view_user('user/home', $data);
+        load_view_user('user/home');
     }
 
     public function profil(){
-        load_view_user('user/profil_user');
+        $data['user'] = $this->User_model->get_data_member();
+        load_view_user('user/profil_user', $data);
     }
+
 
 }
 

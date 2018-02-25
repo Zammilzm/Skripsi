@@ -5,9 +5,6 @@
                 <input class="form-control" type="text" placeholder="Pencarian. . ." name="search" value="<?=$this->input->get('search')?>" />
             </div>
             <div class="form-group">
-                <button class="btn btn-success"><span class="glyphicon glyphicon-refresh"></span> Refresh</a>
-            </div>
-            <div class="form-group">
                 <a class="btn btn-primary" href="<?=site_url('kriteria/tambah')?>"><span class="glyphicon glyphicon-plus"></span> Tambah</a>
             </div>
             <div class="form-group">

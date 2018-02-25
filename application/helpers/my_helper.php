@@ -11,9 +11,9 @@ function load_view($view, $data = array())
 function load_view_user($view, $data = array())
 {
     $CI =&get_instance();
-    $CI->load->view('user/header_user', $data);
+    $CI->load->view('user/header_user');
     $CI->load->view($view, $data);
-    $CI->load->view('user/footer_user', $data);
+    $CI->load->view('user/footer_user');
 }
 
 function load_view_cetak($view, $data = array())

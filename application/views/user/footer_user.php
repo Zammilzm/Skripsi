@@ -1,9 +1,7 @@
 </div>
 </div>
-</div>
-</div>
 </body>
-<script src="<?=base_url('assets/js/theme-floyd.js')?>"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script type='text/javascript' src="<?php echo base_url(); ?>floyd/plugins/jquery/jquery-3.1.1.min.js"></script>
+<script type='text/javascript' src="<?php echo base_url(); ?>floyd/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type='text/javascript' src="<?php echo base_url(); ?>floyd/js/theme-floyd.js"></script>
 </html>

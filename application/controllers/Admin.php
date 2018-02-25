@@ -6,17 +6,19 @@
  * Time: 10:22
  */
 
-class Admin extends CI_Controller {
+class Admin extends CI_Controller
+{
 
     public function __construct()
     {
         parent::__construct();
-        $this->load->helper('url');
+        $this->load->model('user_model');
     }
 
     public function index(){
         $data['tittle'] = 'ADMIN';
         load_view('home', $data);
     }
+
 
 }

@@ -28,7 +28,7 @@
                 <li class="sidebar-close"><a href="#"><i class="fa fa-fw fa-close"></i></a></li>
                 <li><a href="<?=site_url('Member/index')?>"><i class="fa fa-fw fa-star"></i><span>Home</span></a></li>
                 <li><a href="<?=site_url('Member/profil')?>"><i class="fa fa-fw fa-user-md"></i><span>Profil</span></a></li>
-                <li><a href="<?=site_url('Member/profil')?>"><i class="fa fa-fw fa-user-circle"></i><span>Profil Perusahaan</span></a></li>
+                <li><a href="<?=site_url('Member/profil_usaha')?>"><i class="fa fa-fw fa-user-circle"></i><span>Profil Perusahaan</span></a></li>
                 <li><a href="<?=site_url('user/logout')?>"><i class="fa fa-fw fa-wrench"></i><span>Logout</span></a></li>
             </ul>
 

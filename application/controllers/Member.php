@@ -41,5 +41,21 @@
             redirect('Member/profil');
         }
     }
+        public function profil_usaha()
+        {
+            $this->form_validation->set_rules('profil', 'Profil Perusahaan', 'required');
+
+            if ($this->form_validation->run() === false) {
+                $data['profil'] = $this->User_model->profil_perusahaan()->result();
+                load_view_user('user/profil_perusahaan', $data);
+            } else {
+                $data = array(
+                    'profil' => $this->input->post('profil')
+                );
+                $this->User_model->update_profil_perusahaan($data);
+                redirect('Member/profil_usaha');
+            }
+
+        }
 }
 

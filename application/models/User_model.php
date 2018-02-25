@@ -16,6 +16,15 @@ class User_model extends CI_Model {
     public function update_data_member($data){
         $this->db->update('tb_admin',$data, array('id_user' => $this->session->userdata('id_user')));
     }
+
+    public function profil_perusahaan(){
+        $query = $this->db->get('tb_profil_perusahaan');
+        return $query;
+    }
+
+    public function update_profil_perusahaan($data){
+        $this->db->update('tb_profil_perusahaan', $data);
+    }
     
     public function cek_pass( $level, $user, $pass )
     {       

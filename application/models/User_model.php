@@ -12,6 +12,10 @@ class User_model extends CI_Model {
         $query =  $this->db->get_where('tb_admin', array ( 'id_user' => $this->session->userdata('id_user') ));
         return $query->row();
     }
+
+    public function update_data_member($data){
+        $this->db->update('tb_admin',$data, array('id_user' => $this->session->userdata('id_user')));
+    }
     
     public function cek_pass( $level, $user, $pass )
     {       

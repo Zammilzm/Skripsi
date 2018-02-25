@@ -17,7 +17,6 @@
     </nav>
 </div>
 <div id="content">
-
     <div class="panel panel-info">
         <div class="panel-heading">
             <h3 class="panel-title">
@@ -90,12 +89,88 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button class="btn btn-success btn-lg" type="button" onclick="edit_data(<?=set_value('id_user', $user->id_user)?>)"">
-                        Update Data
-                    </button>
+                    <a
+                            href="javascript:;"
+                            data-user="<?php echo $user->user ?>"
+                            data-pass="<?php echo $user->pass ?>"
+                            data-nama="<?php echo $user->nama ?>"
+                            data-email="<?php echo $user->email ?>"
+                            data-toggle="modal" data-target="#edit-data">
+                        <button  data-toggle="modal" data-target="#ubah-data" class="btn btn-success">Update Data Diri</button>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-</div>
+
+<script type='text/javascript' src="<?php echo base_url(); ?>floyd/plugins/jquery/jquery-3.1.1.min.js"></script>
+<script type='text/javascript' src="<?php echo base_url(); ?>floyd/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type='text/javascript' src="<?php echo base_url(); ?>floyd/js/theme-floyd.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        // Untuk sunting
+        $('#edit-data').on('show.bs.modal', function (event) {
+            var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
+            var modal          = $(this)
+
+            // Isi nilai pada field
+            modal.find('#user').attr("value",div.data('user'));
+            modal.find('#pass').attr("value",div.data('pass'));
+            modal.find('#nama').attr("value",div.data('nama'));
+            modal.find('#email').attr("value",div.data('email'));
+        });
+    });
+</script>
+
+<div class="modal fade" id="edit-data" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title">
+                    <center>
+                        Edit Data Diri
+                    </center>
+                </h3>
+            </div>
+            <div class="modal-body">
+                <form action="<?=site_url('Member/profil')?>" role="form" class="form-horizontal" method="post">
+                    <input type="hidden" value="" name="id"/>
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Username</label>
+                            <div class="col-md-9">
+                                <input name="user" class="form-control" type="text" id="user">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Password</label>
+                            <div class="col-md-9">
+                                <input name="pass" class="form-control" type="text" id="pass">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Nama Lengkap</label>
+                            <div class="col-md-9">
+                                <input name="nama" class="form-control" type="text" id="nama">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Email</label>
+                            <div class="col-md-9">
+                                <input name="email" class="form-control" type="email" id="email">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit" value="submit" class="btn btn-info btn-block"><br>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- End Bootstrap modal -->

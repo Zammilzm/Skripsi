@@ -32,34 +32,40 @@
                 <div class=" col-md-7 col-lg-7 ">
                     <table class="table table-user-information">
                         <tbody>
+                        <tr>
+                            <td><strong>ID User</strong></td>
+                            <td>
+                                <?php echo $user->id_user ?>
+                            </td>
+                        </tr>
                             <tr>
                                 <td><strong>Username</strong></td>
                                 <td>
-                                    <?=set_value('user', $user->user)?>
+                                    <?php echo $user->user ?>
                                 </td>
                             </tr>
                             <tr>
                                 <td><strong>Passowrd</strong></td>
                                 <td>
-                                    <?=set_value('pass', $user->pass)?>
+                                    <?php echo $user->pass ?>
                                 </td>
                             </tr>
                             <tr>
                                 <td><strong>Nama Lengkap</strong></td>
                                 <td>
-                                    <?=set_value('nama', $user->nama)?>
+                                    <?php echo $user->nama ?>
                                 </td>
                             </tr>
                             <tr>
                                 <td><strong>Email</strong></td>
                                 <td>
-                                    <?=set_value('email', $user->email)?>
+                                    <?php echo $user->email ?>
                                 </td>
                             </tr>
                             <tr>
                                 <td><strong>Status</strong></td>
                                 <td>
-                                    <?=set_value('level', $user->level)?>
+                                    <?php echo $user->level ?>
                                 </td>
                             </tr>
                             <tr>
@@ -84,7 +90,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button class="btn btn-success btn-lg" type="button">
+                    <button class="btn btn-success btn-lg" type="button" onclick="edit_data(<?=set_value('id_user', $user->id_user)?>)"">
                         Update Data
                     </button>
                 </div>

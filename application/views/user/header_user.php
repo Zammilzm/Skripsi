@@ -17,7 +17,7 @@
         <div id="sidebar-wrapper">
             <div class="sidebar-title">
                 <span class="text-size-40 text-loose">Mitra Tani</span><br>
-                <span class="text-size-18 text-grey">Perusahaan Gula</span>
+                <span class="text-size-18 text-grey">Perusahaan Gula</span><br>
                 <span class="text-size-24 text-grey">PG ASEMBAGUS</span>
             </div>
             <div class="sidebar-avatar">

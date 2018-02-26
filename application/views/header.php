@@ -10,7 +10,8 @@
     <link href="<?=base_url('assets/css/sandstone-bootstrap.min.css')?>" rel="stylesheet"/>
     <link href="<?=base_url('assets/css/general.css')?>" rel="stylesheet"/>
     <script src="<?=base_url('assets/js/jquery.min.js')?>"></script>
-    <script src="<?=base_url('assets/js/bootstrap.min.js')?>"></script>               
+    <script src="<?=base_url('assets/js/bootstrap.min.js')?>"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiDdGyp6n2hKHPECuB6JZIT-8dVHCpwI0&language=id&region=ID&libraries=places"></script>
   </head>
   <body>
     <nav class="navbar navbar-default navbar-static-top">

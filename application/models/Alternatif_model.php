@@ -12,6 +12,13 @@ class Alternatif_model extends CI_Model {
         $query = $this->db->get($this->table);
         return $query->result();
     }
+
+    public function peringkat_lahan(){
+        $this->db->from($this->table);
+        $this->db->order_by("nf","desc");
+        $query = $this->db->get();
+        return $query->result();
+    }
     
     public function get_alternatif( $ID = null )
     {

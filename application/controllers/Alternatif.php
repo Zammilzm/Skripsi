@@ -15,6 +15,11 @@ class Alternatif extends CI_Controller {
         load_view('alternatif', $data);
     }
 
+    public function lahan_user(){
+        $data['lahan'] = $this->alternatif_model->peringkat_lahan();
+       load_view_user('user/alternatif_lahan',$data);
+    }
+
     public function tambah()
     {
         $this->form_validation->set_rules( 'kode_alternatif', 'Kode Alternatif', 'required|is_unique[tb_alternatif.kode_alternatif]' );

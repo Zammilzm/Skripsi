@@ -153,7 +153,7 @@ else:
                 <?php
                 //print_r($net_flow);
                 foreach($rank as $key => $val):
-                    $this->db->query("UPDATE tb_alternatif set lf='$leaving[$key]', ef='$entering[$key]', nf='$net_flow[$key]' WHERE id_alternatif='$key'");
+                    $this->db->query("UPDATE tb_alternatif set lf='$leaving[$key]', ef='$entering[$key]', nf='$net_flow[$key]' WHERE kode_alternatif='$key'");
                     ?>
                     <tr>
                         <td><?=$ALTERNATIF[$key]->nama_alternatif?></td>

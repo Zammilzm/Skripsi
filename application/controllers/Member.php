@@ -28,6 +28,7 @@
 
         if ($this->form_validation->run() === false) {
             $data['user'] = $this->User_model->get_data_member();
+            $data['pict'] = $this->User_model->get_foto_profil();
             load_view_user('user/profil_user', $data);
         } else {
             $data = array(
@@ -41,6 +42,30 @@
             redirect('Member/profil');
         }
     }
+    public function ganti_foto(){
+        $this->load->library('upload');
+        $nmfile = "file_".time(); //nama file + fungsi time
+        $config['upload_path'] = './assets/uploads/'; //Folder untuk menyimpan hasil upload
+        $config['allowed_types'] = 'jpg|png|jpeg'; //type yang dapat diakses bisa anda sesuaikan
+        $config['max_size'] = '3072'; //maksimum besar file 3M
+        $config['max_width']  = '5000'; //lebar maksimum 5000 px
+        $config['max_height']  = '5000'; //tinggi maksimu 5000 px
+        $config['file_name'] = $nmfile; //nama yang terupload nantinya
+
+        $this->upload->initialize($config);
+        if($_FILES['filefoto']['name'])
+        {
+            if ($this->upload->do_upload('filefoto')) {
+                $gbr = $this->upload->data();
+                $data = array(
+                    'gambar' => $gbr['file_name']
+                );
+                $this->User_model->update_foto_profil($data); //akses model untuk menyimpan ke database
+                redirect('Member/profil');
+            }
+        }
+    }
+
         public function profil_usaha()
         {
             $this->form_validation->set_rules('profil', 'Profil Perusahaan', 'required');

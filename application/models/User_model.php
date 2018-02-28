@@ -17,6 +17,18 @@ class User_model extends CI_Model {
         $this->db->update('tb_admin',$data, array('id_user' => $this->session->userdata('id_user')));
     }
 
+    public function update_foto_profil($data){
+        $this->db->update('tb_admin',$data, array('id_user' => $this->session->userdata('id_user')));
+    }
+
+    public function get_foto_profil(){
+        $this->db->select('gambar');
+        $this->db->from('tb_admin');
+        $this->db->where('id_user',$this->session->userdata('id_user'));
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     public function profil_perusahaan(){
         $query = $this->db->get('tb_profil_perusahaan');
         return $query;

@@ -25,10 +25,29 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-md-3 col-lg-3 " align="center">
-                    <img src="<?php echo base_url('floyd/images/blank-avatar.PNG'); ?>" alt="" class="img-circle img-responsive">
+                <div class="col-md-5 col-lg-5 " align="center">
+                    <?php foreach($pict as $row): ?>
+                    <img src="<?=base_url()?>assets/uploads/<?=$row->gambar;?>" class="img-circle img-responsive" width="200px" height="200px">
+                    <?php endforeach?>
+                    <form action="<?=site_url('Member/ganti_foto')?>" method="post" enctype="multipart/form-data">
+                        <table class="table table-striped">
+                            <tr>
+                                <td style="width:15%;">File Foto</td>
+                                <td>
+                                    <div class="col-sm-6">
+                                        <input type="file" name="filefoto" class="form-control">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <input type="submit" class="btn btn-success" value="Simpan">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
                 </div>
-                <div class=" col-md-7 col-lg-7 ">
+                <div class=" col-md-6 col-lg-6 ">
                     <table class="table table-user-information">
                         <tbody>
                         <tr>

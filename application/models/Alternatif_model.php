@@ -25,6 +25,18 @@ class Alternatif_model extends CI_Model {
         $query = $this->db->get_where($this->table, array ( $this->kode => $ID ));                
         return $query->row();
     }
+
+    public function get_alternatif_lahan_user($ID = NULL)
+    {
+        $query = $this->db->query("SELECT tba.kode_alternatif,tba.nama_alternatif,tba.keterangan
+        FROM tb_alternatif tba
+        INNER JOIN tb_rel_alternatif tra ON tba.kode_alternatif = tra.kode_alternatif
+        INNER JOIN tb_kriteria tbk ON tra.kode_kriteria = tbk.kode_kriteria
+        WHERE tba.kode_alternatif = '$ID'
+        LIMIT 1");
+
+        return $query->result();
+    }
             
     public function tambah( $fields )
     {

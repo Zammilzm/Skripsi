@@ -39,8 +39,11 @@
                             <td><?=$row->nama_alternatif?></a></td>
                             <td><?=$row->keterangan ?></td>
                             <td>
-                                <a class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-edit"></span>
-                                Detail Lahan</a>
+                                <a class="btn btn-xs btn-warning" href="<?=site_url("alternatif/detail_lahan_user/$row->kode_alternatif")?>"><i class="fa fa-fw fa-info-circle"></i>
+                                <span>
+                                    Detail Lahan
+                                </span>
+                                </a>
                             </td>
                         </tr>
                     <?php endforeach;?>

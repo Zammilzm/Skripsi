@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/assets/DataTables/media/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/assets/DataTables/media/css/dataTables.bootstrap.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>floyd/plugins/fontawesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>floyd/plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>floyd/css/theme-floyd.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>floyd/css/theme-helper.css">
 

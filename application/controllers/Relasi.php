@@ -29,9 +29,9 @@ class Relasi extends CI_Controller {
             if ($this->form_validation->run() === FALSE)
             {
                 $data['rows'] = $this->relasi_model->get_relasi($ID);
-                
-                if($data['rows']) 
-                {                    
+
+                if($data['rows'])
+                {
                     $data['title'] .= $data['rows'][0]->nama_alternatif;
                 }
                 

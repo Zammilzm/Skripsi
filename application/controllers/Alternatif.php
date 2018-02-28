@@ -5,6 +5,7 @@ class Alternatif extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('alternatif_model');
+        $this->load->model('relasi_model');
     }
 
     public function index()
@@ -18,6 +19,12 @@ class Alternatif extends CI_Controller {
     public function lahan_user(){
         $data['lahan'] = $this->alternatif_model->peringkat_lahan();
        load_view_user('user/alternatif_lahan',$data);
+    }
+
+    public function detail_lahan_user($ID = NULL){
+        $data['rows'] = $this->alternatif_model->get_alternatif_lahan_user($ID);
+        $data['nilainya'] = $this->relasi_model->get_relasi($ID);
+        load_view_user('user/detail_lahan_user', $data);
     }
 
     public function tambah()

@@ -237,24 +237,19 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h3 class="modal-title">
                     <center>
-                        Edit Profil Perusahaan
+                        RINCIAN LAHAN
                     </center>
                 </h3>
             </div>
             <div class="modal-body">
-                <form action="<?=site_url('Member/profil_usaha')?>" role="form" class="form-horizontal" method="post">
-                    <input type="hidden" value="" name="id"/>
-                    <div class="form-body">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Profil</label>
-                            <div class="col-md-9">
-                                <input name="profil" class="form-control" type="text" id="profil">
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
+                <?php foreach($nilainya as $row): ?>
+                    <div class="form-group">
+                        <label><?=$row->nama_kriteria?> <span class="text-danger">*</span></label>
+                        <p>
+                            <?=$row->nilai?>
+                        </p>
                     </div>
-                    <input type="submit" value="submit" class="btn btn-info btn-block"><br>
-                </form>
+                <?php endforeach?>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

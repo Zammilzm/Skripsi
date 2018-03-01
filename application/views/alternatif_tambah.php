@@ -1,4 +1,4 @@
-<form method="post" action="<?=site_url('alternatif/tambah')?>">
+<form method="post" action="<?=site_url('alternatif/tambah')?>" enctype="multipart/form-data">
     <?=print_error()?>
     <div class="row">
         <div class="col-sm-6">
@@ -21,6 +21,10 @@
             <div class="form-group">
                 <label>Keterangan</label>
                 <input class="form-control" type="text" name="keterangan" value="<?=set_value('keterangan')?>"/>
+            </div>
+            <div class="form-group">
+                <label>Foto Lokasi ( Maksimal 3 foto )</label>
+                <input type="file" name="userfile[]" multiple="multiple">
             </div>
             <div class="form-group">
                 <button class="btn btn-primary"><span class="glyphicon glyphicon-save"></span> Simpan</button>

@@ -42,7 +42,7 @@ class Alternatif_model extends CI_Model {
     {
         $this->db->insert($this->table, $fields);
         $this->db->query("INSERT INTO tb_rel_alternatif(kode_kriteria, kode_alternatif, nilai) 
-            SELECT kode_kriteria, '$fields[kode_alternatif]', 0  FROM tb_kriteria");         
+            SELECT kode_kriteria, '$fields[kode_alternatif]', 0  FROM tb_kriteria");
     }
     
     public function ubah( $fields, $ID )

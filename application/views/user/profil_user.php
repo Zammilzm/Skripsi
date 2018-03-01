@@ -27,7 +27,7 @@
             <div class="row">
                 <div class="col-md-5 col-lg-5 " align="center">
                     <?php foreach($pict as $row): ?>
-                    <img src="<?=base_url()?>assets/uploads/<?=$row->gambar;?>" class="img-circle img-responsive" width="200px" height="200px">
+                    <img src="<?=base_url()?>assets/uploads/<?=$row->gambar;?>" class="img-circle img-responsive" width="200px" height="300px">
                     <?php endforeach?>
                     <form action="<?=site_url('Member/ganti_foto')?>" method="post" enctype="multipart/form-data">
                         <table class="table table-striped">

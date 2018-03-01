@@ -6,6 +6,7 @@ class Alternatif extends CI_Controller {
         parent::__construct();
         $this->load->model('alternatif_model');
         $this->load->model('relasi_model');
+        $this->load->library('upload');
     }
 
     public function index()
@@ -29,11 +30,11 @@ class Alternatif extends CI_Controller {
 
     public function tambah()
     {
+
         $this->form_validation->set_rules( 'kode_alternatif', 'Kode Alternatif', 'required|is_unique[tb_alternatif.kode_alternatif]' );
         $this->form_validation->set_rules( 'nama_alternatif', 'Nama Alternatif', 'required' );
         $this->form_validation->set_rules( 'lat', 'Latitute', 'required' );
         $this->form_validation->set_rules( 'lng', 'Longitude', 'required' );
-
         $data['title'] = 'Tambah Alternatif';
 
         if ($this->form_validation->run() === FALSE)
@@ -42,12 +43,33 @@ class Alternatif extends CI_Controller {
         }
         else
         {
+            $dataInfo = array();
+            $files = $_FILES;
+            $cpt = count($_FILES['userfile']['name']);
+            for($i=0; $i<$cpt; $i++)
+            {
+                $_FILES['userfile']['name']= $files['userfile']['name'][$i];
+                $_FILES['userfile']['type']= $files['userfile']['type'][$i];
+                $_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
+                $_FILES['userfile']['error']= $files['userfile']['error'][$i];
+                $_FILES['userfile']['size']= $files['userfile']['size'][$i];
+
+                $config['upload_path'] = './assets/uploads/';
+                $config['allowed_types'] = 'jpg|png|jpeg';
+
+                $this->upload->initialize($config);
+                $this->upload->do_upload();
+                $dataInfo[] = $this->upload->data();
+            }
             $fields = array(
                 'kode_alternatif' => $this->input->post('kode_alternatif'),
                 'nama_alternatif' => $this->input->post('nama_alternatif'),
                 'lat' => $this->input->post('lat'),
                 'lng' => $this->input->post('lng'),
                 'keterangan' => $this->input->post('keterangan'),
+                'gambar1' => $dataInfo[0]['file_name'],
+                'gambar2' => $dataInfo[1]['file_name'],
+                'gambar3' => $dataInfo[2]['file_name']
             );
             $this->alternatif_model->tambah($fields);
             redirect('relasi/ubah/'. $this->input->post('kode_alternatif'));

@@ -1,4 +1,4 @@
-<?php echo form_open( "alternatif/ubah/$row->kode_alternatif" ); ?>
+<?php echo form_open_multipart( "alternatif/ubah/$row->kode_alternatif" ); ?>
 <?php echo validation_errors(); ?>
 <div class="row">
     <div class="col-md-6">
@@ -21,6 +21,10 @@
         <div class="form-group">
             <label>Keterangan <span class="text-danger">*</span></label>
             <input class="form-control" type="text" name="keterangan" value="<?=set_value('keterangan', $row->keterangan)?>"/>
+        </div>
+        <div class="form-group">
+            <label>Foto Lokasi ( Maksimal 3 foto )</label>
+            <input type="file" name="userfile[]" multiple="multiple">
         </div>
         <div class="form-group">
             <button class="btn btn-primary"><span class="glyphicon glyphicon-save"></span> Simpan</button>

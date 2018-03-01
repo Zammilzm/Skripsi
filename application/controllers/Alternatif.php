@@ -23,9 +23,11 @@ class Alternatif extends CI_Controller {
     }
 
     public function detail_lahan_user($ID = NULL){
-        $data['rows'] = $this->alternatif_model->get_alternatif_lahan_user($ID);
+        $data['row'] = $this->alternatif_model->get_alternatif_lahan_user($ID);
         $data['nilainya'] = $this->relasi_model->get_relasi($ID);
-        load_view_user('user/detail_lahan_user', $data);
+        $this->load->view('user/header_detail_lahan');
+        $this->load->view('user/detail_lahan_user', $data);
+        $this->load->view('user/footer_user');
     }
 
     public function tambah()
@@ -92,6 +94,7 @@ class Alternatif extends CI_Controller {
         }
         else
         {
+
             $fields = array(
                 'kode_alternatif' => $this->input->post('kode_alternatif'),
                 'nama_alternatif' => $this->input->post('nama_alternatif'),

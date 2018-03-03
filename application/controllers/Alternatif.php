@@ -1,5 +1,7 @@
 <?php
-class Alternatif extends CI_Controller {
+
+class Alternatif extends CI_Controller
+{
 
     public function __construct()
     {
@@ -17,12 +19,20 @@ class Alternatif extends CI_Controller {
         load_view('alternatif', $data);
     }
 
-    public function lahan_user(){
+    public function lahan_user()
+    {
         $data['lahan'] = $this->alternatif_model->peringkat_lahan();
-       load_view_user('user/alternatif_lahan',$data);
+        load_view_user('user/alternatif_lahan', $data);
     }
 
-    public function detail_lahan_user($ID = NULL){
+    public function tampil_peta()
+    {
+        $data['rows'] = $this->alternatif_model->tampil($this->input->get('search'));
+        $this->load->view('user/peta_lahan', $data);
+    }
+
+    public function detail_lahan_user($ID = NULL)
+    {
         $data['row'] = $this->alternatif_model->get_alternatif_lahan_user($ID);
         $data['nilainya'] = $this->relasi_model->get_relasi($ID);
         $this->load->view('user/header_detail_lahan');
@@ -33,28 +43,24 @@ class Alternatif extends CI_Controller {
     public function tambah()
     {
 
-        $this->form_validation->set_rules( 'kode_alternatif', 'Kode Alternatif', 'required|is_unique[tb_alternatif.kode_alternatif]' );
-        $this->form_validation->set_rules( 'nama_alternatif', 'Nama Alternatif', 'required' );
-        $this->form_validation->set_rules( 'lat', 'Latitute', 'required' );
-        $this->form_validation->set_rules( 'lng', 'Longitude', 'required' );
+        $this->form_validation->set_rules('kode_alternatif', 'Kode Alternatif', 'required|is_unique[tb_alternatif.kode_alternatif]');
+        $this->form_validation->set_rules('nama_alternatif', 'Nama Alternatif', 'required');
+        $this->form_validation->set_rules('lat', 'Latitute', 'required');
+        $this->form_validation->set_rules('lng', 'Longitude', 'required');
         $data['title'] = 'Tambah Alternatif';
 
-        if ($this->form_validation->run() === FALSE)
-        {
+        if ($this->form_validation->run() === FALSE) {
             load_view('alternatif_tambah', $data);
-        }
-        else
-        {
+        } else {
             $dataInfo = array();
             $files = $_FILES;
             $cpt = count($_FILES['userfile']['name']);
-            for($i=0; $i<$cpt; $i++)
-            {
-                $_FILES['userfile']['name']= $files['userfile']['name'][$i];
-                $_FILES['userfile']['type']= $files['userfile']['type'][$i];
-                $_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
-                $_FILES['userfile']['error']= $files['userfile']['error'][$i];
-                $_FILES['userfile']['size']= $files['userfile']['size'][$i];
+            for ($i = 0; $i < $cpt; $i++) {
+                $_FILES['userfile']['name'] = $files['userfile']['name'][$i];
+                $_FILES['userfile']['type'] = $files['userfile']['type'][$i];
+                $_FILES['userfile']['tmp_name'] = $files['userfile']['tmp_name'][$i];
+                $_FILES['userfile']['error'] = $files['userfile']['error'][$i];
+                $_FILES['userfile']['size'] = $files['userfile']['size'][$i];
 
                 $config['upload_path'] = './assets/uploads/';
                 $config['allowed_types'] = 'jpg|png|jpeg';
@@ -74,26 +80,23 @@ class Alternatif extends CI_Controller {
                 'gambar3' => $dataInfo[2]['file_name']
             );
             $this->alternatif_model->tambah($fields);
-            redirect('relasi/ubah/'. $this->input->post('kode_alternatif'));
+            redirect('relasi/ubah/' . $this->input->post('kode_alternatif'));
         }
     }
 
-    public function ubah( $ID = null )
+    public function ubah($ID = null)
     {
-        $this->form_validation->set_rules( 'kode_alternatif', 'Kode Alternatif', 'required' );
-        $this->form_validation->set_rules( 'nama_alternatif', 'Nama Alternatif', 'required' );
-        $this->form_validation->set_rules( 'lat', 'Latitute', 'required' );
-        $this->form_validation->set_rules( 'lng', 'Longitude', 'required' );
+        $this->form_validation->set_rules('kode_alternatif', 'Kode Alternatif', 'required');
+        $this->form_validation->set_rules('nama_alternatif', 'Nama Alternatif', 'required');
+        $this->form_validation->set_rules('lat', 'Latitute', 'required');
+        $this->form_validation->set_rules('lng', 'Longitude', 'required');
 
         $data['title'] = 'Ubah Alternatif';
 
-        if ($this->form_validation->run() === FALSE)
-        {
+        if ($this->form_validation->run() === FALSE) {
             $data['row'] = $this->alternatif_model->get_alternatif($ID);
             load_view('alternatif_ubah', $data);
-        }
-        else
-        {
+        } else {
 
             $fields = array(
                 'kode_alternatif' => $this->input->post('kode_alternatif'),
@@ -108,21 +111,20 @@ class Alternatif extends CI_Controller {
     }
 
 
-    public function detail( $ID = null )
+    public function detail($ID = null)
     {
         $data['row'] = $this->alternatif_model->get_alternatif($ID);
         $data['title'] = $data['row']->nama_alternatif;
-        load_view('alternatif_detail', $data);
-
+        $this->load->view('user/alternatif_detail', $data);
     }
 
-    public function hapus( $ID = null )
+    public function hapus($ID = null)
     {
         $this->alternatif_model->hapus($ID);
         redirect('alternatif');
     }
 
-    public function cetak( $search ='' )
+    public function cetak($search = '')
     {
         $data['rows'] = $this->alternatif_model->tampil($search);
         load_view_cetak('alternatif_cetak', $data);

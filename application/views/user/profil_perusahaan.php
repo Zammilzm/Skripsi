@@ -19,42 +19,46 @@
 <div id="content">
     <div class="panel panel-info">
         <div class="panel-body">
-            <?php foreach ($profil as $prof)?>
+            <?php foreach ($profil
+
+                           as $prof) ?>
             <div class="row">
-                    <div class="col-xs-12">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <span class="text-size-22"><i class="fa fa-clone space-right-10"></i>Profil Perusahaan</span>
-                                <p class="break-top-10 text-size-16">
-                                    <?=$prof->profil?>
-                                </p>
-                            </div>
-                            <a
-                                href="javascript:;"
-                                data-profil="<?=$prof->profil?>"
-                                data-toggle="modal" data-target="#edit-data">
-                                <button  data-toggle="modal" data-target="#ubah-data" class="btn btn-success">Update Data Perusahaan</button>
-                            </a>
+                <div class="col-xs-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <span class="text-size-22"><i
+                                        class="fa fa-clone space-right-10"></i>Profil Perusahaan</span>
+                            <p class="break-top-10 text-size-16">
+                                <?= $prof->profil ?>
+                            </p>
                         </div>
+                        <a
+                                href="javascript:;"
+                                data-profil="<?= $prof->profil ?>"
+                                data-toggle="modal" data-target="#edit-data">
+                            <button data-toggle="modal" data-target="#ubah-data" class="btn btn-success">Update Data
+                                Perusahaan
+                            </button>
+                        </a>
                     </div>
+                </div>
             </div>
-<?php  ?>
+            <?php ?>
         </div>
     </div>
 </div>
 
-<script type='text/javascript' src="<?php echo base_url(); ?>floyd/plugins/jquery/jquery-3.1.1.min.js"></script>
 <script type='text/javascript' src="<?php echo base_url(); ?>floyd/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script type='text/javascript' src="<?php echo base_url(); ?>floyd/js/theme-floyd.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         // Untuk sunting
         $('#edit-data').on('show.bs.modal', function (event) {
             var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
-            var modal          = $(this)
+            var modal = $(this)
 
             // Isi nilai pada field
-            modal.find('#profil').attr("value",div.data('profil'));
+            modal.find('#profil').attr("value", div.data('profil'));
         });
     });
 </script>
@@ -63,7 +67,8 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
                 <h3 class="modal-title">
                     <center>
                         Edit Profil Perusahaan
@@ -71,7 +76,7 @@
                 </h3>
             </div>
             <div class="modal-body">
-                <form action="<?=site_url('Member/profil_usaha')?>" role="form" class="form-horizontal" method="post">
+                <form action="<?= site_url('Member/profil_usaha') ?>" role="form" class="form-horizontal" method="post">
                     <input type="hidden" value="" name="id"/>
                     <div class="form-body">
                         <div class="form-group">

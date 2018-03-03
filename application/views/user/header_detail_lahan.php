@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Floyd</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiDdGyp6n2hKHPECuB6JZIT-8dVHCpwI0&language=id&region=ID&libraries=places"></script>
+    <script type='text/javascript' src="<?php echo base_url(); ?>floyd/plugins/jquery/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>floyd/plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>floyd/plugins/fontawesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>floyd/css/theme-floyd.css">
@@ -30,7 +31,16 @@
                 <li><a href="<?=site_url('Member/index')?>"><i class="fa fa-fw fa-star"></i><span>Home</span></a></li>
                 <li><a href="<?=site_url('Member/profil')?>"><i class="fa fa-fw fa-user-md"></i><span>Profil</span></a></li>
                 <li><a href="<?=site_url('Member/profil_usaha')?>"><i class="fa fa-fw fa-user-circle"></i><span>Profil Perusahaan</span></a></li>
-                <li><a href="<?=site_url('Alternatif/lahan_user')?>"><i class="fa fa-fw fa-user-circle"></i><span>Peringkat Lahan</span></a></li>
+                <li>
+                    <a href="#nav-dropdown1" data-toggle="collapse" aria-controls="nav-dropdown1">
+                        <i class="fa fa-fw fa-window-maximize"></i><span>Cari Lahan</span>
+                        <span class="sidebar-nav-arrow"><i class="fa fa-angle-down"></i></span>
+                    </a>
+                    <ul class="sidebar-nav-child collapse collapseable" id="nav-dropdown1">
+                        <li><a href="<?=site_url('Alternatif/lahan_user')?>"><i class="fa fa-fw fa-star"></i><span>Peringkat Lahan</span></a></li>
+                        <li><a href="<?=site_url('Alternatif/tampil_peta')?>"><i class="fa fa-fw fa-star"></i><span>Lokasi Lahan</span></a></li>
+                    </ul>
+                </li>
                 <li><a href="<?=site_url('user/logout')?>"><i class="fa fa-fw fa-wrench"></i><span>Logout</span></a></li>
             </ul>
 

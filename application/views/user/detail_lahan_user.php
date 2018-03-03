@@ -36,11 +36,12 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-5 col-lg-5 " align="center">
-                    <img width="300px" height="150px" class="thumbnail img-responsive" src="<?=base_url()?>assets/uploads/<?=$row->gambar1;?>">
-                    <br>
-                    <img width="300px" height="150px" class="thumbnail img-responsive" src="<?=base_url()?>assets/uploads/<?=$row->gambar2;?>">
-                    <br>
-                    <img width="300px" height="150px" class="thumbnail img-responsive" src="<?=base_url()?>assets/uploads/<?=$row->gambar3;?>">
+                    <?php if ($row->gambar1 === NULL): ?>
+                        <h3>Belum ada gambar</h3>
+                    <?php else: ?>
+                        <img width="300px" height="150px" class="thumbnail img-responsive"
+                             src="<?= base_url() ?>assets/uploads/<?= $row->gambar1; ?>">
+                    <?php endif; ?>
                 </div>
                 <div class=" col-md-6 col-lg-6 ">
                     <h3 class="panel-title">
@@ -55,31 +56,31 @@
                         <tr>
                             <td><strong>Kode Lahan</strong></td>
                             <td>
-                                <?=$row->kode_alternatif?>
+                                <?= $row->kode_alternatif ?>
                             </td>
                         </tr>
                         <tr>
                             <td><strong>Nama lahan</strong></td>
                             <td>
-                                <?=$row->nama_alternatif?>
+                                <?= $row->nama_alternatif ?>
                             </td>
                         </tr>
                         <tr>
                             <td><strong>Keterangan</strong></td>
                             <td>
-                                <?=$row->keterangan?>
+                                <?= $row->keterangan ?>
                             </td>
                         </tr>
                         <tr>
                             <td><strong>Latitude</strong></td>
                             <td>
-                                <?=$row->lat?>
+                                <?= $row->lat ?>
                             </td>
                         </tr>
                         <tr>
                             <td><strong>Longitude</strong></td>
                             <td>
-                                <?=$row->lng?>
+                                <?= $row->lng ?>
                             </td>
                         </tr>
                         </tbody>
@@ -87,7 +88,8 @@
                     <br>
                     <a data-toggle="modal" data-target="#edit-data">
                         <center>
-                            <button  data-toggle="modal" data-target="#ubah-data" class="btn btn-success"><span>DATA</span><br><span>RINCIAN</span><br><span>LAHAN</span></button>
+                            <button data-toggle="modal" data-target="#ubah-data" class="btn btn-success">
+                                <span>DATA</span><br><span>RINCIAN</span><br><span>LAHAN</span></button>
                         </center>
                     </a>
                 </div>
@@ -108,26 +110,26 @@
     </div>
 </div>
 
-<script type='text/javascript' src="<?php echo base_url(); ?>floyd/plugins/jquery/jquery-3.1.1.min.js"></script>
 <script type='text/javascript' src="<?php echo base_url(); ?>floyd/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script type='text/javascript' src="<?php echo base_url(); ?>floyd/js/theme-floyd.js"></script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         // Untuk sunting
         $('#edit-data').on('show.bs.modal', function (event) {
             var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
-            var modal          = $(this)
+            var modal = $(this)
 
             // Isi nilai pada field
-            modal.find('#profil').attr("value",div.data('profil'));
+            modal.find('#profil').attr("value", div.data('profil'));
         });
     });
 
     var defaultCenter = {
-        lat : <?=set_value('lat', $row->lat)*1?>,
-        lng : <?=set_value('lng', $row->lng)*1?>
+        lat: <?=set_value('lat', $row->lat) * 1?>,
+        lng: <?=set_value('lng', $row->lng) * 1?>
     };
+
     function initMap() {
 
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -142,7 +144,7 @@
             position: defaultCenter,
             map: map,
             title: 'Click to zoom',
-            draggable:true
+            draggable: true
         });
 
         /*// Try HTML5 geolocation.
@@ -174,7 +176,7 @@
 
         var infowindowContent = document.getElementById('infowindow-content');
 
-        autocomplete.addListener('place_changed', function() {
+        autocomplete.addListener('place_changed', function () {
             infoWindow.close();
             marker.setVisible(false);
             var place = autocomplete.getPlace();
@@ -226,7 +228,7 @@
         document.getElementById('lng').value = event.latLng.lng();
     }
 
-    $(function(){
+    $(function () {
         initMap();
     })
 </script>
@@ -234,7 +236,8 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
                 <h3 class="modal-title">
                     <center>
                         RINCIAN LAHAN
@@ -242,14 +245,14 @@
                 </h3>
             </div>
             <div class="modal-body">
-                <?php foreach($nilainya as $row): ?>
+                <?php foreach ($nilainya as $row): ?>
                     <div class="form-group">
-                        <label><?=$row->nama_kriteria?> <span class="text-danger">*</span></label>
+                        <label><?= $row->nama_kriteria ?> <span class="text-danger">*</span></label>
                         <p>
-                            <?=$row->nilai?>
+                            <?= $row->nilai ?>
                         </p>
                     </div>
-                <?php endforeach?>
+                <?php endforeach ?>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

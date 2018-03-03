@@ -32,7 +32,16 @@
                 <li><a href="<?=site_url('Member/index')?>"><i class="fa fa-fw fa-star"></i><span>Home</span></a></li>
                 <li><a href="<?=site_url('Member/profil')?>"><i class="fa fa-fw fa-user-md"></i><span>Profil</span></a></li>
                 <li><a href="<?=site_url('Member/profil_usaha')?>"><i class="fa fa-fw fa-user-circle"></i><span>Profil Perusahaan</span></a></li>
-                <li><a href="<?=site_url('Alternatif/lahan_user')?>"><i class="fa fa-fw fa-user-circle"></i><span>Peringkat Lahan</span></a></li>
+                <li>
+                    <a href="#nav-dropdown1" data-toggle="collapse" aria-controls="nav-dropdown1">
+                        <i class="fa fa-fw fa-window-maximize"></i><span>Cari Lahan</span>
+                        <span class="sidebar-nav-arrow"><i class="fa fa-angle-down"></i></span>
+                    </a>
+                    <ul class="sidebar-nav-child collapse collapseable" id="nav-dropdown1">
+                        <li><a href="<?=site_url('Alternatif/lahan_user')?>"><i class="fa fa-fw fa-star"></i><span>Peringkat Lahan</span></a></li>
+                        <li><a href="<?=site_url('Alternatif/tampil_peta')?>"><i class="fa fa-fw fa-star"></i><span>Lokasi Lahan</span></a></li>
+                    </ul>
+                </li>
                 <li><a href="<?=site_url('user/logout')?>"><i class="fa fa-fw fa-wrench"></i><span>Logout</span></a></li>
             </ul>
 

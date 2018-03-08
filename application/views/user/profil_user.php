@@ -115,7 +115,7 @@
                             data-nama="<?php echo $user->nama ?>"
                             data-email="<?php echo $user->email ?>"
                             data-toggle="modal" data-target="#edit-data">
-                        <button  data-toggle="modal" data-target="#ubah-data" class="btn btn-success">Update Data Diri</button>
+                        <button class="btn btn-success">Update Data Diri</button>
                     </a>
                 </div>
             </div>

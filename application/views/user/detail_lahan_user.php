@@ -86,12 +86,19 @@
                         </tbody>
                     </table>
                     <br>
-                    <a data-toggle="modal" data-target="#edit-data">
-                        <center>
-                            <button data-toggle="modal" data-target="#ubah-data" class="btn btn-success">
-                                <span>DATA</span><br><span>RINCIAN</span><br><span>LAHAN</span></button>
-                        </center>
-                    </a>
+                    <center>
+                        <a data-toggle="modal" data-target="#edit-data">
+                            <button class="btn btn-success">
+                                <span>DATA</span><br><span>RINCIAN LAHAN</span>
+                            </button>
+                        </a>
+                        <a data-toggle="modal" data-target="#booking-lahan">
+                            <button class="btn btn-success">
+                                <span>BOOKING</span><br><span>LAHAN</span>
+                            </button>
+                        </a>
+                        <br><br>
+                    </center>
                 </div>
             </div>
             <div class="row">
@@ -114,16 +121,6 @@
 <script type='text/javascript' src="<?php echo base_url(); ?>floyd/js/theme-floyd.js"></script>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        // Untuk sunting
-        $('#edit-data').on('show.bs.modal', function (event) {
-            var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
-            var modal = $(this)
-
-            // Isi nilai pada field
-            modal.find('#profil').attr("value", div.data('profil'));
-        });
-    });
 
     var defaultCenter = {
         lat: <?=set_value('lat', $row->lat) * 1?>,
@@ -137,33 +134,15 @@
             center: defaultCenter
         });
         var infoWindow = new google.maps.InfoWindow({
-            content: '<h4>Drag untuk pindah lokasi</h4>'
+            content: '<h4>Lokasi Lahan</h4>'
         });
 
         var marker = new google.maps.Marker({
             position: defaultCenter,
             map: map,
             title: 'Click to zoom',
-            draggable: true
+            draggable: false
         });
-
-        /*// Try HTML5 geolocation.
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                defaultCenter = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                };
-                infoWindow.setPosition(defaultCenter);
-                marker.setPosition(defaultCenter);
-                map.setCenter(defaultCenter);
-            }, function() {
-                handleLocationError(true, infoWindow, map.getCenter());
-            });
-        } else {
-            // Browser doesn't support Geolocation
-            handleLocationError(false, infoWindow, map.getCenter());
-        }*/
 
         var input = document.getElementById('pac-input');
         var autocomplete = new google.maps.places.Autocomplete(input);
@@ -257,4 +236,70 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-<!-- End Bootstrap modal --
+
+<div class="modal fade" id="booking-lahan" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title">
+                    <center>
+                        BOOKING LAHAN
+                    </center>
+                    <hr>
+                </h3>
+                <h4 align="center">
+                    Sebagai Mitra Tani PG Asembagus, anda dapat memilih program tebu Rakyat Mandiri atau Tebu Rakyat
+                    Kredit
+                </h4>
+            </div>
+            <div class="modal-body">
+                <h4>Tebu Rakyat Mandiri</h4>
+                <p align="justify">
+                    Program kemitraan ini memungkinkan anda bekerja sama dengan Pabrik Gula Asembagus <span><b>tanpa mendapatkan
+                    sarana kredit</b></span>. Info selengkapnya mengenai program Tebu Rakyat Mandiri dapat dibaca pada
+                    menu Info atau
+                    <a href="#">Klik Disini</a>
+                </p>
+                <hr>
+                <h4>Tebu Rakyat Kredit</h4>
+                <p align="justify">
+                    Program kemitraan ini memungkinkan anda bekerja sama dengan Pabrik Gula Asembagus dan <span><b>mendapatkan
+                    sarana kredit </b></span>. Info selengkapnya mengenai program Tebu Rakyat Kredit dapat dibaca pada
+                    menu Info atau
+                    <a href="#">Klik Disini</a>
+                </p>
+                <br>
+                <h3>--- Catatan ---</h3>
+                <p align="justify">
+                    Saat anda booking, permintaan akan dikirimkan kepada admin PG Asembagus. Keputusan apakah anda
+                    yang berhak menerima kontrak akan diinfokan di menu kontrak lahan mengingat banyaknya peminat
+                    lahan.
+                </p>
+                <center>
+                    <form method="post" action="<?= site_url("Kontrak/set_booking_mandiri") ?>">
+                        <input type="hidden" name="kode_alternatif" value="<?= $row->kode_alternatif ?>">
+                        <button class="btn btn-success" type="submit">
+                        <span>
+                        Booking Sebagai <br>
+                        <span>Tebu Rakyat <span><b>Mandiri</b></span></span>
+                    </span>
+                        </button>
+                    </form>
+                    <br>
+                    <form method="post" action="<?= site_url("Kontrak/set_booking_kredit") ?>">
+                        <input type="hidden" name="kode_alternatif" value="<?= $row->kode_alternatif ?>">
+                        <button class="btn btn-success">
+                        <span>
+                        Booking Sebagai <br>
+                        <span>Tebu Rakyat <span><b>Kredit</b></span></span>
+                    </span>
+                        </button>
+                    </form>
+                </center>
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

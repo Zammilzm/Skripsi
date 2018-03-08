@@ -35,6 +35,7 @@ class Alternatif extends CI_Controller
     {
         $data['row'] = $this->alternatif_model->get_alternatif_lahan_user($ID);
         $data['nilainya'] = $this->relasi_model->get_relasi($ID);
+        $data['booking'] = $this->alternatif_model->cek_status_booking($ID);
         $this->load->view('user/header_detail_lahan');
         $this->load->view('user/detail_lahan_user', $data);
         $this->load->view('user/footer_user');

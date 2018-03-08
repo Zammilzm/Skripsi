@@ -26,10 +26,13 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-5 col-lg-5 " align="center">
-                    <?php foreach($pict as $row): ?>
-                    <img src="<?=base_url()?>assets/uploads/<?=$row->gambar;?>" class="img-circle img-responsive" width="200px" height="300px">
-                    <?php endforeach?>
-                    <form action="<?=site_url('Member/ganti_foto')?>" method="post" enctype="multipart/form-data">
+                    <?php if ($pict->gambar === NULL): ?>
+                        <h3>Belum ada gambar</h3>
+                    <?php else: ?>
+                        <img src="<?= base_url() ?>assets/uploads/<?= $pict->gambar; ?>"
+                             class="img-circle img-responsive" width="200px" height="300px">
+                    <?php endif; ?>
+                    <form action="<?= site_url('Member/ganti_foto') ?>" method="post" enctype="multipart/form-data">
                         <table class="table table-striped">
                             <tr>
                                 <td style="width:15%;">File Foto</td>
@@ -56,56 +59,56 @@
                                 <?php echo $user->id_user ?>
                             </td>
                         </tr>
-                            <tr>
-                                <td><strong>Username</strong></td>
-                                <td>
-                                    <?php echo $user->user ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Passowrd</strong></td>
-                                <td>
-                                    <?php echo $user->pass ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Nama Lengkap</strong></td>
-                                <td>
-                                    <?php echo $user->nama ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Email</strong></td>
-                                <td>
-                                    <?php echo $user->email ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Status</strong></td>
-                                <td>
-                                    <?php echo $user->level ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>No Hp</strong></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Jenis Kelamin</strong></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Alamat Lengkap</strong></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Foto KTP</strong></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Foto KK</strong></td>
-                                <td></td>
-                            </tr>
+                        <tr>
+                            <td><strong>Username</strong></td>
+                            <td>
+                                <?php echo $user->user ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Passowrd</strong></td>
+                            <td>
+                                <?php echo $user->pass ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nama Lengkap</strong></td>
+                            <td>
+                                <?php echo $user->nama ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Email</strong></td>
+                            <td>
+                                <?php echo $user->email ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Status</strong></td>
+                            <td>
+                                <?php echo $user->level ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>No Hp</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Jenis Kelamin</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Alamat Lengkap</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Foto KTP</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Foto KK</strong></td>
+                            <td></td>
+                        </tr>
                         </tbody>
                     </table>
                     <a
@@ -127,17 +130,17 @@
 <script type='text/javascript' src="<?php echo base_url(); ?>floyd/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script type='text/javascript' src="<?php echo base_url(); ?>floyd/js/theme-floyd.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         // Untuk sunting
         $('#edit-data').on('show.bs.modal', function (event) {
             var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
-            var modal          = $(this)
+            var modal = $(this)
 
             // Isi nilai pada field
-            modal.find('#user').attr("value",div.data('user'));
-            modal.find('#pass').attr("value",div.data('pass'));
-            modal.find('#nama').attr("value",div.data('nama'));
-            modal.find('#email').attr("value",div.data('email'));
+            modal.find('#user').attr("value", div.data('user'));
+            modal.find('#pass').attr("value", div.data('pass'));
+            modal.find('#nama').attr("value", div.data('nama'));
+            modal.find('#email').attr("value", div.data('email'));
         });
     });
 </script>
@@ -146,7 +149,8 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
                 <h3 class="modal-title">
                     <center>
                         Edit Data Diri
@@ -154,7 +158,7 @@
                 </h3>
             </div>
             <div class="modal-body">
-                <form action="<?=site_url('Member/profil')?>" role="form" class="form-horizontal" method="post">
+                <form action="<?= site_url('Member/profil') ?>" role="form" class="form-horizontal" method="post">
                     <input type="hidden" value="" name="id"/>
                     <div class="form-body">
                         <div class="form-group">

@@ -26,7 +26,7 @@ class User_model extends CI_Model {
         $this->db->from('tb_admin');
         $this->db->where('id_user',$this->session->userdata('id_user'));
         $query = $this->db->get();
-        return $query->result();
+        return $query->row();
     }
 
     public function profil_perusahaan(){

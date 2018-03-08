@@ -28,7 +28,7 @@
                 <tr>
                     <td><?=++$no ?></td>
                     <td><?=$row->kode_alternatif?></td>
-                    <td><a href="<?=site_url('alternatif/detail/'. $row->kode_alternatif)?>"><?=$row->nama_alternatif?></a></td>
+                    <td><?=$row->nama_alternatif?></td>
                     <td>
                         <a class="btn btn-xs btn-warning" href="<?=site_url("alternatif/ubah/$row->kode_alternatif")?>"><span class="glyphicon glyphicon-edit"></span></a>
                         <a class="btn btn-xs btn-danger" href="<?=site_url("alternatif/hapus/$row->kode_alternatif")?>" onclick="return confirm('Hapus data?')"><span class="glyphicon glyphicon-trash"></span></a>

@@ -17,7 +17,12 @@ class Kontrak extends CI_Controller
     }
 
     public function index(){
-        
+        $data['Tittle'] = 'DAFTAR PEMINAT LAHAN';
+        $data['peminat'] = $this->Kontrak_model->jumlah_peminat_lahan();
+        $data['total'] = $this->Kontrak_model->jumlah_lahan();
+        $data['user'] = $this->Kontrak_model->jumlah_user_aktif();
+        $data['lahan'] = $this->Kontrak_model->tabel_peminat_lahan();
+        load_view('peminat_lahan', $data);
     }
 
     public function set_booking_mandiri(){

@@ -16,6 +16,10 @@ class Kontrak extends CI_Controller
         $this->load->Model('Kontrak_model');
     }
 
+    public function index(){
+        
+    }
+
     public function set_booking_mandiri(){
         $fields = array(
             'id_user' => $this->session->userdata('id_user'),

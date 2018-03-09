@@ -1,46 +1,100 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="icon" href="<?=base_url('favicon.ico')?>"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
 
     <title>PG ASEMBAGUS</title>
-    <link href="<?=base_url('assets/css/sandstone-bootstrap.min.css')?>" rel="stylesheet"/>
-    <link href="<?=base_url('assets/css/general.css')?>" rel="stylesheet"/>
-    <script src="<?=base_url('assets/js/jquery.min.js')?>"></script>
-    <script src="<?=base_url('assets/js/bootstrap.min.js')?>"></script>
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiDdGyp6n2hKHPECuB6JZIT-8dVHCpwI0&language=id&region=ID&libraries=places"></script>
-  </head>
-  <body>
-    <nav class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="<?=site_url()?>">PERKEBUNAN PG ASEMBAGUS</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="<?=site_url('kriteria')?>"><span class="glyphicon glyphicon-th-large"></span> Kriteria</a></li>               
-            <li class="dropdown">
-                <a href="?m=alternatif" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Alternatif <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="<?=site_url('alternatif')?>"><span class="glyphicon glyphicon-user"></span> Alternatif</a></li>
-                    <li><a href="<?=site_url('relasi')?>"><span class="glyphicon glyphicon-user"></span> Nilai Alternatif</a></li>
-                </ul>
-            </li>
-            <li><a href="<?=site_url('hitung')?>"><span class="glyphicon glyphicon-calendar"></span> Perhitungan</a></li>                
-            <li><a href="<?=site_url('user/password')?>"><span class="glyphicon glyphicon-lock"></span> Password</a></li>
-            <li><a href="<?=site_url('user/logout')?>"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>      
-          </ul>          
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+    <script src="<?= base_url('assetsadmin/js/jquery-3.2.1.min.js') ?>"></script>
+    <script src="<?= base_url('assetsadmin/js/bootstrap.min.js') ?>"></script>
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiDdGyp6n2hKHPECuB6JZIT-8dVHCpwI0&language=id&region=ID&libraries=places"></script>
+    <!-- Bootstrap core CSS     -->
+    <link href="<?= base_url('assetsadmin/css/bootstrap.min.css') ?>" rel="stylesheet"/>
+    <!--  Material Dashboard CSS    -->
+    <link href="<?= base_url('assetsadmin/css/material-dashboard.css?v=1.2.0') ?>" rel="stylesheet"/>
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet'
+          type='text/css'>
+</head>
 
-    <div class="container">
+<body>
+<div class="wrapper">
+    <div class="sidebar" data-color="red" data-image="../assetsadmin/img/sidebar-1.jpg">
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <center>
+                    <div class="sidebar-avatar-image"><img
+                                src="<?php echo base_url('assetsadmin/img/logo_ptpn_x.png'); ?>" width="100px"
+                                height="100px" class="img-circle"></div>
+                </center>
+                <a href="#" class="simple-text">
+                    PG ASEMBAGUS
+                </a>
+            </div>
+            <ul class="nav">
+                <li class="active">
+                    <a href="<?= site_url('kriteria') ?>">
+                        <i class="material-icons">payment</i>
+                        <p>Kriteria Lahan</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= site_url('alternatif') ?>">
+                        <i class="material-icons">list</i>
+                        <p>List Lahan</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= site_url('relasi') ?>">
+                        <i class="material-icons">compare</i>
+                        <p>Nilai Lahan</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= site_url('kontrak') ?>">
+                        <i class="material-icons">book</i>
+                        <p>Peminat Lahan</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= site_url('hitung') ?>">
+                        <i class="material-icons">shuffle</i>
+                        <p>Perangkingan</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= site_url('user/password') ?>">
+                        <i class="material-icons">build</i>
+                        <p>Ubah Password</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= site_url('user/logout') ?>">
+                        <i class="material-icons text-gray">notifications</i>
+                        <p>Log out</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-panel">
+        <nav class="navbar navbar-transparent navbar-absolute">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        Pabrik Gula (PG) Asembagus
+                    </a>
+                </div>
+        </nav>
+        <div class="content">
+            <div class="container-fluid">

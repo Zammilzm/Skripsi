@@ -70,7 +70,7 @@
                 <h4 class="title">List Lahan Yang Sedang Diminati</h4>
                 <p class="category">
                     Berikut Lahan yang diminati oleh Mitra Tani beserta Jumlah Peminatnya
-                    <span><b><u>Klik Detail Untuk Melihat Peminat Lahan dan silahkan pilih Mitra yang diajak bekerjasama</u></b></span>
+                    <span><b><u>Klik Kerjasama Untuk Melihat Peminat Lahan dan silahkan pilih Mitra yang diajak bekerjasama</u></b></span>
                 </p>
             </div>
             <div class="card-content table-responsive">
@@ -91,8 +91,7 @@
                             <td><?= $row->keterangan ?></td>
                             <td><?= $row->jumlah_peminat ?></td>
                             <td>
-                                <a class="btn btn-sm btn-warning"
-                                   href="<?= site_url("kriteria/ubah/$row->kode_alternatif") ?>">
+                                <a class="btn btn-sm btn-warning"  href="<?=site_url("Kontrak/detail_peminat/$row->kode_alternatif")?>">
                                     <i class="material-icons">book</i> Kerjasama
                                 </a>
                             </td>

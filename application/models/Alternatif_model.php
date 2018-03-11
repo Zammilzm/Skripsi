@@ -44,11 +44,11 @@ class Alternatif_model extends CI_Model
 
         $query = $this->db->query("SELECT tbl.Status
         FROM tb_alternatif tba
-        INNER JOIN  tb_booking_lahan tbl
+        JOIN  tb_booking_lahan tbl
         on tba.kode_alternatif = tbl.kode_alternatif
-        INNER JOIN tb_admin tbad
+        JOIN tb_admin tbad
         on tbl.id_user = tbad.id_user
-        WHERE tba.kode_alternatif = '$ID' AND tbad.id_user = $login");
+        WHERE tbl.kode_alternatif = '$ID' AND tbad.id_user = $login");
 
         return $query->row();
     }

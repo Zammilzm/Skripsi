@@ -42,4 +42,19 @@ class Kontrak_model extends CI_Model
                                     ORDER BY jumlah_peminat DESC ");
         return $query->result();
     }
+
+    public function list_peminat($ID)
+    {
+        $query = $this->db->query("SELECT tbl.id_booking_lahan,tbl.Status,tbl.Tipe_penawaran, tba.nama, tba.email, tba.gambar, tba.id_user 
+                                FROM tb_booking_lahan tbl
+                                join tb_admin tba
+                                on tbl.id_user = tba.id_user
+                                where tba.level = 'user' AND kode_alternatif = '$ID'");
+
+        return $query->result();
+    }
+
+    public function upload_kontrak_lahan($data,$ID){
+        $this->db->update('tb_booking_lahan',$data, array('id_booking_lahan' => $ID));
+    }
 }

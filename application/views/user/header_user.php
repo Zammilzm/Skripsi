@@ -42,6 +42,7 @@
                         <li><a href="<?=site_url('Alternatif/tampil_peta')?>"><i class="fa fa-fw fa-star"></i><span>Lokasi Lahan</span></a></li>
                     </ul>
                 </li>
+                <li><a href="<?=site_url('Kontrak/list_status_booking')?>"><i class="fa fa-fw fa-user-md"></i><span>Profil</span></a></li>
                 <li><a href="<?=site_url('user/logout')?>"><i class="fa fa-fw fa-wrench"></i><span>Logout</span></a></li>
             </ul>
 

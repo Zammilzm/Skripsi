@@ -92,11 +92,21 @@
                                 <span>DATA</span><br><span>RINCIAN LAHAN</span>
                             </button>
                         </a>
-                        <a data-toggle="modal" data-target="#booking-lahan">
-                            <button class="btn btn-success">
-                                <span>BOOKING</span><br><span>LAHAN</span>
-                            </button>
-                        </a>
+                        <?php if (isset($booking)): ?>
+                            <?php if ($booking->Status === 'Diproses'): ?>
+                                <a>
+                                    <button class="btn btn-warning">
+                                        <span>LAHAN SUDAH</span><br><span>ANDA BOOKING</span>
+                                    </button>
+                                </a>
+                            <?php endif; ?>
+                        <?php else: ?>
+                            <a data-toggle="modal" data-target="#booking-lahan">
+                                <button class="btn btn-success">
+                                    <span>BOOKING</span><br><span>LAHAN</span>
+                                </button>
+                            </a>
+                        <?php endif; ?>
                         <br><br>
                     </center>
                 </div>

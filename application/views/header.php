@@ -13,6 +13,7 @@
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiDdGyp6n2hKHPECuB6JZIT-8dVHCpwI0&language=id&region=ID&libraries=places"></script>
     <!-- Bootstrap core CSS     -->
     <link href="<?= base_url('assetsadmin/css/bootstrap.min.css') ?>" rel="stylesheet"/>
+    <link href="<?= base_url('assetsadmin/css/file_upload.css') ?>" rel="stylesheet"/>
     <!--  Material Dashboard CSS    -->
     <link href="<?= base_url('assetsadmin/css/material-dashboard.css?v=1.2.0') ?>" rel="stylesheet"/>
     <!--     Fonts and icons     -->

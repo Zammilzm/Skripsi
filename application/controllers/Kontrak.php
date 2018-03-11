@@ -14,6 +14,7 @@ class Kontrak extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->load->Model('Kontrak_model');
+        $this->load->model('alternatif_model');
     }
 
     public function index(){
@@ -23,6 +24,33 @@ class Kontrak extends CI_Controller
         $data['user'] = $this->Kontrak_model->jumlah_user_aktif();
         $data['lahan'] = $this->Kontrak_model->tabel_peminat_lahan();
         load_view('peminat_lahan', $data);
+    }
+
+    public function detail_peminat($ID){
+        $data['row'] = $this->alternatif_model->get_alternatif($ID);
+        $data['users'] = $this->Kontrak_model->list_peminat($ID);
+        load_view('peminat_lahan_detail', $data);
+    }
+
+    public function upload_kontrak($ID = null){
+        $this->load->library('upload');
+        $nmfile = "file_".time(); //nama file + fungsi time
+        $config['upload_path'] = './assets/uploads/'; //Folder untuk menyimpan hasil upload
+        $config['allowed_types'] = 'doc|docx|pdf'; //type yang dapat diakses bisa anda sesuaikan
+        $config['file_name'] = $nmfile; //nama yang terupload nantinya
+        $this->upload->initialize($config);
+        if($_FILES['berkas_kontrak']['name'])
+        {
+            if ($this->upload->do_upload('berkas_kontrak')) {
+                $gbr = $this->upload->data();
+                $data = array(
+                    'Status' => 'Disetujui',
+                    'Doc_Kontrak_admin' => $gbr['file_name']
+                );
+                $this->Kontrak_model->upload_kontrak_lahan($data,$ID); //akses model untuk menyimpan ke database
+                redirect('Kontrak');
+            }
+        }
     }
 
     public function set_booking_mandiri(){

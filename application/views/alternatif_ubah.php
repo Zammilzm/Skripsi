@@ -1,49 +1,83 @@
-<?php echo form_open_multipart( "alternatif/ubah/$row->kode_alternatif" ); ?>
+<?php echo form_open_multipart("alternatif/ubah/$row->kode_alternatif"); ?>
 <?php echo validation_errors(); ?>
 <div class="row">
-    <div class="col-md-6">
-        <div class="form-group">
-            <label>Kode</label>
-            <input class="form-control" name="kode_alternatif" value="<?=set_value('kode', $row->kode_alternatif)?>" readonly="" />
-        </div>
-        <div class="form-group">
-            <label>Nama <span class="text-danger">*</span></label>
-            <input class="form-control" name="nama_alternatif" value="<?=set_value('nama_alternatif', $row->nama_alternatif)?>" id="nama"/>
-        </div>
-        <div class="form-group">
-            <label>Latitude <span class="text-danger">*</span></label>
-            <input class="form-control" type="text" name="lat" id="lat" value="<?=set_value('lat', $row->lat)?>" readonly=""/>
-        </div>
-        <div class="form-group">
-            <label>Longitude <span class="text-danger">*</span></label>
-            <input class="form-control" type="text" id="lng" name="lng" value="<?=set_value('lng', $row->lng)?>" readonly=""/>
-        </div>
-        <div class="form-group">
-            <label>Keterangan <span class="text-danger">*</span></label>
-            <input class="form-control" type="text" name="keterangan" value="<?=set_value('keterangan', $row->keterangan)?>"/>
-        </div>
-        <div class="form-group">
-            <label>Foto Lokasi ( Maksimal 3 foto )</label>
-            <input type="file" name="userfile[]" multiple="multiple">
-        </div>
-        <div class="form-group">
-            <button class="btn btn-primary"><span class="glyphicon glyphicon-save"></span> Simpan</button>
-            <a class="btn btn-danger" href="<?=site_url('alternatif')?>"><span class="glyphicon glyphicon-arrow-left"></span> Kembali</a>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header" data-background-color="purple">
+                <h4 class="title">Tambah Lahan</h4>
+                <p class="category">Silahkan Tambahkan Lahan dan Lokasi Lahan Sesuai Kebutuhan anda</p>
+            </div>
+            <div class="card-content">
+                <div class="form-group">
+                    <label>Kode</label>
+                    <input class="form-control" name="kode_alternatif"
+                           value="<?= set_value('kode', $row->kode_alternatif) ?>" readonly=""/>
+                </div>
+                <div class="form-group">
+                    <label>Nama <span class="text-danger">*</span></label>
+                    <input class="form-control" name="nama_alternatif"
+                           value="<?= set_value('nama_alternatif', $row->nama_alternatif) ?>" id="nama"/>
+                </div>
+                <div class="form-group">
+                    <label>Latitude <span class="text-danger">*</span></label>
+                    <input class="form-control" type="text" name="lat" id="lat"
+                           value="<?= set_value('lat', $row->lat) ?>" readonly=""/>
+                </div>
+                <div class="form-group">
+                    <label>Longitude <span class="text-danger">*</span></label>
+                    <input class="form-control" type="text" id="lng" name="lng"
+                           value="<?= set_value('lng', $row->lng) ?>" readonly=""/>
+                </div>
+                <div class="form-group">
+                    <label>Keterangan <span class="text-danger">*</span></label>
+                    <input class="form-control" type="text" name="keterangan"
+                           value="<?= set_value('keterangan', $row->keterangan) ?>"/>
+                </div>
+                <div class="form-group">
+                    <label>Foto Lokasi ( Maksimal 3 foto )</label>
+                    <input type="file" name="userfile[]" multiple="multiple">
+                </div>
+                <div class="form-group">
+                    <a>
+                        <button class="btn btn-primary">
+                            <i class="material-icons">edit</i> Simpan
+                        </button>
+                    </a>
+                    <a href="<?= site_url('alternatif') ?>">
+                        <button class="btn btn-danger">
+                            <i class="material-icons">backspace</i> Kembali
+                        </button>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <input class="form-control" type="text" id="pac-input" placeholder="Cari lokasi" />
+</div>
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <div class="card">
+            <div class="card-header" data-background-color="purple">
+                <h4 class="title">Pilih Lokasi</h4>
+                <p class="category">Silahkan Pilih Lokasi Lahan</p>
+            </div>
+            <div class="card-content">
+                <div class="form-group">
+                    <input class="form-control" type="text" id="pac-input" placeholder="Cari lokasi"/>
+                </div>
+                <div id="map" style="height: 400px;"></div>
+            </div>
         </div>
-        <div id="map" style="height: 400px;"></div>
     </div>
 </div>
 </form>
 <script>
     var defaultCenter = {
-        lat : <?=set_value('lat', $row->lat)*1?>,
-        lng : <?=set_value('lng', $row->lng)*1?>
+        lat: <?=set_value('lat', $row->lat) * 1?>,
+        lng: <?=set_value('lng', $row->lng) * 1?>
     };
+
     function initMap() {
 
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -58,7 +92,7 @@
             position: defaultCenter,
             map: map,
             title: 'Click to zoom',
-            draggable:true
+            draggable: true
         });
 
         /*// Try HTML5 geolocation.
@@ -90,7 +124,7 @@
 
         var infowindowContent = document.getElementById('infowindow-content');
 
-        autocomplete.addListener('place_changed', function() {
+        autocomplete.addListener('place_changed', function () {
             infoWindow.close();
             marker.setVisible(false);
             var place = autocomplete.getPlace();
@@ -142,7 +176,7 @@
         document.getElementById('lng').value = event.latLng.lng();
     }
 
-    $(function(){
+    $(function () {
         initMap();
     })
 </script>

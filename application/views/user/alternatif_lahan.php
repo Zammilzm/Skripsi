@@ -1,5 +1,5 @@
-        <div id="top-nav">
-            <nav class="navbar navbar-default">
+<div id="top-nav">
+    <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
                 <!-- Navbar toggle button -->
@@ -11,7 +11,8 @@
                 <button type="button" class="sidebar-toggle">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand text-size-24" href="#"><i class="fa fa-star-o"></i> Daftar Lahan Yang Tersedia </a>
+                <a class="navbar-brand text-size-24" href="#"><i class="fa fa-star-o"></i> Daftar Lahan Yang Tersedia
+                </a>
             </div>
         </div>
     </nav>
@@ -31,33 +32,35 @@
                     </tr>
                     </thead>
                     <?php
-                    $no=0;
-                    foreach($lahan as $row):?>
+                    $no = 0;
+                    foreach ($lahan as $row):?>
                         <tr>
                             <td><?= ++$no ?></td>
-                            <td><?=$row->kode_alternatif?></td>
-                            <td><?=$row->nama_alternatif?></a></td>
-                            <td><?=$row->keterangan ?></td>
+                            <td><?= $row->kode_alternatif ?></td>
+                            <td><?= $row->nama_alternatif ?></a></td>
+                            <td><?= $row->keterangan ?></td>
                             <td>
-                                <a class="btn btn-xs btn-warning" href="<?=site_url("alternatif/detail_lahan_user/$row->kode_alternatif")?>"><i class="fa fa-fw fa-info-circle"></i>
-                                <span>
+                                <a class="btn btn-xs btn-warning"
+                                   href="<?= site_url("alternatif/detail_lahan_user/$row->kode_alternatif") ?>"><i
+                                            class="fa fa-fw fa-info-circle"></i>
+                                    <span>
                                     Detail Lahan
                                 </span>
                                 </a>
                             </td>
                         </tr>
-                    <?php endforeach;?>
+                    <?php endforeach; ?>
                 </table>
             </div>
         </div>
     </div>
 </div>
 
-        <script type='text/javascript' src="<?php echo base_url(); ?>floyd/plugins/bootstrap/js/bootstrap.min.js"></script>
-        <script type='text/javascript' src="<?php echo base_url(); ?>floyd/js/theme-floyd.js"></script>
+<script type='text/javascript' src="<?php echo base_url(); ?>floyd/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type='text/javascript' src="<?php echo base_url(); ?>floyd/js/theme-floyd.js"></script>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
         $('#contoh').DataTable();
     });
 </script>

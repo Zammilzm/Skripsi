@@ -22,3 +22,5 @@
         </div>
     </div>
 </div>
+<script type='text/javascript' src="<?php echo base_url(); ?>floyd/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type='text/javascript' src="<?php echo base_url(); ?>floyd/js/theme-floyd.js"></script>

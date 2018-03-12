@@ -96,9 +96,13 @@
                             <?php if ($booking->Status === 'Diproses'): ?>
                                 <a>
                                     <button class="btn btn-warning">
-                                        <span>LAHAN SUDAH</span><br><span>ANDA BOOKING</span>
+                                        <span>LAHAN SUDAH</span><br><span>ANDA BOOKING</span><br><span></span>
                                     </button>
                                 </a>
+                            <?php elseif ($booking->Status === 'Disetujui'): ?>
+                                <button class="btn btn-danger">
+                                    <span>LAHAN DISETUJUI</span><br><span>CEK MENU LAHAN USER</span><br><span></span>
+                                </button>
                             <?php endif; ?>
                         <?php else: ?>
                             <a data-toggle="modal" data-target="#booking-lahan">

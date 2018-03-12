@@ -57,4 +57,15 @@ class Kontrak_model extends CI_Model
     public function upload_kontrak_lahan($data,$ID){
         $this->db->update('tb_booking_lahan',$data, array('id_booking_lahan' => $ID));
     }
+
+    public function list_lahan(){
+        $login = $this->session->userdata('id_user');
+        $query = $this->db->query("SELECT tba.nama_alternatif, tba.kode_alternatif, tba.keterangan, tbl.Tipe_penawaran, tbl.Status, tba.gambar1
+                                FROM tb_booking_lahan tbl 
+                                JOIN tb_alternatif tba
+                                on tba.kode_alternatif = tbl.kode_alternatif
+                                where tbl.id_user = $login");
+
+        return $query->result();
+    }
 }

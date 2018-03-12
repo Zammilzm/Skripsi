@@ -75,4 +75,10 @@ class Kontrak extends CI_Controller
         redirect('Member/index');
     }
 
+    public function list_status_booking(){
+        $data["Tittle"] = "List Status";
+        $data['lahans'] = $this->Kontrak_model->list_lahan();
+        load_view_user('user/Lahan_user', $data);
+    }
+
 }

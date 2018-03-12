@@ -19,7 +19,7 @@
                     </div>
                     <div class="form-group">
                         <a class="btn btn-default" target="_blank" href="<?= site_url('kriteria/cetak?search=' . $this->input->get('search')) ?>">
-                            <i class="material-icons">print</i>Cetak
+                            <i class="material-icons">print</i> Cetak
                         </a>
                     </div>
                 </form>
@@ -57,7 +57,7 @@
                                 <a class="btn btn-xs btn-danger"
                                    href="<?= site_url("kriteria/hapus/$row->kode_kriteria") ?>"
                                    onclick="return confirm('Hapus data?')">
-                                    <i class="material-icons">delete</i>Hapus
+                                    <i class="material-icons">delete</i> Hapus
                                 </a>
                             </td>
                         </tr>

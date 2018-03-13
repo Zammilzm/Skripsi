@@ -15,9 +15,11 @@ class Kontrak extends CI_Controller
         $this->load->helper('url');
         $this->load->Model('Kontrak_model');
         $this->load->model('alternatif_model');
+        $this->load->helper('download');
     }
 
-    public function index(){
+    public function index()
+    {
         $data['Tittle'] = 'DAFTAR PEMINAT LAHAN';
         $data['peminat'] = $this->Kontrak_model->jumlah_peminat_lahan();
         $data['total'] = $this->Kontrak_model->jumlah_lahan();
@@ -26,34 +28,36 @@ class Kontrak extends CI_Controller
         load_view('peminat_lahan', $data);
     }
 
-    public function detail_peminat($ID){
+    public function detail_peminat($ID)
+    {
         $data['row'] = $this->alternatif_model->get_alternatif($ID);
         $data['users'] = $this->Kontrak_model->list_peminat($ID);
         load_view('peminat_lahan_detail', $data);
     }
 
-    public function upload_kontrak($ID = null){
-        $this->load->library('upload');
-        $nmfile = "file_".time(); //nama file + fungsi time
-        $config['upload_path'] = './assets/uploads/'; //Folder untuk menyimpan hasil upload
-        $config['allowed_types'] = 'doc|docx|pdf'; //type yang dapat diakses bisa anda sesuaikan
-        $config['file_name'] = $nmfile; //nama yang terupload nantinya
-        $this->upload->initialize($config);
-        if($_FILES['berkas_kontrak']['name'])
-        {
-            if ($this->upload->do_upload('berkas_kontrak')) {
-                $gbr = $this->upload->data();
-                $data = array(
-                    'Status' => 'Disetujui',
-                    'Doc_Kontrak_admin' => $gbr['file_name']
-                );
-                $this->Kontrak_model->upload_kontrak_lahan($data,$ID); //akses model untuk menyimpan ke database
-                redirect('Kontrak');
-            }
+    public function kirim_kontrak($ID = null)
+    {
+        $fileInfo = $this->Kontrak_model->get_data_booking($ID);
+        $status = $fileInfo->Tipe_penawaran;
+
+        if ($status === 'Tebu Rakyat Mandiri'){
+            $fields = array(
+                'Status' => 'Disetujui',
+                'Doc_Kontrak_admin' => 'https://drive.google.com/file/d/1TIC_bKiYxv4xIKThpS-R-3TgooiOb1Lj/view?usp=sharing'
+            );
+            $this->Kontrak_model->Kirim_kontrak($fields, $ID);
+        } else {
+            $fields = array(
+                'Status' => 'Disetujui',
+                'Doc_Kontrak_admin' => 'https://drive.google.com/file/d/1rCoWakaYIIcOkmv4IMuP22fFZwGqFRSK/view?usp=sharing'
+            );
+            $this->Kontrak_model->Kirim_kontrak($fields, $ID);
         }
+        redirect('Kontrak');
     }
 
-    public function set_booking_mandiri(){
+    public function set_booking_mandiri()
+    {
         $fields = array(
             'id_user' => $this->session->userdata('id_user'),
             'kode_alternatif' => $this->input->post('kode_alternatif'),
@@ -64,7 +68,8 @@ class Kontrak extends CI_Controller
         redirect('Member/index');
     }
 
-    public function set_booking_kredit(){
+    public function set_booking_kredit()
+    {
         $fields = array(
             'id_user' => $this->session->userdata('id_user'),
             'kode_alternatif' => $this->input->post('kode_alternatif'),
@@ -75,10 +80,25 @@ class Kontrak extends CI_Controller
         redirect('Member/index');
     }
 
-    public function list_status_booking(){
+    public function list_status_booking()
+    {
         $data["Tittle"] = "List Status";
-        $data['lahans'] = $this->Kontrak_model->list_lahan();
+        $data['setuju'] = $this->Kontrak_model->list_lahan_disetujui();
+        $data['proses'] = $this->Kontrak_model->list_lahan_diproses();
+        $data['tolak'] = $this->Kontrak_model->list_lahan_ditolak();
         load_view_user('user/Lahan_user', $data);
+    }
+
+    public function download_file_kontrak($ID)
+    {
+
+        $fileInfo = $this->Kontrak_model->get_data_booking($ID);
+
+        $filename = $fileInfo['Doc_Kontrak_admin'];
+
+        $fileContents = file_get_contents(base_url('assets/uploads/'. $fileInfo['Doc_Kontrak_admin']));
+
+        force_download($filename,$fileContents);
     }
 
 }

@@ -33,7 +33,6 @@
                 <li class="sidebar-close"><a href="#"><i class="fa fa-fw fa-close"></i></a></li>
                 <li><a href="<?= site_url('Member/index') ?>"><i class="fa fa-fw fa-star"></i><span>Home</span></a></li>
                 <li><a href="<?= site_url('Member/profil') ?>"><i class="fa fa-fw fa-user-md"></i><span>Profil</span></a></li>
-                <li><a href="<?= site_url('Kontrak/list_status_booking') ?>"><i class="fa fa-fw fa-user-circle"></i><span>Lahan Mitra</span></a>
                 </li>
                 <li>
                     <a href="#nav-dropdown1" data-toggle="collapse" aria-controls="nav-dropdown1">

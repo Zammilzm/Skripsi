@@ -54,18 +54,45 @@ class Kontrak_model extends CI_Model
         return $query->result();
     }
 
-    public function upload_kontrak_lahan($data,$ID){
+    public function Kirim_kontrak($data,$ID){
         $this->db->update('tb_booking_lahan',$data, array('id_booking_lahan' => $ID));
     }
 
-    public function list_lahan(){
+    public function list_lahan_disetujui(){
         $login = $this->session->userdata('id_user');
-        $query = $this->db->query("SELECT tba.nama_alternatif, tba.kode_alternatif, tba.keterangan, tbl.Tipe_penawaran, tbl.Status, tba.gambar1
+        $query = $this->db->query("SELECT tba.nama_alternatif, tba.kode_alternatif, tba.keterangan, tbl.Tipe_penawaran,tbl.id_booking_lahan, tbl.Status, tba.gambar1, tbl.Doc_Kontrak_admin
                                 FROM tb_booking_lahan tbl 
                                 JOIN tb_alternatif tba
                                 on tba.kode_alternatif = tbl.kode_alternatif
-                                where tbl.id_user = $login");
+                                where tbl.id_user = $login AND tbl.Status = 'Disetujui'");
 
         return $query->result();
+    }
+
+    public function list_lahan_diproses(){
+        $login = $this->session->userdata('id_user');
+        $query = $this->db->query("SELECT tba.nama_alternatif, tba.kode_alternatif, tba.keterangan, tbl.Tipe_penawaran,tbl.id_booking_lahan, tbl.Status, tba.gambar1, tbl.Doc_Kontrak_admin
+                                FROM tb_booking_lahan tbl 
+                                JOIN tb_alternatif tba
+                                on tba.kode_alternatif = tbl.kode_alternatif
+                                where tbl.id_user = $login AND tbl.Status = 'Diproses'");
+
+        return $query->result();
+    }
+
+    public function list_lahan_ditolak(){
+        $login = $this->session->userdata('id_user');
+        $query = $this->db->query("SELECT tba.nama_alternatif, tba.kode_alternatif, tba.keterangan, tbl.Tipe_penawaran,tbl.id_booking_lahan, tbl.Status, tba.gambar1, tbl.Doc_Kontrak_admin
+                                FROM tb_booking_lahan tbl 
+                                JOIN tb_alternatif tba
+                                on tba.kode_alternatif = tbl.kode_alternatif
+                                where tbl.id_user = $login AND tbl.Status = 'Ditolak'");
+
+        return $query->result();
+    }
+
+    public function get_data_booking($ID = NULL){
+        $query = $this->db->query("SELECT * from tb_booking_lahan WHERE id_booking_lahan = $ID");
+        return $query->row();
     }
 }

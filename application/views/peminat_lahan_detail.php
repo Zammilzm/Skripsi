@@ -152,15 +152,8 @@
                             <div class="row">
                                 <div class="col-md-4"></div>
                                 <div class="col-md-4">
-                                    <form action="<?= site_url("Kontrak/upload_kontrak/$p->id_booking_lahan") ?>"
+                                    <form action="<?= site_url("Kontrak/kirim_kontrak/$p->id_booking_lahan") ?>"
                                           method="post" enctype="multipart/form-data">
-                                        <div class="file-upload">
-                                            <div class="file-select">
-                                                <div class="file-select-button" id="fileName">Pilih File</div>
-                                                <div class="file-select-name" id="noFile">No file chosen...</div>
-                                                <input type="file" name="berkas_kontrak" id="chooseFile">
-                                            </div>
-                                        </div>
                                         <center><input type="submit" class="btn btn-success" value="Kirim Kontrak">
                                         </center>
                                     </form>
@@ -174,18 +167,3 @@
         <?php } ?>
     </div>
 </div>
-
-
-<script>
-    $('#chooseFile').bind('change', function () {
-        var filename = $("#chooseFile").val();
-        if (/^\s*$/.test(filename)) {
-            $(".file-upload").removeClass('active');
-            $("#noFile").text("No file chosen...");
-        }
-        else {
-            $(".file-upload").addClass('active');
-            $("#noFile").text(filename.replace("C:\\fakepath\\", ""));
-        }
-    });
-</script>

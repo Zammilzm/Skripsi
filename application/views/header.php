@@ -62,6 +62,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="<?= site_url('kontrak/List_kontrak_admin') ?>">
+                        <i class="material-icons">done</i>
+                        <p>Kontrak Lahan Mitra</p>
+                    </a>
+                </li>
+                <li>
                     <a href="<?= site_url('hitung') ?>">
                         <i class="material-icons">shuffle</i>
                         <p>Perangkingan</p>

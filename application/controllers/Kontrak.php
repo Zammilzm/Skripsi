@@ -40,7 +40,7 @@ class Kontrak extends CI_Controller
         $fileInfo = $this->Kontrak_model->get_data_booking($ID);
         $status = $fileInfo->Tipe_penawaran;
 
-        if ($status === 'Tebu Rakyat Mandiri'){
+        if ($status === 'Tebu Rakyat Mandiri') {
             $fields = array(
                 'Status' => 'Disetujui',
                 'Doc_Kontrak_admin' => 'https://drive.google.com/file/d/1TIC_bKiYxv4xIKThpS-R-3TgooiOb1Lj/view?usp=sharing'
@@ -89,16 +89,16 @@ class Kontrak extends CI_Controller
         load_view_user('user/Lahan_user', $data);
     }
 
-    public function download_file_kontrak($ID)
+    public function List_kontrak_admin()
     {
+        if (isset($_POST['tampilkan']) && $_POST['laporan'] == 'panel') {
 
-        $fileInfo = $this->Kontrak_model->get_data_booking($ID);
+            $data['Peminat'] = $this->Kontrak_model->lahan_disetujui();
+        } elseif (isset($_POST['tampilkan']) && $_POST['laporan'] == 'lampu') {
 
-        $filename = $fileInfo['Doc_Kontrak_admin'];
+        }
 
-        $fileContents = file_get_contents(base_url('assets/uploads/'. $fileInfo['Doc_Kontrak_admin']));
-
-        force_download($filename,$fileContents);
+        load_view('Kontrak_lahan_mitra');
     }
 
 }

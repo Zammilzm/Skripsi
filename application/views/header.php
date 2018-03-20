@@ -38,22 +38,40 @@
             </div>
             <ul class="nav">
                 <li class="active">
+                    <a href="<?= site_url('Admin') ?>">
+                        <i class="material-icons">home</i>
+                        <p>Beranda</p>
+                    </a>
+                </li>
+                <li>
                     <a href="<?= site_url('kriteria') ?>">
                         <i class="material-icons">payment</i>
                         <p>Kriteria Lahan</p>
                     </a>
                 </li>
                 <li>
-                    <a href="<?= site_url('alternatif') ?>">
-                        <i class="material-icons">list</i>
-                        <p>List Lahan</p>
+                    <a data-toggle="collapse" href="#pagesExamples" class="collapsed" aria-expanded="false">
+                        <i class="material-icons">image</i>
+                        <p> Data Lahan Tebu
+                            <b class="caret"></b>
+                        </p>
                     </a>
-                </li>
-                <li>
-                    <a href="<?= site_url('relasi') ?>">
-                        <i class="material-icons">compare</i>
-                        <p>Nilai Lahan</p>
-                    </a>
+                    <div class="collapse" id="pagesExamples" aria-expanded="false" style="height: 0px;">
+                        <ul class="nav">
+                            <li>
+                                <a href="<?= site_url('alternatif') ?>">
+                                    <i class="material-icons">list</i>
+                                    <p>Daftar Lahan</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?= site_url('relasi') ?>">
+                                    <i class="material-icons">compare</i>
+                                    <p>Nilai Lahan</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
                 <li>
                     <a href="<?= site_url('kontrak') ?>">

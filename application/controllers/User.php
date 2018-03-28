@@ -59,7 +59,7 @@ class User extends CI_Controller
                 $this->session->set_userdata('level', $sesi->level);
             }
             if ($this->session->userdata('level') == 'Admin') {
-                redirect('Admin/index');
+                redirect('Admin');
             } elseif ($this->session->userdata('level') == 'User') {
                 redirect('Member/index');
             }

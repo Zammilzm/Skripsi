@@ -13,7 +13,6 @@
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiDdGyp6n2hKHPECuB6JZIT-8dVHCpwI0&language=id&region=ID&libraries=places"></script>
     <!-- Bootstrap core CSS     -->
     <link href="<?= base_url('assetsadmin/css/bootstrap.min.css') ?>" rel="stylesheet"/>
-    <link href="<?= base_url('assetsadmin/css/file_upload.css') ?>" rel="stylesheet"/>
     <!--  Material Dashboard CSS    -->
     <link href="<?= base_url('assetsadmin/css/material-dashboard.css?v=1.2.0') ?>" rel="stylesheet"/>
     <!--     Fonts and icons     -->
@@ -24,7 +23,7 @@
 
 <body>
 <div class="wrapper">
-    <div class="sidebar" data-color="red" data-image="../assetsadmin/img/sidebar-1.jpg">
+    <div class="sidebar" data-color="red" data-image="../assetsadmin/img/sidebar-2.jpg">
         <div class="sidebar-wrapper">
             <div class="logo">
                 <center>
@@ -37,7 +36,7 @@
                 </a>
             </div>
             <ul class="nav">
-                <li class="active">
+                <li>
                     <a href="<?= site_url('Admin') ?>">
                         <i class="material-icons">home</i>
                         <p>Beranda</p>
@@ -80,7 +79,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<?= site_url('kontrak/List_kontrak_admin') ?>">
+                    <a href="<?= site_url('Mitra') ?>">
                         <i class="material-icons">done</i>
                         <p>Kontrak Lahan Mitra</p>
                     </a>

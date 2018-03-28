@@ -15,7 +15,6 @@ class Kontrak extends CI_Controller
         $this->load->helper('url');
         $this->load->Model('Kontrak_model');
         $this->load->model('alternatif_model');
-        $this->load->helper('download');
     }
 
     public function index()
@@ -88,17 +87,4 @@ class Kontrak extends CI_Controller
         $data['tolak'] = $this->Kontrak_model->list_lahan_ditolak();
         load_view_user('user/Lahan_user', $data);
     }
-
-    public function List_kontrak_admin()
-    {
-        if (isset($_POST['tampilkan']) && $_POST['laporan'] == 'panel') {
-
-            $data['Peminat'] = $this->Kontrak_model->lahan_disetujui();
-        } elseif (isset($_POST['tampilkan']) && $_POST['laporan'] == 'lampu') {
-
-        }
-
-        load_view('Kontrak_lahan_mitra');
-    }
-
 }

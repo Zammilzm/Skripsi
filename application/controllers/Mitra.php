@@ -19,6 +19,7 @@ class Mitra extends CI_Controller
 
     public function index(){
         $data['Tittle'] = 'Halaman';
+        $data['setuju'] = $this->Kontrak_model->list_lahan_tersetujui();
         load_view('list_Mitra', $data);
     }
 }

@@ -1,28 +1,18 @@
 <div class="row">
-    <h3 class="title text-center">Page Subcategories</h3>
+    <h3 class="title text-center">Kontrak Pabrik dengan Mitra</h3>
     <div class="nav-center">
-        <ul class="nav nav-pills nav-pills-danger nav-pills-icons" role="tablist">
+        <ul class="nav nav-pills nav-pills-danger nav-pills-icons justify-content-center" role="tablist">
             <!--
 color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
 -->
             <li class="active">
                 <a href="#description-1" role="tab" data-toggle="tab">
-                    <i class="material-icons">info</i> Description
+                    <i class="material-icons">book</i> Pengajuan Kontrak
                 </a>
             </li>
             <li>
                 <a href="#schedule-1" role="tab" data-toggle="tab">
-                    <i class="material-icons">location_on</i> Location
-                </a>
-            </li>
-            <li>
-                <a href="#tasks-1" role="tab" data-toggle="tab">
-                    <i class="material-icons">gavel</i> Legal Info
-                </a>
-            </li>
-            <li>
-                <a href="#tasks-2" role="tab" data-toggle="tab">
-                    <i class="material-icons">help_outline</i> Help Center
+                    <i class="material-icons">library_books</i> Kontrak Mitra
                 </a>
             </li>
         </ul>
@@ -37,12 +27,6 @@ color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-
                     <br/> Dramatically visualize customer directed convergence without revolutionary ROI.
                 </div>
                 <hr>
-                <div class="card-content">
-                    Collaboratively administrate empowered markets via plug-and-play networks. Dynamically
-                    procrastinate B2C users after installed base benefits.
-                    <br/>
-                    <br/> Dramatically visualize customer directed convergence without revolutionary ROI.
-                </div>
             </div>
 
         </div>

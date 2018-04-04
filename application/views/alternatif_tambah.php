@@ -33,7 +33,7 @@
                                value="<?= set_value('kode_alternatif', kode_oto('kode_alternatif', 'tb_alternatif', 'A', 2)) ?>"/>
                     </div>
                     <div class="form-group label-floating">
-                        <label class="control-label">Nama Alternatif <span class="text-danger">*</span></label>
+                        <label>Nama Alternatif <span class="text-danger">*</span></label>
                         <input class="form-control" type="text" name="nama_alternatif"
                                value="<?= set_value('nama_alternatif') ?>" id="nama"/>
                     </div>
@@ -48,7 +48,7 @@
                                readonly=""/>
                     </div>
                     <div class="form-group label-floating">
-                        <label class="control-label">Keterangan</label>
+                        <label>Keterangan</label>
                         <input class="form-control" type="text" name="keterangan"
                                value="<?= set_value('keterangan') ?>"/>
                     </div>

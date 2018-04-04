@@ -112,6 +112,7 @@
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
+
             navigator.geolocation.getCurrentPosition(function (position) {
                 defaultCenter = {
                     lat: position.coords.latitude,

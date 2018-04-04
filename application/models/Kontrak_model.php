@@ -95,4 +95,14 @@ class Kontrak_model extends CI_Model
         $query = $this->db->query("SELECT * from tb_booking_lahan WHERE id_booking_lahan = $ID");
         return $query->row();
     }
+
+    public function list_lahan_tersetujui(){
+        $query = $this->db->query("SELECT tba.nama_alternatif, tba.kode_alternatif, tba.keterangan, tbl.Tipe_penawaran,tbl.id_booking_lahan, tbl.Status, tba.gambar1, tbl.Doc_Kontrak_admin
+                                FROM tb_booking_lahan tbl 
+                                JOIN tb_alternatif tba
+                                on tba.kode_alternatif = tbl.kode_alternatif
+                                where tbl.Status = 'Disetujui'");
+
+        return $query->result();
+    }
 }

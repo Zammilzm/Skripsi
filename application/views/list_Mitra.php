@@ -19,16 +19,43 @@ color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-
     </div>
     <div class="tab-content">
         <div class="tab-pane active" id="description-1">
+            <?php foreach ($setuju as $row): ?>
             <div class="card">
-                <div class="card-content">
-                    Collaboratively administrate empowered markets via plug-and-play networks. Dynamically
-                    procrastinate B2C users after installed base benefits.
-                    <br/>
-                    <br/> Dramatically visualize customer directed convergence without revolutionary ROI.
+                <div class="card-header" data-background-color="green">
+                    <h3 class="title"><?= $row->nama_alternatif ?></h3>
                 </div>
-                <hr>
+                <div class="card-content">
+                    <table class="table table-user-information">
+                        <tbody>
+                        <tr>
+                            <td><strong>Kode Lahan</strong></td>
+                            <td>
+                                <?= $row->kode_alternatif ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Keterangan</strong></td>
+                            <td>
+                                <?= $row->keterangan ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Latitude</strong></td>
+                            <td>
+                                <?= $row->lat ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Longitude</strong></td>
+                            <td>
+                                <?= $row->lng ?>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-
+            <?php endforeach; ?>
         </div>
         <div class="tab-pane" id="schedule-1">
             <div class="card">

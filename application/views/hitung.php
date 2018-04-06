@@ -171,6 +171,6 @@ else:
     ?>
     <p class="text-center">
         Alternatif produk terbaik adalah <strong><?=$ALTERNATIF[key($net_flow)]->nama_alternatif?></strong> dengan total: <strong><?=round(current($net_flow), 4)?></strong><br />
-        <a class="btn btn-default" href="<?=site_url('hitung/cetak')?>" target="_blank"><span class="glyphicon glyphicon-print"></span> Cetak</a>
+        <a class="btn btn-default" href="<?=site_url('hitung/cetak')?>" target="_blank"><i class="fa fa-print"></i> Cetak</a>
     </p>
 <?php endif?>

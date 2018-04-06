@@ -8,10 +8,6 @@
             <div class="card-content table-responsive">
                 <form class="form-inline">
                     <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Pencarian. . ." name="search"
-                               value="<?= $this->input->get('search') ?>"/>
-                    </div>
-                    <div class="form-group">
                         <a class="btn btn-primary" href="<?= site_url('alternatif/tambah') ?>">
                             <i class="material-icons">queue</i> Tambah</a>
                     </div>
@@ -23,7 +19,7 @@
                     </div>
                 </form>
 
-                <table class="table table-bordered table-hover table-striped">
+                <table class="table table-bordered table-hover table-striped" id="contoh">
                     <thead>
                     <tr>
                         <th>No</th>
@@ -62,3 +58,8 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $('#contoh').DataTable();
+    });
+</script>

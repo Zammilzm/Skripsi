@@ -5,8 +5,8 @@
     <div class="col-sm-8">
         <div class="card">
             <div class="card-header" data-background-color="purple">
-                <h4 class="title">Tambah Lahan</h4>
-                <p class="category">Silahkan Tambahkan Lahan dan Lokasi Lahan Sesuai Kebutuhan anda</p>
+                <h4 class="title">Perbarui Lahan</h4>
+                <p class="category">Silahkan Perbarui Lahan dan Lokasi Lahan Sesuai Kebutuhan anda</p>
             </div>
             <div class="card-content">
                 <div class="form-group">

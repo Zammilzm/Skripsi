@@ -23,7 +23,7 @@
                         </a>
                     </div>
                 </form>
-                <table class="table table-hover">
+                <table class="table table-hover"  id="contoh">
                     <thead>
                     <tr>
                         <th>No</th>

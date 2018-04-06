@@ -7,11 +7,17 @@
     <meta name="viewport" content="width=device-width"/>
 
     <title>PG ASEMBAGUS</title>
+    <link rel="stylesheet" type="text/css"
+          href="<?php echo base_url(); ?>assets/assets/DataTables/media/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css"
+          href="<?php echo base_url(); ?>assets/assets/DataTables/media/css/dataTables.bootstrap.css">
     <script src="<?= base_url('assetsadmin/js/jquery-3.2.1.min.js') ?>"></script>
     <script src="<?= base_url('assetsadmin/js/bootstrap.min.js') ?>"></script>
     <script type="text/javascript"
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiDdGyp6n2hKHPECuB6JZIT-8dVHCpwI0&language=id&region=ID&libraries=places"></script>
     <!-- Bootstrap core CSS     -->
+    <script type='text/javascript'
+            src="<?php echo base_url(); ?>assets/assets/DataTables/media/js/jquery.dataTables.js"></script>
     <link href="<?= base_url('assetsadmin/css/bootstrap.min.css') ?>" rel="stylesheet"/>
     <!--  Material Dashboard CSS    -->
     <link href="<?= base_url('assetsadmin/css/material-dashboard.css?v=1.2.0') ?>" rel="stylesheet"/>
@@ -23,7 +29,7 @@
 
 <body>
 <div class="wrapper">
-    <div class="sidebar" data-color="red" data-image="../assetsadmin/img/sidebar-2.jpg">
+    <div class="sidebar" data-background-color="white" data-image="../assetsadmin/img/sidebar-2.jpg">
         <div class="sidebar-wrapper">
             <div class="logo">
                 <center>

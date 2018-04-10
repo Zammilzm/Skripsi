@@ -19,7 +19,7 @@
                     </div>
                 </form>
 
-                <table class="table table-bordered table-hover table-striped" id="contoh">
+                <table class="table table-hover" id="contoh">
                     <thead>
                     <tr>
                         <th>No</th>

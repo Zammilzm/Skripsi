@@ -64,7 +64,7 @@ class Kontrak extends CI_Controller
             'status' => 'Diproses',
         );
         $this->Kontrak_model->Tambah_booking($fields);
-        redirect('Member/index');
+        redirect('Kontrak/list_status_booking');
     }
 
     public function set_booking_kredit()
@@ -76,7 +76,7 @@ class Kontrak extends CI_Controller
             'status' => 'Diproses',
         );
         $this->Kontrak_model->Tambah_booking($fields);
-        redirect('Member/index');
+        redirect('Kontrak/list_status_booking');
     }
 
     public function list_status_booking()

@@ -6,10 +6,6 @@
                 <p class="category">Berikut adalah rincian nilai lahan yang akan dihitung dan dibandngkan</p>
             </div>
             <div class="card-content table-responsive">
-                <?= form_open('relasi', array('class' => 'form-inline', 'method' => 'get')) ?>
-                <input class="form-control" name="search" value="<?= $this->input->get('search') ?>"
-                       placeholder="Pencarian"/>
-                </form>
                 <div class="oxa">
                     <?php
                     $relasi = array();
@@ -18,7 +14,7 @@
                         $relasi[$row->kode_alternatif][$row->kode_kriteria] = $row->nilai;
                     }
                     ?>
-                    <table class="table table-hover">
+                    <table class="table table-hover" id="contoh">
                         <thead>
                         <tr>
                             <th>Kode</th>
@@ -51,3 +47,8 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $('#contoh').DataTable();
+    });
+</script>

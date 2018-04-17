@@ -125,6 +125,7 @@
                         Pabrik Gula (PG) Asembagus
                     </a>
                 </div>
+            </div>
         </nav>
         <div class="content">
             <div class="container-fluid">

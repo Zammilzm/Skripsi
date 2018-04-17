@@ -13,7 +13,7 @@
                         </a>
                     </div>
                     <div class="form-group">
-                        <a class="btn btn-default" target="_blank" href="<?= site_url('kriteria/cetak?search=' . $this->input->get('search')) ?>">
+                        <a class="btn btn-primary" target="_blank" href="<?= site_url('kriteria/cetak?search=' . $this->input->get('search')) ?>">
                             <i class="material-icons">print</i> Cetak
                         </a>
                     </div>

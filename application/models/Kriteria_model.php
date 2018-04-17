@@ -4,12 +4,8 @@ class Kriteria_model extends CI_Model {
     protected $table = 'tb_kriteria';
     protected $kode = 'kode_kriteria';
     
-    public function tampil( $search='')
-    {                
-        $this->db->like( $this->kode, $search );
-        $this->db->or_like( 'nama_kriteria', $search );
-        $this->db->or_like( 'minmax', $search );
-        $this->db->order_by( $this->kode );
+    public function tampil()
+    {
         $query = $this->db->get($this->table);
         return $query->result();
     }

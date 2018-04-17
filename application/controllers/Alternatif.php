@@ -13,7 +13,7 @@ class Alternatif extends CI_Controller
 
     public function index()
     {
-        $data['rows'] = $this->alternatif_model->tampil($this->input->get('search'));
+        $data['rows'] = $this->alternatif_model->tampil();
         $data['title'] = 'Alternatif';
 
         load_view('alternatif', $data);
@@ -27,7 +27,7 @@ class Alternatif extends CI_Controller
 
     public function tampil_peta()
     {
-        $data['rows'] = $this->alternatif_model->tampil($this->input->get('search'));
+        $data['rows'] = $this->alternatif_model->tampil();
         $this->load->view('user/peta_lahan', $data);
     }
 
@@ -123,9 +123,9 @@ class Alternatif extends CI_Controller
         redirect('alternatif');
     }
 
-    public function cetak($search = '')
+    public function cetak()
     {
-        $data['rows'] = $this->alternatif_model->tampil($search);
+        $data['rows'] = $this->alternatif_model->tampil();
         load_view_cetak('alternatif_cetak', $data);
     }
 }

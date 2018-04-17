@@ -9,7 +9,7 @@ class Kriteria extends CI_Controller {
 
     public function index()
     {
-        $data['rows'] = $this->kriteria_model->tampil($this->input->get('search'));
+        $data['rows'] = $this->kriteria_model->tampil();
         $data['title'] = 'Kriteria';
 
         load_view('kriteria', $data);
@@ -84,9 +84,9 @@ class Kriteria extends CI_Controller {
         redirect('kriteria');
     }
 
-    public function cetak( $search ='' )
+    public function cetak()
     {
-        $data['rows'] = $this->kriteria_model->tampil($search);
+        $data['rows'] = $this->kriteria_model->tampil();
         load_view_cetak('kriteria_cetak', $data);
     }
 }

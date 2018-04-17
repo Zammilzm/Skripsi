@@ -6,10 +6,8 @@ class Alternatif_model extends CI_Model
     protected $table = 'tb_alternatif';
     protected $kode = 'kode_alternatif';
 
-    public function tampil($search = '')
+    public function tampil()
     {
-        $this->db->like($this->kode, $search);
-        $this->db->or_like('nama_alternatif', $search);
         $this->db->order_by($this->kode);
         $query = $this->db->get($this->table);
         return $query->result();

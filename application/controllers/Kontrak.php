@@ -84,6 +84,7 @@ class Kontrak extends CI_Controller
         $data["Tittle"] = "List Status";
         $data['setuju'] = $this->Kontrak_model->list_lahan_disetujui();
         $data['proses'] = $this->Kontrak_model->list_lahan_diproses();
+        $data['kepemilikan'] = $this->Kontrak_model->list_lahan_dimiliki();
         $data['tolak'] = $this->Kontrak_model->list_lahan_ditolak();
         load_view_user('user/Lahan_user', $data);
     }

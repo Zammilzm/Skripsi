@@ -97,12 +97,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<?= site_url('user/password') ?>">
-                        <i class="material-icons">build</i>
-                        <p>Ubah Password</p>
-                    </a>
-                </li>
-                <li>
                     <a href="<?= site_url('user/logout') ?>">
                         <i class="material-icons text-gray">notifications</i>
                         <p>Log out</p>

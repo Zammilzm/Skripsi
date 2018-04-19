@@ -38,6 +38,7 @@ class Kontrak_model extends CI_Model
                                   FROM tb_booking_lahan tbl
                                     join tb_alternatif tba
                                     on tbl.kode_alternatif = tba.kode_alternatif
+                                    where tbl.Status <> 'kepemilikan' AND tbl.Status <> 'Ditolak'
                                     GROUP BY tba.kode_alternatif
                                     ORDER BY jumlah_peminat DESC ");
         return $query->result();
@@ -65,6 +66,17 @@ class Kontrak_model extends CI_Model
                                 JOIN tb_alternatif tba
                                 on tba.kode_alternatif = tbl.kode_alternatif
                                 where tbl.id_user = $login AND tbl.Status = 'Disetujui'");
+
+        return $query->result();
+    }
+
+    public function list_lahan_dimiliki(){
+        $login = $this->session->userdata('id_user');
+        $query = $this->db->query("SELECT tba.nama_alternatif, tba.kode_alternatif, tba.keterangan, tbl.Tipe_penawaran,tbl.id_booking_lahan, tbl.Status, tba.gambar1, tbl.Doc_Kontrak_admin
+                                FROM tb_booking_lahan tbl 
+                                JOIN tb_alternatif tba
+                                on tba.kode_alternatif = tbl.kode_alternatif
+                                where tbl.id_user = $login AND tbl.Status = 'Kepemilikan'");
 
         return $query->result();
     }
@@ -97,13 +109,42 @@ class Kontrak_model extends CI_Model
     }
 
     public function list_lahan_tersetujui(){
-        $query = $this->db->query("SELECT tba.nama_alternatif, tba.kode_alternatif, tba.keterangan, tbl.Tipe_penawaran,tbl.id_booking_lahan, tbl.Status, tbad.nama, tbl.Doc_Kontrak_admin, tba.lat, tba.lng
+        $query = $this->db->query("SELECT tba.nama_alternatif, tba.kode_alternatif, tba.keterangan, tbl.Tipe_penawaran,tbl.id_booking_lahan, tbl.Status, tbad.nama, tbad.id_user, tbl.Doc_Kontrak_admin, tba.lat, tba.lng
                                 FROM tb_booking_lahan tbl 
                                 JOIN tb_alternatif tba
                                 on tba.kode_alternatif = tbl.kode_alternatif
                                 JOIN tb_admin tbad
                                 ON tbl.id_user = tbad.id_user
                                 where tbl.Status = 'Disetujui'");
+
+        return $query->result();
+    }
+
+    public function Tambah_kontrak($fields)
+    {
+        $this->db->insert('tb_kontrak', $fields);
+    }
+
+    public function update_booking($fields,$id_user, $id)
+    {
+        $this->db->update('tb_booking_lahan', $fields, array('id_user'=> $id_user,'kode_alternatif' => $id));
+    }
+
+    public function update_booking_tolak($fields,$id)
+    {
+        $this->db->update('tb_booking_lahan', $fields, array('kode_alternatif' => $id));
+    }
+
+    public function list_lahan_kepemilikan(){
+        $query = $this->db->query("SELECT tba.nama_alternatif, tba.kode_alternatif, tba.keterangan, tbad.id_user, tbad.user, tbad.nama, tbad.email, tbad.gambar, tba.lat, tba.lng, tba.gambar1, tbk.Tanggal_panen, tbk.Jumlah_panen, tbk.Status_verifikasi_panen, tbk.id_kontrak 
+                                FROM tb_kontrak tbk
+                                JOIN tb_alternatif tba
+                                on tba.kode_alternatif = tbk.kode_alternatif
+                                JOIN tb_booking_lahan tbl
+                                on tba.kode_alternatif = tbl.kode_alternatif
+                                JOIN tb_admin tbad
+                                ON tbl.id_user = tbad.id_user
+                                where tbl.Status = 'kepemilikan'");
 
         return $query->result();
     }

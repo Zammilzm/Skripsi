@@ -103,6 +103,12 @@
                                 <button class="btn btn-danger">
                                     <span>LAHAN DISETUJUI</span><br><span>CEK MENU LAHAN USER</span><br><span></span>
                                 </button>
+                            <?php elseif ($booking->Status === 'Ditolak'): ?>
+                                <a data-toggle="modal" data-target="#booking-lahan">
+                                    <button class="btn btn-success">
+                                        <span>BOOKING</span><br><span>LAHAN</span>
+                                    </button>
+                                </a>
                             <?php endif; ?>
                         <?php else: ?>
                             <a data-toggle="modal" data-target="#booking-lahan">

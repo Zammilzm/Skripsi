@@ -47,6 +47,13 @@
                                             </a>
                                         </li>
                                         <li class="">
+                                            <a href="#milik" data-toggle="tab">
+                                                <i class="fa fa-fw fa-lock"></i>
+                                                Lahan Anda
+                                                <div class="ripple-container"></div>
+                                            </a>
+                                        </li>
+                                        <li class="">
                                             <a href="#tolak" data-toggle="tab">
                                                 <i class="fa fa-fw fa-trash"></i>
                                                 Lahan Ditolak
@@ -124,11 +131,6 @@
                                                             </center>
                                                         <?php elseif ($row->Status === 'Disetujui'): ?>
                                                             <center>
-                                                                <button class="btn btn-warning"
-                                                                        style="opacity: 0.6; cursor: not-allowed;">
-                                                                    <span>PENGAJUAN DIPROSES</span>
-                                                                </button>
-                                                                <br><br>
                                                                 <button class="btn btn-success">
                                                                     <span>DISETUJUI</span>
                                                                 </button>
@@ -145,6 +147,19 @@
                                                                     penandatanganan kontrak, penyerahan
                                                                     berkas lahan
                                                                     dan nota kesepakatan</p>
+                                                            </center>
+                                                        <?php elseif ($row->Status === 'Kepemilikan'): ?>
+                                                            <center>
+                                                                <button class="btn btn-primary">
+                                                                    <span>LAHAN ANDA</span>
+                                                                </button>
+                                                            </center>
+                                                        <?php elseif ($row->Status === 'Ditolak'): ?>
+                                                            <center>
+                                                                <button class="btn btn-danger">
+                                                                    <span>PENGAJUAN DITOLAK</span>
+                                                                    <span>MOHON MAAF</span>
+                                                                </button>
                                                             </center>
                                                         <?php endif; ?>
                                                     </div>
@@ -233,6 +248,131 @@
                                                                     berkas lahan
                                                                     dan nota kesepakatan</p>
                                                             </center>
+                                                        <?php elseif ($row->Status === 'Kepemilikan'): ?>
+                                                            <center>
+                                                                <button class="btn btn-primary">
+                                                                    <span>LAHAN ANDA</span>
+                                                                </button>
+                                                            </center>
+                                                        <?php elseif ($row->Status === 'Ditolak'): ?>
+                                                            <center>
+                                                                <button class="btn btn-danger">
+                                                                    <span>PENGAJUAN DITOLAK</span>
+                                                                    <span>MOHON MAAF</span>
+                                                                </button>
+                                                            </center>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                                <div class="tab-pane" id="milik">
+                                    <?php foreach ($kepemilikan as $row): ?>
+                                        <div class="panel panel-info">
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-md-3 col-lg-3 " align="center">
+                                                        <?php if ($row->gambar1 === NULL): ?>
+                                                            <h3>Belum ada gambar</h3>
+                                                        <?php else: ?>
+                                                            <img width="200px" height="100px"
+                                                                 class="thumbnail img-responsive"
+                                                                 src="<?= base_url() ?>assets/uploads/<?= $row->gambar1; ?>">
+                                                            <h4>Foto Lahan</h4>
+                                                        <?php endif; ?>
+
+                                                    </div>
+                                                    <div class=" col-md-5 col-lg-5 ">
+                                                        <h3 class="panel-title">
+                                                            <center>
+                                                                <h3 class="panel-title">
+                                                                    <p>DETAIL LAHAN</p>
+                                                                </h3>
+                                                            </center>
+                                                        </h3>
+                                                        <table class="table table-user-information">
+                                                            <tbody>
+                                                            <tr>
+                                                                <td><strong>Kode Lahan</strong></td>
+                                                                <td>
+                                                                    <?= $row->kode_alternatif ?>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>Nama lahan</strong></td>
+                                                                <td>
+                                                                    <?= $row->nama_alternatif ?>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>Keterangan</strong></td>
+                                                                <td>
+                                                                    <?= $row->keterangan ?>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>Tipe Kerjasama</strong></td>
+                                                                <td>
+                                                                    <?= $row->Tipe_penawaran ?>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-4 col-lg-4 ">
+                                                        <center>   <h3>Status Pengajuan</h3></center>
+                                                        <?php if ($row->Status === 'Diproses'): ?>
+                                                            <center>
+                                                                <button class="btn btn-warning">
+                                                                    <span>PENGAJUAN DIPROSES</span>
+                                                                </button>
+                                                            </center>
+                                                        <?php elseif ($row->Status === 'Disetujui'): ?>
+                                                            <center>
+                                                                <button class="btn btn-success">
+                                                                    <span>DISETUJUI</span>
+                                                                </button>
+                                                                <br><br>
+                                                                <a target="_blank" class="btn btn-xs btn-warning"
+                                                                   href="<?= $row->Doc_Kontrak_admin ?>">
+                                                                    <i class="fa fa-fw fa-download"></i>
+                                                                    Klik Untuk Download
+                                                                </a>
+                                                                <p>Silahkan Download berkas kontrak diatas dan isi
+                                                                    sesuai data lahan yang ada
+                                                                    kontrak.
+                                                                    Silahkan datang ke kantor PG Asembagus untuk
+                                                                    penandatanganan kontrak, penyerahan
+                                                                    berkas lahan
+                                                                    dan nota kesepakatan</p>
+                                                            </center>
+                                                        <?php elseif ($row->Status === 'Kepemilikan'): ?>
+                                                            <center>
+                                                                <button class="btn btn-primary">
+                                                                    <span>LAHAN ANDA</span>
+                                                                </button>
+                                                                <br><br>
+                                                                <p>
+                                                                    Lahan sudah dapat anda kelola berdasarkan kesepakatan
+                                                                    dan kontrak yang sudah disepakati. silahkan tambahkan data
+                                                                    panen dengan klik tombol Masukkan Data Panen dibawah ini atau klik
+                                                                    menu data panen
+                                                                </p>
+                                                                <a class="btn btn-warning"
+                                                                   href="<?= site_url("Panen") ?>">
+                                                                    <i class="fa fa-fw fa-book"></i>
+                                                                    Masukkan Data Panen
+                                                                </a>
+                                                            </center>
+                                                        <?php elseif ($row->Status === 'Ditolak'): ?>
+                                                            <center>
+                                                                <button class="btn btn-danger">
+                                                                    <span>PENGAJUAN DITOLAK</span>
+                                                                    <span>MOHON MAAF</span>
+                                                                </button>
+                                                            </center>
                                                         <?php endif; ?>
                                                     </div>
                                                 </div>
@@ -319,6 +459,19 @@
                                                                     penandatanganan kontrak, penyerahan
                                                                     berkas lahan
                                                                     dan nota kesepakatan</p>
+                                                            </center>
+                                                        <?php elseif ($row->Status === 'Kepemilikan'): ?>
+                                                            <center>
+                                                                <button class="btn btn-primary">
+                                                                    <span>LAHAN ANDA</span>
+                                                                </button>
+                                                            </center>
+                                                        <?php elseif ($row->Status === 'Ditolak'): ?>
+                                                            <center>
+                                                                <button class="btn btn-danger">
+                                                                    <span>PENGAJUAN DITOLAK</span><br>
+                                                                    <span>MOHON MAAF</span>
+                                                                </button>
                                                             </center>
                                                         <?php endif; ?>
                                                     </div>

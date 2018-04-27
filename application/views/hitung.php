@@ -74,90 +74,82 @@ else:
                             <div class="panel-heading"><strong>Hasil Analisa</strong></div>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover">
-                                    <thead>
-                                    <tr>
+                                    <thead><tr>
                                         <td rowspan="2">Kriteria</td>
                                         <td rowspan="2">Min Maks</td>
-                                        <td rowspan="2">Bobot</td>
-                                        <td colspan="<?= count($ALTERNATIF) ?>">Alternatif</td>
+                                        <td colspan="<?=count($ALTERNATIF)?>">Alternatif</td>
                                         <td rowspan="2">Tipe Preferensi</td>
                                         <td colspan="2">Parameter</td>
                                     </tr>
                                     <tr>
-                                        <?php foreach ($ALTERNATIF as $key => $val): ?>
-                                            <td><?= $val->nama_alternatif ?></td>
-                                        <?php endforeach ?>
+                                        <?php foreach($ALTERNATIF as $key => $val):?>
+                                            <td><?=$val->nama_alternatif?></td>
+                                        <?php endforeach?>
                                         <td>q</td>
                                         <td>p</td>
-                                    </tr>
-                                    </thead>
-                                    <?php foreach ($KRITERIA as $key => $val): ?>
+                                    </tr></thead>
+                                    <?php foreach($KRITERIA as $key => $val):?>
                                         <tr>
-                                            <td><?= $val->nama_kriteria ?></td>
-                                            <td><?= $val->minmax ?></td>
-                                            <td><?= $val->bobot ?></td>
-                                            <?php foreach ($ALTERNATIF as $k => $v): ?>
-                                                <td><?= $data[$k][$key] ?></td>
-                                            <?php endforeach ?>
-                                            <td><?= $val->tipe ?></td>
-                                            <td><?= $val->par_q ?></td>
-                                            <td><?= $val->par_p ?></td>
+                                            <td><?=$val->nama_kriteria?></td>
+                                            <td><?=$val->minmax?></td>
+                                            <?php foreach($ALTERNATIF as $k => $v):?>
+                                                <td><?=$data[$k][$key]?></td>
+                                            <?php endforeach?>
+                                            <td><?=$val->tipe?></td>
+                                            <td><?=$val->par_q?></td>
+                                            <td><?=$val->par_p?></td>
                                         </tr>
-                                    <?php endforeach ?>
+                                    <?php endforeach?>
                                 </table>
                             </div>
                         </div>
-                        <?php foreach ($normal as $key => $val): ?>
+                        <?php foreach($normal as $key => $val):?>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Kriteria <?= $KRITERIA[$key]->nama_kriteria ?></h3>
+                                    <h3 class="panel-title">Kriteria <?=$KRITERIA[$key]->nama_kriteria?></h3>
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-hover table-bordered">
                                         <thead>
-                                        <th colspan="2"><?= $KRITERIA[$key]->nama_kriteria ?></th>
+                                        <th colspan="2"><?=$KRITERIA[$key]->nama_kriteria?></th>
                                         <th>a</th>
                                         <th>b</th>
                                         <th>d(jarak)</th>
                                         <th>|d|</th>
                                         <th>P (Preferensi)</th>
-                                        <th>P (Indeks Preferensi)</th>
                                         </thead>
-                                        <?php foreach ($val as $k => $v): ?>
+                                        <?php foreach($val as $k => $v):?>
                                             <tr>
-                                                <td><?= $ALTERNATIF[$v[0]]->nama_alternatif ?></td>
-                                                <td><?= $ALTERNATIF[$v[1]]->nama_alternatif ?></td>
-                                                <td><?= $data[$v[0]][$key] ?></td>
-                                                <td><?= $data[$v[1]][$key] ?></td>
-                                                <td><?= $selisih[$key][$k] ?></td>
-                                                <td><?= abs($selisih[$key][$k]) ?></td>
-                                                <td><?= $preferensi[$key][$k] ?></td>
-                                                <td><?= $index_pref[$key][$k] ?></td>
+                                                <td><?=$ALTERNATIF[$v[0]]->nama_alternatif?></td>
+                                                <td><?=$ALTERNATIF[$v[1]]->nama_alternatif?></td>
+                                                <td><?=$data[$v[0]][$key]?></td>
+                                                <td><?=$data[$v[1]][$key]?></td>
+                                                <td><?=$selisih[$key][$k]?></td>
+                                                <td><?=abs($selisih[$key][$k])?></td>
+                                                <td><?=$preferensi[$key][$k]?></td>
                                             </tr>
-                                        <?php endforeach ?>
+                                        <?php endforeach?>
                                     </table>
                                 </div>
                             </div>
-                        <?php endforeach ?>
+                        <?php endforeach?>
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Total Indeks Preferensi</h3>
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover">
-                                    <thead>
-                                    <tr>
+                                    <thead><tr>
                                         <th colspan="2">Alternatif</th>
                                         <th>Total</th>
-                                    </tr>
-                                    </thead>
-                                    <?php foreach ($komposisi as $key => $val): ?>
+                                    </tr></thead>
+                                    <?php foreach($komposisi as $key => $val):?>
                                         <tr>
-                                            <td><?= $ALTERNATIF[$val[0]]->nama_alternatif ?></td>
-                                            <td><?= $ALTERNATIF[$val[1]]->nama_alternatif ?></td>
-                                            <td><?= round($total_index_pref[$key], 4) ?></td>
+                                            <td><?=$ALTERNATIF[$val[0]]->nama_alternatif?></td>
+                                            <td><?=$ALTERNATIF[$val[1]]->nama_alternatif?></td>
+                                            <td><?=round($total_index_pref[$key], 4)?></td>
                                         </tr>
-                                    <?php endforeach ?>
+                                    <?php endforeach?>
                                 </table>
                             </div>
                         </div>
@@ -168,39 +160,37 @@ else:
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover">
-                                    <thead>
-                                    <tr>
+                                    <thead><tr>
                                         <th>Alternatif</th>
-                                        <?php foreach ($matriks as $key => $val): ?>
-                                            <th><?= $ALTERNATIF[$key]->nama_alternatif ?></th>
-                                        <?php endforeach ?>
+                                        <?php foreach($matriks as $key => $val):?>
+                                            <th><?=$ALTERNATIF[$key]->nama_alternatif?></th>
+                                        <?php endforeach?>
                                         <th>Jumlah</th>
                                         <th>Leaving</th>
-                                    </tr>
-                                    </thead>
-                                    <?php foreach ($matriks as $key => $val): ?>
+                                    </tr></thead>
+                                    <?php foreach($matriks as $key => $val):?>
                                         <tr>
-                                            <td><?= $ALTERNATIF[$key]->nama_alternatif ?></td>
-                                            <?php foreach ($val as $k => $v): ?>
-                                                <td><?= round($v, 4) ?></td>
-                                            <?php endforeach ?>
-                                            <td><?= round($total_baris[$key], 4) ?></td>
-                                            <td><?= round($leaving[$key], 4) ?></td>
+                                            <td><?=$ALTERNATIF[$key]->nama_alternatif?></td>
+                                            <?php foreach($val as $k => $v):?>
+                                                <td><?=round($v, 4)?></td>
+                                            <?php endforeach?>
+                                            <td><?=round($total_baris[$key], 4)?></td>
+                                            <td><?=round($leaving[$key], 4)?></td>
                                         </tr>
-                                    <?php endforeach ?>
+                                    <?php endforeach?>
                                     <tr>
                                         <td>Jumlah</td>
-                                        <?php foreach ($total_kolom as $k => $v): ?>
-                                            <td><?= round($v, 4) ?></td>
-                                        <?php endforeach ?>
+                                        <?php foreach($total_kolom as $k => $v):?>
+                                            <td><?=round($v, 4)?></td>
+                                        <?php endforeach?>
                                         <td></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>Entering</td>
-                                        <?php foreach ($entering as $k => $v): ?>
-                                            <td><?= round($v, 4) ?></td>
-                                        <?php endforeach ?>
+                                        <?php foreach($entering as $k => $v):?>
+                                            <td><?=round($v, 4)?></td>
+                                        <?php endforeach?>
                                         <td></td>
                                         <td></td>
                                     </tr>

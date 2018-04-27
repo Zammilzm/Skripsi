@@ -25,10 +25,6 @@
                         </select>
                     </div>
                     <div class="form-group label-floating">
-                        <label class="control-label">Bobot <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" name="bobot" value="<?= set_value('bobot') ?>"/>
-                    </div>
-                    <div class="form-group label-floating">
                         <label class="control-label">Tipe Preferensi <span class="text-danger">*</span></label>
                         <select class="form-control" name="tipe">
                             <option></option>

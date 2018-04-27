@@ -20,7 +20,6 @@ class Kriteria extends CI_Controller {
         $this->form_validation->set_rules( 'kode', 'Kode', 'required|is_unique[tb_kriteria.kode_kriteria]' );
         $this->form_validation->set_rules( 'nama', 'Nama', 'required' );
         $this->form_validation->set_rules( 'minmax', 'MinMax', 'required' );
-        $this->form_validation->set_rules( 'bobot', 'Bobot', 'required' );
         $this->form_validation->set_rules( 'tipe', 'Tipe Preferensi', 'required' );
         $this->form_validation->set_rules( 'par_q', 'Parameter Q', 'required' );
         $this->form_validation->set_rules( 'par_p', 'Parameter P', 'required' );
@@ -37,7 +36,6 @@ class Kriteria extends CI_Controller {
                 'kode_kriteria' => $this->input->post('kode'),
                 'nama_kriteria' => $this->input->post('nama'),
                 'minmax' => $this->input->post('minmax'),
-                'bobot' => $this->input->post('bobot'),
                 'tipe' => $this->input->post('tipe'),
                 'par_q' => $this->input->post('par_q'),
                 'par_p' => $this->input->post('par_p'),
@@ -51,7 +49,6 @@ class Kriteria extends CI_Controller {
     {
         $this->form_validation->set_rules( 'nama', 'Nama', 'required' );
         $this->form_validation->set_rules( 'minmax', 'MinMax', 'required' );
-        $this->form_validation->set_rules( 'bobot', 'Bobot', 'required' );
         $this->form_validation->set_rules( 'tipe', 'Tipe Preferensi', 'required' );
         $this->form_validation->set_rules( 'par_q', 'Parameter Q', 'required' );
         $this->form_validation->set_rules( 'par_p', 'Parameter P', 'required' );
@@ -68,7 +65,6 @@ class Kriteria extends CI_Controller {
             $fields = array(
                 'nama_kriteria' => $this->input->post('nama'),
                 'minmax' => $this->input->post('minmax'),
-                'bobot' => $this->input->post('bobot'),
                 'tipe' => $this->input->post('tipe'),
                 'par_q' => $this->input->post('par_q'),
                 'par_p' => $this->input->post('par_p'),

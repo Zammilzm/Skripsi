@@ -187,7 +187,7 @@ class Hitung extends CI_Controller{
             return -1;
         } else if($tipe==3){
             if($jarak >= $p * -1 && $jarak<=$p)
-                return $jarak / $p;
+                return abs($jarak / $p);
             if($jarak < $p * -1 || $jarak >= $p)
                 return 1;
             return -1;

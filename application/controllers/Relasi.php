@@ -1,5 +1,7 @@
 <?php
-class Relasi extends CI_Controller {
+
+class Relasi extends CI_Controller
+{
 
     public function __construct()
     {
@@ -17,21 +19,19 @@ class Relasi extends CI_Controller {
         load_view('relasi', $data);
     }
 
-    public function ubah( $ID = null )
+    public function ubah($ID = null)
     {
         $this->load->helper('form');
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules( 'kode_crips[]', 'Crips', 'required|is_natural' );
+        $this->form_validation->set_rules('kode_crips[]', 'Kriteria', 'required|is_natural');
 
         $data['title'] = 'Ubah Bobot ';
 
-        if ($this->form_validation->run() === FALSE)
-        {
+        if ($this->form_validation->run() === FALSE) {
             $data['rows'] = $this->relasi_model->get_relasi($ID);
 
-            if($data['rows'])
-            {
+            if ($data['rows']) {
                 $data['title'] .= $data['rows'][0]->nama_alternatif;
             }
 
@@ -39,10 +39,11 @@ class Relasi extends CI_Controller {
             $this->load->view('relasi_ubah', $data);
             $this->load->view('footer');
         }
-        else
-        {
-            $this->relasi_model->ubah( $this->input->post('kode_crips') );
-            redirect('relasi');
-        }
+    }
+
+    public function update($ID = NULL)
+    {
+        $this->relasi_model->ubah($this->input->post('kode_crips'));
+        redirect('relasi');
     }
 }

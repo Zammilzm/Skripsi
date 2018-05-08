@@ -96,13 +96,32 @@ class Alternatif extends CI_Controller
             $data['row'] = $this->alternatif_model->get_alternatif($ID);
             load_view('alternatif_ubah', $data);
         } else {
+            $dataInfo = array();
+            $files = $_FILES;
+            $cpt = count($_FILES['userfile']['name']);
+            for ($i = 0; $i < $cpt; $i++) {
+                $_FILES['userfile']['name'] = $files['userfile']['name'][$i];
+                $_FILES['userfile']['type'] = $files['userfile']['type'][$i];
+                $_FILES['userfile']['tmp_name'] = $files['userfile']['tmp_name'][$i];
+                $_FILES['userfile']['error'] = $files['userfile']['error'][$i];
+                $_FILES['userfile']['size'] = $files['userfile']['size'][$i];
 
+                $config['upload_path'] = './assets/uploads/';
+                $config['allowed_types'] = 'jpg|png|jpeg';
+
+                $this->upload->initialize($config);
+                $this->upload->do_upload();
+                $dataInfo[] = $this->upload->data();
+            }
             $fields = array(
                 'kode_alternatif' => $this->input->post('kode_alternatif'),
                 'nama_alternatif' => $this->input->post('nama_alternatif'),
                 'lat' => $this->input->post('lat'),
                 'lng' => $this->input->post('lng'),
                 'keterangan' => $this->input->post('keterangan'),
+                'gambar1' => $dataInfo[0]['file_name'],
+                'gambar2' => $dataInfo[1]['file_name'],
+                'gambar3' => $dataInfo[2]['file_name']
             );
             $this->alternatif_model->ubah($fields, $ID);
             redirect('alternatif');

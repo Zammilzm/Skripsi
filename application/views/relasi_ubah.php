@@ -8,11 +8,11 @@
             </div>
             <div class="card-content">
                 <?= print_error() ?>
-                <?= form_open("relasi/ubah/" . $rows[0]->kode_alternatif); ?>
+                <?= form_open("relasi/update/" . $rows[0]->kode_alternatif); ?>
                 <?php foreach ($rows as $row): ?>
                     <div class="form-group">
                         <label><?= $row->nama_kriteria ?> <span class="text-danger">*</span></label>
-                        <input class="form-control" name="kode_crips[<?= $row->ID ?>]" value="<?= $row->nilai ?>"/>
+                        <input type="text" class="form-control" name="kode_crips[<?= $row->ID ?>]" value="<?= $row->nilai ?>"/>
                     </div>
                 <?php endforeach ?>
                 <div class="form-group">

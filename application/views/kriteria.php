@@ -21,7 +21,6 @@
                 <table class="table table-hover"  id="contoh">
                     <thead>
                     <tr>
-                        <th>No</th>
                         <th>Kode</th>
                         <th>Nama Kriteria</th>
                         <th>Mimmax</th>
@@ -32,10 +31,8 @@
                     </tr>
                     </thead>
                     <?php
-                    $no = 0;
                     foreach ($rows as $row):?>
                         <tr>
-                            <td><?= ++$no ?></td>
                             <td><?= $row->kode_kriteria ?></td>
                             <td><?= $row->nama_kriteria ?></td>
                             <td><?= $row->minmax ?></td>

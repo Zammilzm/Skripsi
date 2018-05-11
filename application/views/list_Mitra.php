@@ -63,11 +63,11 @@ color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-
                     <a class="btn btn-default" data-toggle="modal" data-target="#batal<?= $row->kode_alternatif ?>"><i
                                 class="fa fa-close"></i>
                         Batalkan Alih lahan</a>
-                    <a class="btn btn-default" data-toggle="modal" data-target="#setuju<?= $row->kode_alternatif ?>"><i
+                    <a class="btn btn-default" data-toggle="modal" data-target="#setuju<?= $row->id_booking_lahan ?>"><i
                                 class="fa fa-book"></i>
                         Setujui Perjanjian Alih lahan</a>
                 </p>
-                <div class="modal fade" role="dialog" id="setuju<?= $row->kode_alternatif ?>">
+                <div class="modal fade" role="dialog" id="setuju<?= $row->id_booking_lahan ?>">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -95,6 +95,8 @@ color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-
                                     <br>
                                     <p>Dengan Mitra Kerjasama ialah <br> <strong><u><?= $row->nama ?></u></strong></p>
                                     <form method="post" action="<?= site_url("Mitra/setuju_alih_lahan") ?>">
+                                        <input type="hidden" name="id_booking_lahan"
+                                               value="<?= $row->id_booking_lahan ?>">
                                         <input type="hidden" name="kode_alternatif"
                                                value="<?= $row->kode_alternatif ?>">
                                         <input type="hidden" name="id_user"
@@ -173,6 +175,7 @@ color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-
                             <th>Status Verifikasi Panen</th>
                             <th>Detail</th>
                             <th>Verifikasi Panen</th>
+                            <th>Pesan</th>
                         </tr>
                         </thead>
                         <?php
@@ -197,6 +200,7 @@ color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-
                                         <i class="material-icons">done</i> Verifikasi Panen
                                     </a>
                                 </td>
+                                <td><?= $row->Pesan ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </table>
@@ -374,15 +378,20 @@ color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <form method="post" action="<?= site_url("Mitra/verifikasi_panen") ?>">
-                                            <input type="hidden" name="id_kontrak"
-                                                   value="<?= $row->id_kontrak ?>">
-                                            <button class="btn btn-success">
-                                            <span>
-                                                Verifikasi
-                                            </span>
-                                            </button>
-                                        </form>
+                                        <table>
+                                            <thead>
+                                            <form method="post" action="<?= site_url("Mitra/verifikasi_panen") ?>">
+                                                <input type="hidden" name="id_kontrak"
+                                                       value="<?= $row->id_kontrak ?>">
+                                                <div class="form-group label-floating">
+                                                    <label>Pesan <span class="text-danger">*</span><br>(isi jika diperlukan)</label>
+                                                    <input class="form-control" type="text" name="pesan"/>
+                                                </div>
+                                                <input type="submit" class="btn btn-success" value="Verifikasi" name="verifikasi">
+                                                <input type="submit" class="btn btn-danger" value="tinjau" name="tinjau">
+                                            </form>
+                                            </thead>
+                                        </table>
                                     </div>
                                 </center>
                             </div>

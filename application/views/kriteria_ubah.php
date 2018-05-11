@@ -10,8 +10,9 @@
                 <?php echo form_open("kriteria/ubah/$row->kode_kriteria"); ?>
                 <div class="form-group label-floating">
                     <label class="control-label">Kode</label>
-                    <input disabled class="form-control" name="kode" value="<?= set_value('kode', $row->kode_kriteria) ?>"
-                           / >
+                    <input disabled class="form-control" name="kode"
+                           value="<?= set_value('kode', $row->kode_kriteria) ?>"
+                    / >
                 </div>
                 <div class="form-group label-floating">
                     <label class="control-label">Nama <span class="text-danger">*</span></label>
@@ -47,10 +48,8 @@
                             <i class="material-icons">edit</i> Simpan
                         </button>
                     </a>
-                    <a href="<?= site_url('kriteria') ?>">
-                        <button class="btn btn-danger">
-                            <i class="material-icons">backspace</i> Kembali
-                        </button>
+                    <a class="btn btn-danger" href="<?= site_url('kriteria') ?>">
+                        <i class="material-icons">backspace</i> Kembali
                     </a>
                 </div>
                 </form>

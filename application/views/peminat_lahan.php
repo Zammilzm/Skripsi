@@ -13,9 +13,9 @@
                 <i class="material-icons">store</i>
             </div>
             <div class="card-content">
-                <p class="category">Jumlah Peminat Lahan</p>
+                <p class="category">Jumlah Penawaran Lahan</p>
                 <h3 class="title"><?php echo $peminat->jumlah ?>
-                    <span>Orang</span>
+                    <span>Penawaran</span>
                 </h3>
             </div>
             <div class="card-footer">

@@ -13,7 +13,7 @@ class Relasi extends CI_Controller
     public function index()
     {
         $this->load->helper('form');
-        $data['rows'] = $this->relasi_model->tampil($this->input->get('search'));
+        $data['rows'] = $this->relasi_model->tampil();
         $data['title'] = 'Bobot';
 
         load_view('relasi', $data);

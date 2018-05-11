@@ -13,9 +13,11 @@ class Panen_model extends CI_Model
     public function tampil()
     {
         $login = $this->session->userdata('id_user');
-        $query = $this->db->query("Select *,tba.nama_alternatif from tb_kontrak tbk JOIN tb_alternatif tba
-        ON tbk.kode_alternatif = tba.kode_alternatif
-        WHERE id_user = $login;");
+        $query = $this->db->query("Select *,tba.nama_alternatif from tb_kontrak tbk JOIN tb_booking_lahan tbb
+        ON tbk.id_booking_lahan = tbb.id_booking_lahan
+        JOIN tb_alternatif tba
+        on tba.kode_alternatif = tbb.kode_alternatif
+        WHERE tbk.id_user = $login;");
         return $query->result();
     }
 

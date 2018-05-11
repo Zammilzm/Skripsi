@@ -26,18 +26,18 @@
                     </div>
                     <div class="form-group label-floating">
                         <label class="control-label">Tipe Preferensi <span class="text-danger">*</span></label>
-                        <select class="form-control" name="tipe">
+                        <select class="form-control" name="tipe" id="select">
                             <option></option>
                             <?= get_tipe_option(set_value('tipe')) ?>
                         </select>
                     </div>
-                    <div class="form-group label-floating">
+                    <div class="form-group ">
                         <label class="control-label">Parameter Q <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" name="par_q" value="<?= set_value('par_q') ?>"/>
+                        <input class="form-control" type="text" name="par_q" id="par_q"/>
                     </div>
-                    <div class="form-group label-floating">
+                    <div class="form-group ">
                         <label class="control-label">Parameter P <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" name="par_p" value="<?= set_value('par_p') ?>"/>
+                        <input class="form-control" type="text" name="par_p" id="par_p"/>
                     </div>
                     <div class="form-group">
                         <a>
@@ -45,10 +45,8 @@
                                 <i class="material-icons">edit</i> Simpan
                             </button>
                         </a>
-                        <a href="<?= site_url('kriteria') ?>">
-                            <button class="btn btn-danger">
-                                <i class="material-icons">backspace</i> Kembali
-                            </button>
+                        <a class="btn btn-danger" href="<?= site_url('kriteria') ?>">
+                            <i class="material-icons">backspace</i> Kembali
                         </a>
                     </div>
                 </form>
@@ -56,3 +54,34 @@
         </div>
     </div>
 </div>
+<script>
+    $('#select').on('change', function (data) {
+        pilihan = $('#select').val();
+
+        if (pilihan == 1) {
+            $('#par_p').val(0);
+            $('#par_p').attr('readonly');
+            $('#par_q').val(0);
+            $('#par_q').attr('readonly');
+        }
+        else if (pilihan == 2){
+            $('#par_p').val(0);
+            $('#par_p').attr('readonly');
+            $('#par_q').val("");
+        }
+        else if (pilihan == 3){
+            $('#par_q').val(0);
+            $('#par_q').attr('readonly');
+            $('#par_p').val("");
+        }
+        else if (pilihan == 4){
+            $('#par_p').val("");
+            $('#par_q').val("");
+        }
+        else {
+            $('#par_p').val("");
+            $('#par_q').val("");
+        }
+    });
+
+</script>

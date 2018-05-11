@@ -2,6 +2,7 @@
 </div>
 </div>
 </body>
+
 <!--   Core JS Files   -->
 <script src="<?=base_url('assetsadmin/js/material.min.js')?>"></script>
 <!--  Dynamic Elements plugin -->

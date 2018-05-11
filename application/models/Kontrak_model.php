@@ -16,7 +16,7 @@ class Kontrak_model extends CI_Model
 
     public function jumlah_peminat_lahan()
     {
-        $query = $this->db->query("SELECT COUNT(kode_alternatif) as jumlah FROM tb_booking_lahan");
+        $query = $this->db->query("SELECT COUNT(kode_alternatif) as jumlah FROM tb_booking_lahan where Status = 'Diproses'");
         return $query->row();
     }
 
@@ -55,11 +55,13 @@ class Kontrak_model extends CI_Model
         return $query->result();
     }
 
-    public function Kirim_kontrak($data,$ID){
-        $this->db->update('tb_booking_lahan',$data, array('id_booking_lahan' => $ID));
+    public function Kirim_kontrak($data, $ID)
+    {
+        $this->db->update('tb_booking_lahan', $data, array('id_booking_lahan' => $ID));
     }
 
-    public function list_lahan_disetujui(){
+    public function list_lahan_disetujui()
+    {
         $login = $this->session->userdata('id_user');
         $query = $this->db->query("SELECT tba.nama_alternatif, tba.kode_alternatif, tba.keterangan, tbl.Tipe_penawaran,tbl.id_booking_lahan, tbl.Status, tba.gambar1, tbl.Doc_Kontrak_admin
                                 FROM tb_booking_lahan tbl 
@@ -70,7 +72,8 @@ class Kontrak_model extends CI_Model
         return $query->result();
     }
 
-    public function list_lahan_dimiliki(){
+    public function list_lahan_dimiliki()
+    {
         $login = $this->session->userdata('id_user');
         $query = $this->db->query("SELECT tba.nama_alternatif, tba.kode_alternatif, tba.keterangan, tbl.Tipe_penawaran,tbl.id_booking_lahan, tbl.Status, tba.gambar1, tbl.Doc_Kontrak_admin
                                 FROM tb_booking_lahan tbl 
@@ -81,7 +84,8 @@ class Kontrak_model extends CI_Model
         return $query->result();
     }
 
-    public function list_lahan_diproses(){
+    public function list_lahan_diproses()
+    {
         $login = $this->session->userdata('id_user');
         $query = $this->db->query("SELECT tba.nama_alternatif, tba.kode_alternatif, tba.keterangan, tbl.Tipe_penawaran,tbl.id_booking_lahan, tbl.Status, tba.gambar1, tbl.Doc_Kontrak_admin
                                 FROM tb_booking_lahan tbl 
@@ -92,7 +96,8 @@ class Kontrak_model extends CI_Model
         return $query->result();
     }
 
-    public function list_lahan_ditolak(){
+    public function list_lahan_ditolak()
+    {
         $login = $this->session->userdata('id_user');
         $query = $this->db->query("SELECT tba.nama_alternatif, tba.kode_alternatif, tba.keterangan, tbl.Tipe_penawaran,tbl.id_booking_lahan, tbl.Status, tba.gambar1, tbl.Doc_Kontrak_admin
                                 FROM tb_booking_lahan tbl 
@@ -103,12 +108,14 @@ class Kontrak_model extends CI_Model
         return $query->result();
     }
 
-    public function get_data_booking($ID = NULL){
+    public function get_data_booking($ID = NULL)
+    {
         $query = $this->db->query("SELECT * from tb_booking_lahan WHERE id_booking_lahan = $ID");
         return $query->row();
     }
 
-    public function list_lahan_tersetujui(){
+    public function list_lahan_tersetujui()
+    {
         $query = $this->db->query("SELECT tba.nama_alternatif, tba.kode_alternatif, tba.keterangan, tbl.Tipe_penawaran,tbl.id_booking_lahan, tbl.Status, tbad.nama, tbad.id_user, tbl.Doc_Kontrak_admin, tba.lat, tba.lng
                                 FROM tb_booking_lahan tbl 
                                 JOIN tb_alternatif tba
@@ -125,22 +132,24 @@ class Kontrak_model extends CI_Model
         $this->db->insert('tb_kontrak', $fields);
     }
 
-    public function update_booking($fields,$id_user, $id)
-    {
-        $this->db->update('tb_booking_lahan', $fields, array('id_user'=> $id_user,'kode_alternatif' => $id));
-    }
-
-    public function update_booking_tolak($fields,$id)
+    public function update_booking_tolak($fields, $id)
     {
         $this->db->update('tb_booking_lahan', $fields, array('kode_alternatif' => $id));
     }
 
-    public function list_lahan_kepemilikan(){
-        $query = $this->db->query("SELECT tba.nama_alternatif, tba.kode_alternatif, tba.keterangan, tbad.id_user, tbad.user, tbad.nama, tbad.email, tbad.gambar, tba.lat, tba.lng, tba.gambar1, tbk.Tanggal_panen, tbk.Jumlah_panen, tbk.Status_verifikasi_panen, tbk.id_kontrak 
+    public function update_booking($fields, $id_user, $id)
+    {
+        $this->db->update('tb_booking_lahan', $fields, array('id_user' => $id_user, 'kode_alternatif' => $id));
+    }
+
+
+    public function list_lahan_kepemilikan()
+    {
+        $query = $this->db->query("SELECT tba.nama_alternatif, tba.kode_alternatif, tba.keterangan, tbad.id_user, tbad.user, tbad.nama, tbad.email, tbad.gambar, tba.lat, tba.lng, tba.gambar1, tbk.*
                                 FROM tb_kontrak tbk
-                                JOIN tb_alternatif tba
-                                on tba.kode_alternatif = tbk.kode_alternatif
                                 JOIN tb_booking_lahan tbl
+                                on tbk.id_booking_lahan = tbl.id_booking_lahan
+                                JOIN tb_alternatif tba
                                 on tba.kode_alternatif = tbl.kode_alternatif
                                 JOIN tb_admin tbad
                                 ON tbl.id_user = tbad.id_user

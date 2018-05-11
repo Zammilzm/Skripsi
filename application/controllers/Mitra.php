@@ -25,11 +25,11 @@ class Mitra extends CI_Controller
     }
 
     public function setuju_alih_lahan(){
-        $id = $this->input->post('kode_alternatif');
         $id_user = $this->input->post('id_user');
+        $kode = $this->input->post('kode_alternatif');
 
         $fields = array(
-            'kode_alternatif' => $this->input->post('kode_alternatif'),
+            'id_booking_lahan' => $this->input->post('id_booking_lahan'),
             'id_user' => $this->input->post('id_user'),
             'Status_kontrak' => 'Kontrak awal'
         );
@@ -38,12 +38,12 @@ class Mitra extends CI_Controller
         $fields = array(
             'Status' => 'Ditolak',
         );
-        $this->Kontrak_model->update_booking_tolak($fields,$id);
+        $this->Kontrak_model->update_booking_tolak($fields,$kode);
 
         $fields = array(
             'Status' => 'Kepemilikan',
         );
-        $this->Kontrak_model->update_booking($fields,$id_user,$id);
+        $this->Kontrak_model->update_booking($fields,$id_user,$kode);
 
         redirect('Mitra');
     }
@@ -62,11 +62,29 @@ class Mitra extends CI_Controller
 
     public function verifikasi_panen(){
         $id = $this->input->post('id_kontrak');
-        $fields = array(
-            'Status_verifikasi_panen' => 'Terverifikasi',
-        );
+        if ($this->input->post('verifikasi')){
+            $fields = array(
+                'Pesan' => $this->input->post('pesan'),
+                'Status_verifikasi_panen' => 'Terverifikasi'
+            );
+        } elseif ($this->input->post('tinjau')){
+            $fields = array(
+                'Pesan' => $this->input->post('pesan'),
+                'Status_verifikasi_panen' => 'Tinjau ulang',
+            );
+        }
         $this->Panen_model->verifikasi_panen($fields,$id);
 
         redirect('Mitra');
     }
+
+//    public function tinjau_ulang(){
+//        $id = $this->input->post('id_kontrak');
+//        $fields = array(
+//            'Status_verifikasi_panen' => 'Tinjau Ulang',
+//        );
+//        $this->Panen_model->verifikasi_panen($fields,$id);
+//
+//        redirect('Mitra');
+//    }
 }

@@ -20,6 +20,16 @@
                                value="<?= set_value('nama_alternatif', $row->nama_alternatif) ?>" id="nama"/>
                     </div>
                     <div class="form-group">
+                        <label>Nama Pemilik <span class="text-danger">*</span></label>
+                        <input class="form-control" name="nama_pemilik"
+                               value="<?= set_value('nama_pemilik', $row->nama_pemilik) ?>" />
+                    </div>
+                    <div class="form-group">
+                        <label>Alamat Lengkap <span class="text-danger">*</span></label>
+                        <input class="form-control" name="alamat_lengkap"
+                               value="<?= set_value('alamat_lengkap', $row->alamat_lengkap) ?>" />
+                    </div>
+                    <div class="form-group">
                         <label>Latitude <span class="text-danger">*</span></label>
                         <input class="form-control" type="text" name="lat" id="lat"
                                value="<?= set_value('lat', $row->lat) ?>" readonly=""/>
@@ -44,10 +54,8 @@
                                 <i class="material-icons">edit</i> Simpan
                             </button>
                         </a>
-                        <a href="<?= site_url('alternatif') ?>">
-                            <button class="btn btn-danger">
-                                <i class="material-icons">backspace</i> Kembali
-                            </button>
+                        <a class="btn btn-danger" href="<?= site_url('alternatif') ?>">
+                            <i class="material-icons">backspace</i> Kembali
                         </a>
                     </div>
                 </div>

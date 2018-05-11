@@ -44,6 +44,8 @@ class Alternatif extends CI_Controller
 
         $this->form_validation->set_rules('kode_alternatif', 'Kode Alternatif', 'required|is_unique[tb_alternatif.kode_alternatif]');
         $this->form_validation->set_rules('nama_alternatif', 'Nama Alternatif', 'required');
+        $this->form_validation->set_rules('nama_pemilik', 'Nama Pemilik', 'required');
+        $this->form_validation->set_rules('alamat_lengkap', 'Alamat Lengkap', 'required');
         $this->form_validation->set_rules('lat', 'Latitute', 'required');
         $this->form_validation->set_rules('lng', 'Longitude', 'required');
         $data['title'] = 'Tambah Alternatif';
@@ -71,6 +73,8 @@ class Alternatif extends CI_Controller
             $fields = array(
                 'kode_alternatif' => $this->input->post('kode_alternatif'),
                 'nama_alternatif' => $this->input->post('nama_alternatif'),
+                'nama_pemilik' => $this->input->post('nama_pemilik'),
+                'alamat_lengkap' => $this->input->post('alamat_lengkap'),
                 'lat' => $this->input->post('lat'),
                 'lng' => $this->input->post('lng'),
                 'keterangan' => $this->input->post('keterangan'),
@@ -87,6 +91,8 @@ class Alternatif extends CI_Controller
     {
         $this->form_validation->set_rules('kode_alternatif', 'Kode Alternatif', 'required');
         $this->form_validation->set_rules('nama_alternatif', 'Nama Alternatif', 'required');
+        $this->form_validation->set_rules('nama_pemilik', 'Nama Pemilik', 'required');
+        $this->form_validation->set_rules('alamat_lengkap', 'Alamat Lengkap', 'required');
         $this->form_validation->set_rules('lat', 'Latitute', 'required');
         $this->form_validation->set_rules('lng', 'Longitude', 'required');
 
@@ -116,6 +122,8 @@ class Alternatif extends CI_Controller
             $fields = array(
                 'kode_alternatif' => $this->input->post('kode_alternatif'),
                 'nama_alternatif' => $this->input->post('nama_alternatif'),
+                'nama_pemilik' => $this->input->post('nama_pemilik'),
+                'alamat_lengkap' => $this->input->post('alamat_lengkap'),
                 'lat' => $this->input->post('lat'),
                 'lng' => $this->input->post('lng'),
                 'keterangan' => $this->input->post('keterangan'),

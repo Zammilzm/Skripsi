@@ -18,11 +18,11 @@ else:
                     <table class="table table-hover" id="contoh">
                         <thead>
                         <tr>
+                            <th>Peringkat Lahan</th>
                             <th>Alternatif</th>
                             <th>Leaving Flow</th>
                             <th>Entering Flow</th>
                             <th>Net Flow</th>
-                            <th>Peringkat Lahan</th>
                         </tr>
                         </thead>
                         <?php
@@ -31,11 +31,11 @@ else:
                             $this->db->query("UPDATE tb_alternatif set lf='$leaving[$key]', ef='$entering[$key]', nf='$net_flow[$key]' WHERE kode_alternatif='$key'");
                             ?>
                             <tr>
+                                <td><?= $rank[$key] ?></td>
                                 <td><?= $ALTERNATIF[$key]->nama_alternatif ?></td>
                                 <td><?= round($leaving[$key], 4) ?></td>
                                 <td><?= round($entering[$key], 4) ?></td>
                                 <td><?= round($net_flow[$key], 4) ?></td>
-                                <td><?= $rank[$key] ?></td>
                             </tr>
                         <?php endforeach ?>
                     </table>

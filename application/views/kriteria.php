@@ -44,15 +44,24 @@
                                    href="<?= site_url("kriteria/ubah/$row->kode_kriteria") ?>">
                                     <i class="material-icons">edit</i> Edit
                                 </a>
-                                <a class="btn btn-xs btn-danger"
-                                   href="<?= site_url("kriteria/hapus/$row->kode_kriteria") ?>"
-                                   onclick="return confirm('Hapus data?')">
-                                    <i class="material-icons">delete</i> Hapus
-                                </a>
+                                <?php echo "<a class='btn btn-xs btn-danger' data-toggle='modal' data-target='#konfirmasi_hapus' 
+                                data-href='kriteria/hapus/$row->kode_kriteria'>Hapus</a>"
+                                ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 </table>
+            </div>
+            <div class="modal fade" id="konfirmasi_hapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <b>Anda yakin ingin menghapus data ini ?</b><br><br>
+                            <a class="btn btn-danger btn-ok"> Hapus</a>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-close"></i> Batal</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -60,5 +69,10 @@
 <script>
     $(document).ready(function () {
         $('#contoh').DataTable();
+    });
+    $(document).ready(function() {
+        $('#konfirmasi_hapus').on('show.bs.modal', function(e) {
+            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+        });
     });
 </script>

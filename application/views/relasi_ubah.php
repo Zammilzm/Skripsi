@@ -3,7 +3,7 @@
     <div class="col-sm-8">
         <div class="card">
             <div class="card-header" data-background-color="purple">
-                <h4 class="title">Edit Nilai Rincian Lahan</h4>
+                <h4 class="title"><?=$title?></h4>
                 <p class="category">Silahkan Edit Nilai Lahan Sesuai Kebutuhan anda</p>
             </div>
             <div class="card-content">

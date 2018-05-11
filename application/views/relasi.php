@@ -11,7 +11,7 @@
                     $relasi = array();
                     foreach ($rows as $row) {
                         $alternatif[$row->kode_alternatif] = $row->nama_alternatif;
-                        $relasi[$row->kode_alternatif][$row->kode_kriteria] = $row->nilai;
+                        $relasi[$row->kode_alternatif][$row->nama_kriteria] = $row->nilai;
                     }
                     ?>
                     <table class="table table-hover" id="contoh">
@@ -49,6 +49,8 @@
 </div>
 <script>
     $(document).ready(function () {
-        $('#contoh').DataTable();
+        $('#contoh').DataTable({
+            "scrollX": true
+        });
     });
 </script>

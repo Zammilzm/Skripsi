@@ -153,8 +153,12 @@ class Kontrak_model extends CI_Model
                                 on tba.kode_alternatif = tbl.kode_alternatif
                                 JOIN tb_admin tbad
                                 ON tbl.id_user = tbad.id_user
-                                where tbl.Status = 'kepemilikan'");
+                                where tbl.Status = 'kepemilikan' OR tbl.Status = 'Kontrak Selesai'");
 
         return $query->result();
+    }
+
+    public function selesai_kontrak($putus, $id_booking_lahan_selesai){
+        $this->db->update('tb_booking_lahan', $putus, array('id_booking_lahan' => $id_booking_lahan_selesai));
     }
 }

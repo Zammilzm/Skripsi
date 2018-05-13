@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Floyd</title>
+    <title>PG Asembagus</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiDdGyp6n2hKHPECuB6JZIT-8dVHCpwI0&language=id&region=ID&libraries=places"></script>
     <link rel="stylesheet" type="text/css"
           href="<?php echo base_url(); ?>assets/assets/DataTables/media/css/jquery.dataTables.css">

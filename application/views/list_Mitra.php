@@ -173,9 +173,10 @@ color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-
                             <th>Tanggal Panen</th>
                             <th>Jumlah Panen</th>
                             <th>Status Verifikasi Panen</th>
+                            <th>Pesan</th>
+                            <th>Status Kontrak</th>
                             <th>Detail</th>
                             <th>Verifikasi Panen</th>
-                            <th>Pesan</th>
                         </tr>
                         </thead>
                         <?php
@@ -188,19 +189,44 @@ color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-
                                 <td><?= $row->Tanggal_panen ?></td>
                                 <td><?= $row->Jumlah_panen ?></td>
                                 <td><?= $row->Status_verifikasi_panen ?></td>
+                                <td><?= $row->Pesan ?></td>
+                                <td><?= $row->Status_kontrak ?></td>
+                                <?php if (isset($row->Status_verifikasi_panen)): ?>
+                                    <?php if ($row->Status_verifikasi_panen === 'Menunggu'): ?>
+                                        <td>
+                                            <a class="btn btn-xs btn-danger"
+                                               data-toggle="modal" data-target="#verifikasi<?= $row->id_kontrak ?>">
+                                                <i class="material-icons">done</i> Verifikasi Panen
+                                            </a>
+                                        </td>
+                                    <?php elseif ($row->Status_verifikasi_panen === 'Tinjau ulang'): ?>
+                                        <td>
+                                            <a class="btn btn-xs btn-danger"
+                                               data-toggle="modal" data-target="#verifikasi<?= $row->id_kontrak ?>">
+                                                <i class="material-icons">done</i> Verifikasi Panen
+                                            </a>
+                                        </td>
+                                    <?php else: ?>
+                                        <td>
+                                            <a class="btn btn-xs btn-success">
+                                                <i class="material-icons">done</i> Terverifikasi
+                                            </a>
+                                        </td>
+                                    <?php endif; ?>
+                                <?php else: ?>
+                                    <td>
+                                        <a class="btn btn-xs btn-danger"
+                                           data-toggle="modal" data-target="#verifikasi<?= $row->id_kontrak ?>">
+                                            <i class="material-icons">done</i> Verifikasi Panen
+                                        </a>
+                                    </td>
+                                <?php endif; ?>
                                 <td>
-                                    <a class="btn btn-sm btn-warning"
+                                    <a class="btn btn-xs btn-warning"
                                        data-toggle="modal" data-target="#detail<?= $row->kode_alternatif ?>">
                                         <i class="material-icons">edit</i> Detail Mitra & Lahan
                                     </a>
                                 </td>
-                                <td>
-                                    <a class="btn btn-sm btn-danger"
-                                       data-toggle="modal" data-target="#verifikasi<?= $row->kode_alternatif ?>">
-                                        <i class="material-icons">done</i> Verifikasi Panen
-                                    </a>
-                                </td>
-                                <td><?= $row->Pesan ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </table>
@@ -320,7 +346,7 @@ color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" role="dialog" id="verifikasi<?= $row->kode_alternatif ?>">
+                <div class="modal fade" role="dialog" id="verifikasi<?= $row->id_kontrak ?>">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -383,12 +409,21 @@ color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-
                                             <form method="post" action="<?= site_url("Mitra/verifikasi_panen") ?>">
                                                 <input type="hidden" name="id_kontrak"
                                                        value="<?= $row->id_kontrak ?>">
+                                                <input type="hidden" name="id_booking_lahan"
+                                                       value="<?= $row->id_booking_lahan ?>">
+                                                <input type="hidden" name="id_user"
+                                                       value="<?= $row->id_user ?>">
                                                 <div class="form-group label-floating">
-                                                    <label>Pesan <span class="text-danger">*</span><br>(isi jika diperlukan)</label>
-                                                    <input class="form-control" type="text" name="pesan"/>
+                                                    <label>Pesan <span class="text-danger">*</span><br>(isi jika
+                                                        diperlukan)</label>
+                                                    <input class="form-control" type="text"  value="<?= $row->Pesan ?>" name="pesan"/>
                                                 </div>
-                                                <input type="submit" class="btn btn-success" value="Verifikasi" name="verifikasi">
-                                                <input type="submit" class="btn btn-danger" value="tinjau" name="tinjau">
+                                                <input type="submit" class="btn btn-success" value="Verifikasi Final"
+                                                       name="verifikasi">
+                                                <input type="submit" class="btn btn-primary" value="Verifikasi & Tambah Okupasi"
+                                                       name="okupasi">
+                                                <input type="submit" class="btn btn-danger" value="tinjau"
+                                                       name="tinjau">
                                             </form>
                                             </thead>
                                         </table>

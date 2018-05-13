@@ -16,9 +16,9 @@ class Alternatif_model extends CI_Model
     public function peringkat_lahan()
     {
         $query = $this->db->query("select * from tb_alternatif
-where kode_alternatif NOT IN
-(select kode_alternatif from tb_booking_lahan where Status = 'Kepemilikan')
-ORDER BY nf DESC ");
+                where kode_alternatif NOT IN
+                (select kode_alternatif from tb_booking_lahan where Status = 'Kepemilikan')
+                ORDER BY nf DESC ");
         return $query->result();
     }
 

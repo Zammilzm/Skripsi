@@ -88,4 +88,10 @@ class Kontrak extends CI_Controller
         $data['tolak'] = $this->Kontrak_model->list_lahan_ditolak();
         load_view_user('user/Lahan_user', $data);
     }
+
+    function logout()
+    {
+        $this->session->sess_destroy();
+        redirect();
+    }
 }

@@ -47,12 +47,40 @@
                             <td><?= $row->Status_verifikasi_panen ?></td>
                             <td>
                                 <center>
-                                    <a class="btn btn-xs btn-danger" data-toggle="modal" data-target="#tambah-data<?= $row->id_kontrak ?>"><i
-                                                class="fa fa-fw fa-info-circle"></i>
-                                        <span>
+                                    <?php if (isset($row->Status_verifikasi_panen)): ?>
+                                        <?php if ($row->Status_verifikasi_panen === 'Menunggu'): ?>
+                                            <a class="btn btn-xs btn-danger" data-toggle="modal"
+                                               data-target="#tambah-data<?= $row->id_kontrak ?>"><i
+                                                        class="fa fa-fw fa-info-circle"></i>
+                                                <span>
                                             Data Panen
-                                </span>
-                                    </a>
+                                        </span>
+                                            </a>
+                                        <?php elseif ($row->Status_verifikasi_panen === 'Tinjau ulang'): ?>
+                                            <a class="btn btn-xs btn-danger" data-toggle="modal"
+                                               data-target="#tambah-data<?= $row->id_kontrak ?>"><i
+                                                        class="fa fa-fw fa-info-circle"></i>
+                                                <span>
+                                            Data Panen
+                                        </span>
+                                            </a>
+                                        <?php else: ?>
+                                            <a class="btn btn-xs btn-success"><i
+                                                        class="fa fa-fw fa-info-circle"></i>
+                                                <span>
+                                            Terverifikasi
+                                        </span>
+                                            </a>
+                                        <?php endif; ?>
+                                    <?php else: ?>
+                                        <a class="btn btn-xs btn-danger" data-toggle="modal"
+                                           data-target="#tambah-data<?= $row->id_kontrak ?>"><i
+                                                    class="fa fa-fw fa-info-circle"></i>
+                                            <span>
+                                            Data Panen
+                                            </span>
+                                        </a>
+                                    <?php endif; ?>
                                     <br><br>
                                     <a class="btn btn-xs btn-warning"
                                        href="<?= site_url("alternatif/detail_lahan_user/$row->kode_alternatif") ?>"><i
@@ -82,50 +110,54 @@
     $('.datepicker').datepicker();
 </script>
 
-<?php foreach ($panen as $row):?>
-<div class="modal fade" id="tambah-data<?= $row->id_kontrak ?>" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                </button>
-                <h3 class="modal-title">
-                    <center>
-                        Data Panen
-                    </center>
-                </h3>
-            </div>
-            <div class="modal-body">
-                <?php echo validation_errors(); ?>
-                <?php echo form_open("Panen/update_panen/$row->id_kontrak"); ?>
-
-                <div class="form-body">
-                    <div class="form-group">
-                        <label class="control-label col-md-3">Tanggal Panen</label>
-                        <div class="input-group date" data-provide="datepicker">
-                            <input type="date" class="form-control" name="tanggal" value="<?= $row->Tanggal_panen ?>" >
-                            <div class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
+<?php foreach ($panen as $row): ?>
+    <div class="modal fade" id="tambah-data<?= $row->id_kontrak ?>" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <center>
+                            Data Panen
+                        </center>
+                    </h4>
+                    <center><p><strong>Pesan Pengelola</strong></p></center>
+                    <input type="text" class="form-control" name="pesan"
+                           value="<?= $row->Pesan ?>" readonly>
+                </div>
+                <div class="modal-body">
+                    <?php echo validation_errors(); ?>
+                    <?php echo form_open("Panen/update_panen/$row->id_kontrak"); ?>
+                    <input type="hidden" name="id_kontrak" value="<?= $row->id_kontrak ?>">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Tanggal Panen</label>
+                            <div class="input-group date" data-provide="datepicker">
+                                <input type="date" class="form-control" name="tanggal"
+                                       value="<?= $row->Tanggal_panen ?>">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <center>
+                                <label class="control-label col-md-3">Jumlah Panen <span>Dalam satuan Ton</span></label>
+                            </center>
+                            <div class="col-md-9">
+                                <input name="jumlahpanen" class="form-control" type="number" min="0" step=".01"
+                                       value="<?= $row->Jumlah_panen ?>">
+                                <span class="help-block"></span>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <center>
-                            <label class="control-label col-md-3">Jumlah Panen <span>Dalam satuan Ton</span></label>
-                        </center>
-
-                        <div class="col-md-9">
-                            <input name="jumlahpanen" class="form-control" type="text" value="<?= $row->Jumlah_panen ?>">
-                            <span class="help-block"></span>
-                        </div>
-                    </div>
+                    <input type="submit" value="submit" class="btn btn-info btn-block"><br>
                 </div>
-                <input type="submit" value="submit" class="btn btn-info btn-block"><br>
-                </form>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 <?php endforeach; ?>
 <!-- End Bootstrap modal -->
 

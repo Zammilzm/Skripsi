@@ -22,6 +22,8 @@ class Panen extends CI_Controller
     }
 
     public function update_panen($ID = NULL){
+        $ID = $this->input->post('id_kontrak');
+
         $this->form_validation->set_rules('tanggal', 'Tanggal Panen', 'required');
         $this->form_validation->set_rules('jumlahpanen', 'Jumlah Panen', 'required');
         $fields = array(
@@ -31,5 +33,11 @@ class Panen extends CI_Controller
         );
         $this->Panen_model->tambah($fields,$ID);
         redirect('Panen');
+    }
+
+    function logout()
+    {
+        $this->session->sess_destroy();
+        redirect();
     }
 }

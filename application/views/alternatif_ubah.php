@@ -22,12 +22,12 @@
                     <div class="form-group">
                         <label>Nama Pemilik <span class="text-danger">*</span></label>
                         <input class="form-control" name="nama_pemilik"
-                               value="<?= set_value('nama_pemilik', $row->nama_pemilik) ?>" />
+                               value="<?= set_value('nama_pemilik', $row->nama_pemilik) ?>"/>
                     </div>
                     <div class="form-group">
                         <label>Alamat Lengkap <span class="text-danger">*</span></label>
                         <input class="form-control" name="alamat_lengkap"
-                               value="<?= set_value('alamat_lengkap', $row->alamat_lengkap) ?>" />
+                               value="<?= set_value('alamat_lengkap', $row->alamat_lengkap) ?>"/>
                     </div>
                     <div class="form-group">
                         <label>Latitude <span class="text-danger">*</span></label>
@@ -45,8 +45,9 @@
                                value="<?= set_value('keterangan', $row->keterangan) ?>"/>
                     </div>
                     <div class="form-group">
+                        <img src="<?= base_url() ?>assets/uploads/<?= $row->gambar1; ?>" width="50" height="50">
                         <label>Foto Lokasi ( Maksimal 3 foto )</label>
-                        <input type="file" name="userfile[]" multiple="multiple">
+                        <input type="file" name="file">
                     </div>
                     <div class="form-group">
                         <a>
@@ -64,6 +65,9 @@
                         <input class="form-control" type="text" id="pac-input" placeholder="Cari lokasi"/>
                     </div>
                     <div id="map" style="height: 400px;"></div>
+                </div>
+                <div class="form-group">
+                    <input type="hidden"  id="old"  name="old"  value="<?php echo $row->gambar1   ?>">
                 </div>
             </div>
             </form>

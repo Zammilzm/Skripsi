@@ -125,6 +125,15 @@
                             <div id="right-panel">
                                 <p>Total Jarak: <span id="total"></span><br />
                                     Node Terdekat: <span id="terdekat"></span></p>
+                                <center>
+                                    <a class="btn btn-xs btn-primary"
+                                       href="<?= site_url("alternatif/detail_lahan_user/$row->kode_alternatif") ?>"><i
+                                                class="fa fa-fw fa-info-circle"></i>
+                                        <span>
+                                    Booking Lahan
+                                </span>
+                                    </a>
+                                </center>
                             </div>
                         </div>
                         <p class="help-block">Geser marker atau garis untuk mengubah rute.</p>

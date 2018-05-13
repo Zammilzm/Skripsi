@@ -66,6 +66,18 @@
                             </td>
                         </tr>
                         <tr>
+                            <td><strong>Nama Pemilik</strong></td>
+                            <td>
+                                <?= $row->nama_pemilik ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Alamat Lengkap</strong></td>
+                            <td>
+                                <?= $row->alamat_lengkap ?>
+                            </td>
+                        </tr>
+                        <tr>
                             <td><strong>Keterangan</strong></td>
                             <td>
                                 <?= $row->keterangan ?>
@@ -150,7 +162,7 @@
     function initMap() {
 
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 6,
+            zoom: 14,
             center: defaultCenter
         });
         var infoWindow = new google.maps.InfoWindow({
@@ -232,7 +244,7 @@
     })
 </script>
 <div class="modal fade" id="edit-data" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
@@ -243,7 +255,7 @@
                     </center>
                 </h3>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="height: 350px; overflow-y: auto;">
                 <?php foreach ($nilainya as $row): ?>
                     <div class="form-group">
                         <label><?= $row->nama_kriteria ?> <span class="text-danger">*</span></label>

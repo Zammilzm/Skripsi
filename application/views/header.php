@@ -97,6 +97,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="<?= site_url('data_pendaftar') ?>">
+                        <i class="material-icons">people</i>
+                        <p>List Mitra</p>
+                    </a>
+                </li>
+                <li>
                     <a href="<?= site_url('user/logout') ?>">
                         <i class="material-icons text-gray">notifications</i>
                         <p>Log out</p>

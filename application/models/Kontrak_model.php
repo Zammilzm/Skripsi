@@ -38,7 +38,7 @@ class Kontrak_model extends CI_Model
                                   FROM tb_booking_lahan tbl
                                     join tb_alternatif tba
                                     on tbl.kode_alternatif = tba.kode_alternatif
-                                    where tbl.Status <> 'kepemilikan' AND tbl.Status <> 'Ditolak'
+                                    where tbl.Status <> 'kepemilikan' AND tbl.Status <> 'Ditolak' AND tbl.Status <> 'Kontrak Selesai'
                                     GROUP BY tba.kode_alternatif
                                     ORDER BY jumlah_peminat DESC ");
         return $query->result();

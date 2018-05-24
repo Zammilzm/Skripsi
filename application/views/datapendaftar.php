@@ -47,7 +47,7 @@
             <div class="card-content table-responsive">
                 <form class="form-inline">
                     <div class="form-group">
-                        <a class="btn btn-primary" data-toggle="modal" data-target="#tambahdata">
+                        <a class="btn btn-primary" href="<?= site_url('data_pendaftar/tambah') ?>">
                             <i class="material-icons">queue</i> Tambah Pendaftar</a>
                     </div>
                 </form>
@@ -79,94 +79,34 @@
                                 <a class="btn btn-xs btn-warning">
                                     <i class="material-icons">done</i> Detail
                                 </a>
-                                <a class="btn btn-xs btn-warning">
-                                    <i class="material-icons">edit</i> Edit
-                                </a>
-                                <?php echo "<a class='btn btn-xs btn-danger'>Hapus</a>"
+                                <?php echo "<a class='btn btn-xs btn-danger' data-toggle='modal' data-target='#konfirmasi_hapus' 
+                                data-href='data_pendaftar/hapus/$row->user'>Hapus</a>"
                                 ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 </table>
-                <div class="modal fade" role="dialog" id="tambahdata">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                            aria-hidden="true">&times;</span>
-                                </button>
-                                <h3 class="modal-title">
-
-                                </h3>
-                            </div>
-                            <div class="modal-body" style="height: 450px; overflow-y: auto;">
-                                <div class="row">
-                                    <div class="card">
-                                        <div class="card-header" data-background-color="purple">
-                                            <h4 class="title">Daftarkan Mitra Tani</h4>
-                                            <p class="category">Silahkan Perbarui Lahan dan Lokasi Lahan Sesuai
-                                                Kebutuhan anda</p>
-                                        </div>
-                                        <div class="card-content">
-                                            <form method="post" action="<?= site_url('data_pendaftar/tambah') ?>"
-                                                  enctype="multipart/form-data">
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <label>Username<span class="text-danger">*</span></label>
-                                                            <input class="form-control" type="text" name="username"
-                                                                   required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Password <span class="text-danger">*</span></label>
-                                                            <input class="form-control" type="text" name="password"
-                                                                   required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Nama Lengkap <span
-                                                                        class="text-danger">*</span></label>
-                                                            <input class="form-control" type="text" name="namalengkap"
-                                                                   required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Alamat Lengkap <span
-                                                                        class="text-danger">*</span></label>
-                                                            <input class="form-control" type="text" name="alamatlengkap"
-                                                                   required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>email <span class="text-danger">*</span></label>
-                                                            <input class="form-control" type="email" name="email"
-                                                                   required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>No Hp <span class="text-danger">*</span></label>
-                                                            <input class="form-control" type="number" name="nohp"
-                                                                   required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-4">
-                                                        <div>
-                                                            <span class="fileinput-new">Foto Profil</span>
-                                                            <input type="file"/></span>
-                                                            <br/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 </div>
+<div class="modal fade" id="konfirmasi_hapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <b>Anda yakin ingin menghapus data ini ?</b><br><br>
+                <a class="btn btn-danger btn-ok"> Hapus</a>
+                <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-close"></i> Batal</button>
+            </div>
+        </div>
+    </div>
 </div>
 <script>
+    $(document).ready(function() {
+        $('#konfirmasi_hapus').on('show.bs.modal', function(e) {
+            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+        });
+    });
     $(document).ready(function () {
         $('#contoh').DataTable();
     });

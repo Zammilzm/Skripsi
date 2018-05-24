@@ -9,6 +9,11 @@ class User extends CI_Controller
         $this->load->model('user_model');
     }
 
+    public function login()
+    {
+        $this->load->view('login');
+    }
+
     public function daftar()
     {
         $this->form_validation->set_rules('full_name', 'Nama Lengkap', 'required');
@@ -37,14 +42,8 @@ class User extends CI_Controller
         load_view_cetak('user_cetak', $data);
     }
 
-    public function login()
-    {
-        $this->load->view('login');
-    }
-
     function ceklogin()
     {
-
         $data = array(
             'user' => $this->input->post('user', TRUE),
             'pass' => $this->input->post('pass', TRUE)
@@ -52,7 +51,7 @@ class User extends CI_Controller
 
         $user_login = $this->user_model->login($data);
 
-        if ($user_login->num_rows() == 1) {
+        if ($user_login) {
             foreach ($user_login->result() as $sesi) {
                 $this->session->set_userdata('id_user', $sesi->id_user);
                 $this->session->set_userdata('user', $sesi->user);
@@ -62,16 +61,16 @@ class User extends CI_Controller
                 redirect('Admin');
             } elseif ($this->session->userdata('level') == 'User') {
                 redirect('Member/index');
+            } else {
+                echo "<script>alert('Gagal login: Cek username, password!');history.go(-1);</script>";
             }
-        } else {
-            $this->form_validation->set_message('ceklogin', 'Login gagal');
         }
     }
 
     function logout()
     {
         $this->session->sess_destroy();
-        redirect();
+        redirect('User/login');
     }
 
     function password()

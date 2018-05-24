@@ -29,7 +29,7 @@
 
 <body>
 <div class="wrapper">
-    <div class="sidebar" data-background-color="white" data-image="../assetsadmin/img/sidebar-2.jpg">
+    <div class="sidebar" data-background-color="white" data-image="../assetsadmin/img/sidebar-3.jpg">
         <div class="sidebar-wrapper">
             <div class="logo">
                 <center>

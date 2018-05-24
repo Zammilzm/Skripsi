@@ -10,7 +10,7 @@
                 <form method="post" action="<?= site_url('kriteria/tambah') ?>">
                     <div class="form-group label-floating">
                         <label class="control-label">Kode <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" name="kode"
+                        <input readonly class="form-control" type="text" name="kode"
                                value="<?= set_value('kode', kode_oto('kode_kriteria', 'tb_kriteria', 'C', 2)) ?>"/>
                     </div>
                     <div class="form-group label-floating">
@@ -33,11 +33,11 @@
                     </div>
                     <div class="form-group ">
                         <label class="control-label">Parameter Q <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" name="par_q" id="par_q"/>
+                        <input min="0" class="form-control" type="number" name="par_q" id="par_q"/>
                     </div>
                     <div class="form-group ">
                         <label class="control-label">Parameter P <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" name="par_p" id="par_p"/>
+                        <input min="0" class="form-control" type="number" name="par_p" id="par_p"/>
                     </div>
                     <div class="form-group">
                         <a>
@@ -60,18 +60,18 @@
 
         if (pilihan == 1) {
             $('#par_p').val(0);
-            $('#par_p').attr('readonly');
+            $('#par_p').prop('readonly',true);
             $('#par_q').val(0);
-            $('#par_q').attr('readonly');
+            $('#par_q').prop('readonly',true);
         }
         else if (pilihan == 2){
             $('#par_p').val(0);
-            $('#par_p').attr('readonly');
+            $('#par_p').prop('readonly',true);
             $('#par_q').val("");
         }
         else if (pilihan == 3){
             $('#par_q').val(0);
-            $('#par_q').attr('readonly');
+            $('#par_q').prop('readonly',true);
             $('#par_p').val("");
         }
         else if (pilihan == 4){

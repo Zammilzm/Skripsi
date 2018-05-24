@@ -23,7 +23,7 @@
                     <tr>
                         <th>Kode</th>
                         <th>Nama Kriteria</th>
-                        <th>Mimmax</th>
+                        <th>Min or Max</th>
                         <th>Tipe Preferensi</th>
                         <th>Q</th>
                         <th>P</th>
@@ -34,8 +34,8 @@
                     foreach ($rows as $row):?>
                         <tr>
                             <td><?= $row->kode_kriteria ?></td>
-                            <td><?= $row->nama_kriteria ?></td>
-                            <td><?= $row->minmax ?></td>
+                            <td><?= ucfirst($row->nama_kriteria) ?></td>
+                            <td><?= ucfirst($row->minmax) ?></td>
                             <td><?= $row->tipe ?></td>
                             <td><?= $row->par_q ?></td>
                             <td><?= $row->par_p ?></td>

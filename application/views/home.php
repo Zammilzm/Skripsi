@@ -1,6 +1,6 @@
 <div class="row">
     <div class="card-content">
-        <div id="map" style="height: 400px;"></div>
+        <div id="map" style="height: 600px;"></div>
     </div>
 </div>
 <script>

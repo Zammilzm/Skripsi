@@ -63,7 +63,7 @@
                                value="<?= set_value('keterangan') ?>"/>
                     </div>
                     <div class="form-group label-floating">
-                        <label class="control-label">Foto Lokasi ( Maksimal 3 foto )</label>
+                        <label class="control-label">Foto Lokasi</label>
                         <input type="file" name="userfile[]" multiple="multiple">
                     </div>
                     <div class="form-group">

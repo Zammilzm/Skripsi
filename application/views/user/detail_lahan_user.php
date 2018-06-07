@@ -121,6 +121,12 @@
                                         <span>BOOKING</span><br><span>LAHAN</span>
                                     </button>
                                 </a>
+                            <?php elseif ($booking->Status === 'Kontrak Selesai'): ?>
+                                <a data-toggle="modal" data-target="#booking-lahan">
+                                    <button class="btn btn-success">
+                                        <span>BOOKING</span><br><span>LAHAN</span>
+                                    </button>
+                                </a>
                             <?php endif; ?>
                         <?php else: ?>
                             <a data-toggle="modal" data-target="#booking-lahan">

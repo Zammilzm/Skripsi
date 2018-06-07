@@ -29,6 +29,18 @@
                         </td>
                     </tr>
                     <tr>
+                        <td><strong>Nama Pemilik</strong></td>
+                        <td>
+                            <?= $row->nama_pemilik ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Alamat Lengkap</strong></td>
+                        <td>
+                            <?= $row->alamat_lengkap ?>
+                        </td>
+                    </tr>
+                    <tr>
                         <td><strong>Keterangan</strong></td>
                         <td>
                             <?= $row->keterangan ?>

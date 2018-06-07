@@ -47,7 +47,8 @@ class Alternatif_model extends CI_Model
         on tba.kode_alternatif = tbl.kode_alternatif
         JOIN tb_admin tbad
         on tbl.id_user = tbad.id_user
-        WHERE tbl.kode_alternatif = '$ID' AND tbad.id_user = $login");
+        WHERE tbl.kode_alternatif = '$ID' AND tbad.id_user = $login
+        ORDER BY tbl.id_booking_lahan DESC ");
 
         return $query->row();
     }

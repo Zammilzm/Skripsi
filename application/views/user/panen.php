@@ -135,7 +135,7 @@
                         <div class="form-group">
                             <label class="control-label col-md-3">Tanggal Panen</label>
                             <div class="input-group date" data-provide="datepicker">
-                                <input type="date" class="form-control" name="tanggal"
+                                <input required type="date" class="form-control" name="tanggal"
                                        value="<?= $row->Tanggal_panen ?>">
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-th"></span>
@@ -147,7 +147,7 @@
                                 <label class="control-label col-md-3">Jumlah Panen <span>Dalam satuan Ton</span></label>
                             </center>
                             <div class="col-md-9">
-                                <input name="jumlahpanen" class="form-control" type="number" min="0" step=".01"
+                                <input required name="jumlahpanen" class="form-control" type="number" min="0" step=".01"
                                        value="<?= $row->Jumlah_panen ?>">
                                 <span class="help-block"></span>
                             </div>

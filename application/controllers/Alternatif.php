@@ -79,8 +79,6 @@ class Alternatif extends CI_Controller
                 'lng' => $this->input->post('lng'),
                 'keterangan' => $this->input->post('keterangan'),
                 'gambar1' => $dataInfo[0]['file_name'],
-                'gambar2' => $dataInfo[1]['file_name'],
-                'gambar3' => $dataInfo[2]['file_name']
             );
             $this->alternatif_model->tambah($fields);
             redirect('relasi/ubah/' . $this->input->post('kode_alternatif'));

@@ -23,9 +23,6 @@ class Panen extends CI_Controller
 
     public function update_panen($ID = NULL){
         $ID = $this->input->post('id_kontrak');
-
-        $this->form_validation->set_rules('tanggal', 'Tanggal Panen', 'required');
-        $this->form_validation->set_rules('jumlahpanen', 'Jumlah Panen', 'required');
         $fields = array(
             'Tanggal_panen' => $this->input->post('tanggal'),
             'Jumlah_panen' => $this->input->post('jumlahpanen'),

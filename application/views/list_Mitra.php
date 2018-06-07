@@ -34,6 +34,18 @@ color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-
                                 </td>
                             </tr>
                             <tr>
+                                <td><strong>Nama Pemilik</strong></td>
+                                <td>
+                                    <?= $row->nama_pemilik ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Alamat Lengkap</strong></td>
+                                <td>
+                                    <?= $row->alamat_lengkap ?>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td><strong>Keterangan</strong></td>
                                 <td>
                                     <?= $row->keterangan ?>
@@ -175,8 +187,8 @@ color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-
                             <th>Status Verifikasi Panen</th>
                             <th>Pesan</th>
                             <th>Status Kontrak</th>
-                            <th>Detail</th>
                             <th>Verifikasi Panen</th>
+                            <th>Detail</th>
                         </tr>
                         </thead>
                         <?php
@@ -266,6 +278,18 @@ color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-
                                                         <td><strong>Nama lahan</strong></td>
                                                         <td>
                                                             <?= $row->nama_alternatif ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Nama Pemilik</strong></td>
+                                                        <td>
+                                                            <?= $row->nama_pemilik ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Alamat Lengkap</strong></td>
+                                                        <td>
+                                                            <?= $row->alamat_lengkap ?>
                                                         </td>
                                                     </tr>
                                                     <tr>

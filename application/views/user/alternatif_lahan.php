@@ -27,6 +27,8 @@
                         <th>Peringkat Lahan</th>
                         <th>Kode Lahan</th>
                         <th>Nama Alternatif</th>
+                        <th>Nama Pemilik</th>
+                        <th>Alamat Lengkap</th>
                         <th>Keterangan</th>
                         <th>Detail</th>
                     </tr>
@@ -38,6 +40,8 @@
                             <td><?= ++$no ?></td>
                             <td><?= $row->kode_alternatif ?></td>
                             <td><?= $row->nama_alternatif ?></a></td>
+                            <td><?= $row->nama_pemilik ?></a></td>
+                            <td><?= $row->alamat_lengkap ?></a></td>
                             <td><?= $row->keterangan ?></td>
                             <td>
                                 <a class="btn btn-xs btn-warning"

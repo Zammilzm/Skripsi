@@ -115,7 +115,7 @@ else:
                                         <th>a</th>
                                         <th>b</th>
                                         <th>d(jarak)</th>
-                                        <th>|d|</th>
+<!--                                        <th>|d|</th>-->
                                         <th>P (Preferensi)</th>
                                         </thead>
                                         <?php foreach($val as $k => $v):?>
@@ -125,7 +125,7 @@ else:
                                                 <td><?=$data[$v[0]][$key]?></td>
                                                 <td><?=$data[$v[1]][$key]?></td>
                                                 <td><?=$selisih[$key][$k]?></td>
-                                                <td><?=abs($selisih[$key][$k])?></td>
+
                                                 <td><?=$preferensi[$key][$k]?></td>
                                             </tr>
                                         <?php endforeach?>

@@ -50,7 +50,7 @@ class Kontrak_model extends CI_Model
                                 FROM tb_booking_lahan tbl
                                 join tb_admin tba
                                 on tbl.id_user = tba.id_user
-                                where tba.level = 'user' AND kode_alternatif = '$ID'");
+                                where tba.level = 'user' AND kode_alternatif = '$ID' AND  tbl.Status <> 'Kontrak Selesai' AND  tbl.status <> 'Ditolak'");
 
         return $query->result();
     }
@@ -63,7 +63,7 @@ class Kontrak_model extends CI_Model
     public function list_lahan_disetujui()
     {
         $login = $this->session->userdata('id_user');
-        $query = $this->db->query("SELECT tba.nama_alternatif, tba.kode_alternatif, tba.keterangan, tbl.Tipe_penawaran,tbl.id_booking_lahan, tbl.Status, tba.gambar1, tbl.Doc_Kontrak_admin
+        $query = $this->db->query("SELECT tba.*, tbl.Tipe_penawaran,tbl.id_booking_lahan, tbl.Status, tba.gambar1, tbl.Doc_Kontrak_admin
                                 FROM tb_booking_lahan tbl 
                                 JOIN tb_alternatif tba
                                 on tba.kode_alternatif = tbl.kode_alternatif
@@ -75,7 +75,7 @@ class Kontrak_model extends CI_Model
     public function list_lahan_dimiliki()
     {
         $login = $this->session->userdata('id_user');
-        $query = $this->db->query("SELECT tba.nama_alternatif, tba.kode_alternatif, tba.keterangan, tbl.Tipe_penawaran,tbl.id_booking_lahan, tbl.Status, tba.gambar1, tbl.Doc_Kontrak_admin
+        $query = $this->db->query("SELECT tba.*, tbl.Tipe_penawaran,tbl.id_booking_lahan, tbl.Status, tba.gambar1, tbl.Doc_Kontrak_admin
                                 FROM tb_booking_lahan tbl 
                                 JOIN tb_alternatif tba
                                 on tba.kode_alternatif = tbl.kode_alternatif
@@ -87,7 +87,7 @@ class Kontrak_model extends CI_Model
     public function list_lahan_diproses()
     {
         $login = $this->session->userdata('id_user');
-        $query = $this->db->query("SELECT tba.nama_alternatif, tba.kode_alternatif, tba.keterangan, tbl.Tipe_penawaran,tbl.id_booking_lahan, tbl.Status, tba.gambar1, tbl.Doc_Kontrak_admin
+        $query = $this->db->query("SELECT tba.*, tbl.Tipe_penawaran,tbl.id_booking_lahan, tbl.Status, tba.gambar1, tbl.Doc_Kontrak_admin
                                 FROM tb_booking_lahan tbl 
                                 JOIN tb_alternatif tba
                                 on tba.kode_alternatif = tbl.kode_alternatif
@@ -99,7 +99,7 @@ class Kontrak_model extends CI_Model
     public function list_lahan_ditolak()
     {
         $login = $this->session->userdata('id_user');
-        $query = $this->db->query("SELECT tba.nama_alternatif, tba.kode_alternatif, tba.keterangan, tbl.Tipe_penawaran,tbl.id_booking_lahan, tbl.Status, tba.gambar1, tbl.Doc_Kontrak_admin
+        $query = $this->db->query("SELECT tba.*, tbl.Tipe_penawaran,tbl.id_booking_lahan, tbl.Status, tba.gambar1, tbl.Doc_Kontrak_admin
                                 FROM tb_booking_lahan tbl 
                                 JOIN tb_alternatif tba
                                 on tba.kode_alternatif = tbl.kode_alternatif
@@ -116,7 +116,7 @@ class Kontrak_model extends CI_Model
 
     public function list_lahan_tersetujui()
     {
-        $query = $this->db->query("SELECT tba.nama_alternatif, tba.kode_alternatif, tba.keterangan, tbl.Tipe_penawaran,tbl.id_booking_lahan, tbl.Status, tbad.nama, tbad.id_user, tbl.Doc_Kontrak_admin, tba.lat, tba.lng
+        $query = $this->db->query("SELECT tba.*, tbl.Tipe_penawaran,tbl.id_booking_lahan, tbl.Status, tbad.nama, tbad.id_user, tbl.Doc_Kontrak_admin, tba.lat, tba.lng
                                 FROM tb_booking_lahan tbl 
                                 JOIN tb_alternatif tba
                                 on tba.kode_alternatif = tbl.kode_alternatif
@@ -145,7 +145,7 @@ class Kontrak_model extends CI_Model
 
     public function list_lahan_kepemilikan()
     {
-        $query = $this->db->query("SELECT tba.nama_alternatif, tba.kode_alternatif, tba.keterangan, tbad.id_user, tbad.user, tbad.nama, tbad.email, tbad.gambar, tba.lat, tba.lng, tba.gambar1, tbk.*
+        $query = $this->db->query("SELECT tba.*, tbad.id_user, tbad.user, tbad.nama, tbad.email, tbad.gambar, tba.lat, tba.lng, tba.gambar1, tbk.*
                                 FROM tb_kontrak tbk
                                 JOIN tb_booking_lahan tbl
                                 on tbk.id_booking_lahan = tbl.id_booking_lahan

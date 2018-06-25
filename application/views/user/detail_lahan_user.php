@@ -266,7 +266,7 @@
                     <div class="form-group">
                         <label><?= $row->nama_kriteria ?> <span class="text-danger">*</span></label>
                         <p>
-                            <?= $row->nilai ?>
+                            <?= $row->nilai ?> <span> <?= $row->Satuan ?></span>
                         </p>
                     </div>
                 <?php endforeach ?>

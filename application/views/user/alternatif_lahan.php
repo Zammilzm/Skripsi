@@ -18,54 +18,60 @@
     </nav>
 </div>
 <div id="content">
-    <div class="panel panel-info">
-        <div class="panel-body">
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover table-striped" id="contoh">
-                    <thead>
-                    <tr>
-                        <th>Peringkat Lahan</th>
-                        <th>Kode Lahan</th>
-                        <th>Nama Alternatif</th>
-                        <th>Nama Pemilik</th>
-                        <th>Alamat Lengkap</th>
-                        <th>Keterangan</th>
-                        <th>Detail</th>
-                    </tr>
-                    </thead>
+    <div class="container-fluid">
+        <div class="panel panel-info">
+            <div class="panel-body">
+                <div class="table-responsive">
                     <?php
-                    $no = 0;
-                    foreach ($lahan as $row):?>
+                    $relasi = array();
+                    foreach ($rows as $row) {
+                        $alternatif[$row->kode_alternatif] = $row->nama_alternatif;
+                        $relasi[$row->kode_alternatif][$row->nama_kriteria] = $row->nilai;
+                        $relasix[$row->kode_alternatif][$row->nama_kriteria] = $row->Satuan;
+                    }
+                    ?>
+                    <table class="table table-bordered table-hover table-striped" id="contoh">
+                        <thead>
                         <tr>
-                            <td><?= ++$no ?></td>
-                            <td><?= $row->kode_alternatif ?></td>
-                            <td><?= $row->nama_alternatif ?></a></td>
-                            <td><?= $row->nama_pemilik ?></a></td>
-                            <td><?= $row->alamat_lengkap ?></a></td>
-                            <td><?= $row->keterangan ?></td>
-                            <td>
-                                <a class="btn btn-xs btn-warning"
-                                   href="<?= site_url("alternatif/detail_lahan_user/$row->kode_alternatif") ?>"><i
-                                            class="fa fa-fw fa-info-circle"></i>
-                                    <span>
-                                    Detail Lahan
-                                </span>
-                                </a>
-                            </td>
+                            <th>Kode</th>
+                            <th>Nama</th>
+                            <?php
+                            $first = array_values($relasix);
+                            foreach ($first[0] as $key => $val):?>
+                                <th><?= $key ?><span><br>(<?= $val ?>)</span></th>
+                            <?php endforeach ?>
+                            <th>Aksi</th>
                         </tr>
-                    <?php endforeach; ?>
-                </table>
+                        </thead>
+                        <?php foreach ($alternatif as $key => $value): ?>
+                            <tr>
+                                <td><?= $key ?></td>
+                                <td><?= $value ?></td>
+                                <?php foreach ($relasi[$key] as $val): ?>
+                                    <td><?= $val ?></td>
+                                <?php endforeach ?>
+                                <td>
+                                    <a class="btn btn-xs btn-warning"
+                                       href="<?= site_url("alternatif/detail_lahan_user/$key") ?>"><i
+                                                class="fa fa-fw fa-info-circle"></i>
+                                        <span>Detail Lahan</span>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
+    <script type='text/javascript'
+            src="<?php echo base_url(); ?>floyd/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src="<?php echo base_url(); ?>floyd/js/theme-floyd.js"></script>
 
-<script type='text/javascript' src="<?php echo base_url(); ?>floyd/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script type='text/javascript' src="<?php echo base_url(); ?>floyd/js/theme-floyd.js"></script>
-
-<script>
-    $(document).ready(function () {
-        $('#contoh').DataTable();
-    });
-</script>
+    <script>
+            $('#contoh').DataTable({
+                "ordering": false
+            });
+    </script>
 

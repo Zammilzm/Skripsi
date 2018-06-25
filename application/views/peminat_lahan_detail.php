@@ -115,11 +115,6 @@
                                 <u><strong><?php echo $p->Tipe_penawaran ?></strong></u></p>
                         </div>
                         <div class="card-footer">
-                            <a class="btn btn-sm btn-warning" data-toggle="modal"
-                               data-target="#detail<?php echo $p->id_user ?>">
-                                <i class="material-icons">person</i>
-                                Profil Lengkap
-                            </a>
                             <?php if ($p->Status === 'Diproses'): ?>
                                 <a class="btn btn-sm btn-danger" data-toggle="modal"
                                    data-target="#Kontrak<?php echo $p->id_user ?>">

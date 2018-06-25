@@ -23,6 +23,7 @@
                     <tr>
                         <th>Kode</th>
                         <th>Nama Kriteria</th>
+                        <th>Satuan</th>
                         <th>Min or Max</th>
                         <th>Tipe Preferensi</th>
                         <th>Q</th>
@@ -35,6 +36,7 @@
                         <tr>
                             <td><?= $row->kode_kriteria ?></td>
                             <td><?= ucfirst($row->nama_kriteria) ?></td>
+                            <td><?= $row->Satuan ?></td>
                             <td><?= ucfirst($row->minmax) ?></td>
                             <td><?= $row->tipe ?></td>
                             <td><?= $row->par_q ?></td>

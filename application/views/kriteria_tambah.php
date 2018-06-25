@@ -18,6 +18,10 @@
                         <input class="form-control" type="text" name="nama" value="<?= set_value('nama') ?>"/>
                     </div>
                     <div class="form-group label-floating">
+                        <label class="control-label">Satuan <span class="text-danger">*</span></label>
+                        <input class="form-control" type="text" name="satuan" value="<?= set_value('satuan') ?>"/>
+                    </div>
+                    <div class="form-group label-floating">
                         <label class="control-label">MinMax <span class="text-danger">*</span></label>
                         <select class="form-control" name="minmax">
                             <option></option>

@@ -3,7 +3,7 @@ class Relasi_model extends CI_Model {
 
     public function tampil()
     {                           
-        $query = $this->db->query("SELECT r.*, a.nama_alternatif, k.nama_kriteria
+        $query = $this->db->query("SELECT r.*, a.nama_alternatif, k.nama_kriteria, k.minmax, k.Satuan
         FROM tb_rel_alternatif r
             INNER JOIN tb_kriteria k ON k.kode_kriteria=r.kode_kriteria
             INNER JOIN tb_alternatif a ON a.kode_alternatif=r.kode_alternatif            
@@ -15,7 +15,7 @@ class Relasi_model extends CI_Model {
     public function get_relasi( $ID ) 
     {
         $query = $this->db->query("SELECT
-            r.*, a.nama_alternatif, k.nama_kriteria, a.nama_pemilik
+            r.*, a.nama_alternatif, k.nama_kriteria, a.nama_pemilik, k.Satuan
         FROM tb_rel_alternatif r 
         	INNER JOIN tb_kriteria k ON k.kode_kriteria=r.kode_kriteria
             INNER JOIN tb_alternatif a ON a.kode_alternatif=r.kode_alternatif            

@@ -11,8 +11,8 @@
                 <?= form_open("relasi/update/" . $rows[0]->kode_alternatif); ?>
                 <?php foreach ($rows as $row): ?>
                     <div class="form-group">
-                        <label><?= $row->nama_kriteria ?> <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="kode_crips[<?= $row->ID ?>]" value="<?= $row->nilai ?>"/>
+                        <label><?= $row->nama_kriteria ?><span> (<?= $row->Satuan ?>)</span> <span class="text-danger">*</span></label>
+                        <input type="number" step=".01" class="form-control" name="kode_crips[<?= $row->ID ?>]" value="<?= $row->nilai ?>"/>
                     </div>
                 <?php endforeach ?>
                 <div class="form-group">

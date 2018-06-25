@@ -19,6 +19,10 @@
                     <input class="form-control" name="nama" value="<?= set_value('nama', $row->nama_kriteria) ?>"/>
                 </div>
                 <div class="form-group label-floating">
+                    <label class="control-label">Satuan Kriteria (Ex : Meter, Rupiah, &#8451;) <span class="text-danger">*</span></label>
+                    <input class="form-control" name="satuan" value="<?= set_value('satuan', $row->Satuan) ?>"/>
+                </div>
+                <div class="form-group label-floating">
                     <label class="control-label">MinMax <span class="text-danger">*</span></label>
                     <select class="form-control" name="minmax">
                         <option></option>

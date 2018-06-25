@@ -35,6 +35,7 @@ class Kriteria extends CI_Controller {
             $fields = array(
                 'kode_kriteria' => $this->input->post('kode'),
                 'nama_kriteria' => $this->input->post('nama'),
+                'Satuan' => $this->input->post('satuan'),
                 'minmax' => $this->input->post('minmax'),
                 'tipe' => $this->input->post('tipe'),
                 'par_q' => $this->input->post('par_q'),
@@ -64,6 +65,7 @@ class Kriteria extends CI_Controller {
         {
             $fields = array(
                 'nama_kriteria' => $this->input->post('nama'),
+                'Satuan' => $this->input->post('satuan'),
                 'minmax' => $this->input->post('minmax'),
                 'tipe' => $this->input->post('tipe'),
                 'par_q' => $this->input->post('par_q'),

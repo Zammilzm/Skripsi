@@ -12,6 +12,7 @@
                     foreach ($rows as $row) {
                         $alternatif[$row->kode_alternatif] = $row->nama_alternatif;
                         $relasi[$row->kode_alternatif][$row->nama_kriteria] = $row->nilai;
+                        $relasix[$row->kode_alternatif][$row->nama_kriteria] = $row->Satuan;
                     }
                     ?>
                     <table class="table table-hover" id="contoh">
@@ -20,9 +21,9 @@
                             <th>Kode</th>
                             <th>Nama</th>
                             <?php
-                            $first = array_values($relasi);
+                            $first = array_values($relasix);
                             foreach ($first[0] as $key => $val):?>
-                                <th><?= $key ?></th>
+                                <th><?= $key ?><span><br>(<?= $val ?>)</span></th>
                             <?php endforeach ?>
                             <th>Aksi</th>
                         </tr>

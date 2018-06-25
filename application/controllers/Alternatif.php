@@ -21,7 +21,7 @@ class Alternatif extends CI_Controller
 
     public function lahan_user()
     {
-        $data['lahan'] = $this->alternatif_model->peringkat_lahan();
+        $data['rows'] = $this->alternatif_model->peringkat_lahan();
         load_view_user('user/alternatif_lahan', $data);
     }
 
@@ -41,7 +41,6 @@ class Alternatif extends CI_Controller
 
     public function tambah()
     {
-
         $this->form_validation->set_rules('kode_alternatif', 'Kode Alternatif', 'required|is_unique[tb_alternatif.kode_alternatif]');
         $this->form_validation->set_rules('nama_alternatif', 'Nama Alternatif', 'required');
         $this->form_validation->set_rules('nama_pemilik', 'Nama Pemilik', 'required');
@@ -53,22 +52,23 @@ class Alternatif extends CI_Controller
         if ($this->form_validation->run() === FALSE) {
             load_view('alternatif_tambah', $data);
         } else {
-            $dataInfo = array();
-            $files = $_FILES;
-            $cpt = count($_FILES['userfile']['name']);
-            for ($i = 0; $i < $cpt; $i++) {
-                $_FILES['userfile']['name'] = $files['userfile']['name'][$i];
-                $_FILES['userfile']['type'] = $files['userfile']['type'][$i];
-                $_FILES['userfile']['tmp_name'] = $files['userfile']['tmp_name'][$i];
-                $_FILES['userfile']['error'] = $files['userfile']['error'][$i];
-                $_FILES['userfile']['size'] = $files['userfile']['size'][$i];
+            $this->load->library('upload');
+            $nmfile = "file_" . time(); //nama file + fungsi time
+            $config['upload_path'] = './assets/uploads/'; //Folder untuk menyimpan hasil upload
+            $config['allowed_types'] = 'jpg|png|jpeg'; //type yang dapat diakses bisa anda sesuaikan
+            $config['max_size'] = '30720'; //maksimum besar file 3M
+            $config['max_width'] = '50000'; //lebar maksimum 5000 px
+            $config['max_height'] = '50000'; //tinggi maksimu 5000 px
+            $config['file_name'] = $nmfile; //nama yang terupload nantinya
 
-                $config['upload_path'] = './assets/uploads/';
-                $config['allowed_types'] = 'jpg|png|jpeg';
-
-                $this->upload->initialize($config);
-                $this->upload->do_upload();
-                $dataInfo[] = $this->upload->data();
+            $this->upload->initialize($config);
+            if ($_FILES['file']['name']) {
+                if ($this->upload->do_upload('file')) {
+                    $gbr = $this->upload->data();
+                    $image_name = $gbr['file_name'];
+                }
+            } else {
+                $image_name = $this->input->post('old');
             }
             $fields = array(
                 'kode_alternatif' => $this->input->post('kode_alternatif'),
@@ -78,7 +78,7 @@ class Alternatif extends CI_Controller
                 'lat' => $this->input->post('lat'),
                 'lng' => $this->input->post('lng'),
                 'keterangan' => $this->input->post('keterangan'),
-                'gambar1' => $dataInfo[0]['file_name'],
+                'gambar1' => $image_name,
             );
             $this->alternatif_model->tambah($fields);
             redirect('relasi/ubah/' . $this->input->post('kode_alternatif'));
@@ -102,9 +102,9 @@ class Alternatif extends CI_Controller
             $nmfile = "file_" . time(); //nama file + fungsi time
             $config['upload_path'] = './assets/uploads/'; //Folder untuk menyimpan hasil upload
             $config['allowed_types'] = 'jpg|png|jpeg'; //type yang dapat diakses bisa anda sesuaikan
-            $config['max_size'] = '3072'; //maksimum besar file 3M
-            $config['max_width'] = '5000'; //lebar maksimum 5000 px
-            $config['max_height'] = '5000'; //tinggi maksimu 5000 px
+            $config['max_size'] = '30720'; //maksimum besar file 3M
+            $config['max_width'] = '50000'; //lebar maksimum 5000 px
+            $config['max_height'] = '50000'; //tinggi maksimu 5000 px
             $config['file_name'] = $nmfile; //nama yang terupload nantinya
 
             $this->upload->initialize($config);

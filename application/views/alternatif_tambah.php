@@ -26,56 +26,56 @@
                 <p class="category">Silahkan Tambahkan Lahan dan Lokasi Lahan Sesuai Kebutuhan anda</p>
             </div>
             <div class="card-content">
-                <form method="post" action="<?= site_url('alternatif/tambah') ?>" enctype="multipart/form-data">
-                    <div class="form-group label-floating">
-                        <label class="control-label">Kode Alternatif<span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" name="kode_alternatif"
-                               value="<?= set_value('kode_alternatif', kode_oto('kode_alternatif', 'tb_alternatif', 'A', 2)) ?>"/>
-                    </div>
-                    <div class="form-group label-floating">
-                        <label>Nama Alternatif <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" name="nama_alternatif"
-                               value="<?= set_value('nama_alternatif') ?>" id="nama"/>
-                    </div>
-                    <div class="form-group label-floating">
-                        <label>Nama Pemilik <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" name="nama_pemilik"
-                               value="<?= set_value('nama_lengkap') ?>" />
-                    </div>
-                    <div class="form-group label-floating">
-                        <label>Alamat Lengkap <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" name="alamat_lengkap"
-                               value="<?= set_value('alamat_lengkap') ?>"/>
-                    </div>
-                    <div class="form-group label-floating">
-                        <label>Latitude <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" name="lat" id="lat" value="<?= set_value('lat') ?>"
-                               readonly=""/>
-                    </div>
-                    <div class="form-group label-floating">
-                        <label>Longitude <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" id="lng" name="lng" value="<?= set_value('lng') ?>"
-                               readonly=""/>
-                    </div>
-                    <div class="form-group label-floating">
-                        <label>Keterangan</label>
-                        <input class="form-control" type="text" name="keterangan"
-                               value="<?= set_value('keterangan') ?>"/>
-                    </div>
-                    <div class="form-group label-floating">
-                        <label class="control-label">Foto Lokasi</label>
-                        <input type="file" name="userfile[]" multiple="multiple">
-                    </div>
-                    <div class="form-group">
-                        <a>
-                            <button class="btn btn-primary">
-                                <i class="material-icons">edit</i> Simpan
-                            </button>
-                        </a>
-                        <a class="btn btn-danger" href="<?= site_url('alternatif') ?>">
-                            <i class="material-icons">backspace</i> Kembali
-                        </a>
-                    </div>
+                <?php echo form_open_multipart("alternatif/tambah"); ?>
+                <div class="form-group label-floating">
+                    <label class="control-label">Kode Alternatif<span class="text-danger">*</span></label>
+                    <input class="form-control" type="text" name="kode_alternatif"
+                           value="<?= set_value('kode_alternatif', kode_oto('kode_alternatif', 'tb_alternatif', 'A', 2)) ?>"/>
+                </div>
+                <div class="form-group label-floating">
+                    <label>Nama Alternatif <span class="text-danger">*</span></label>
+                    <input class="form-control" type="text" name="nama_alternatif"
+                           value="<?= set_value('nama_alternatif') ?>" id="nama"/>
+                </div>
+                <div class="form-group label-floating">
+                    <label>Nama Pemilik <span class="text-danger">*</span></label>
+                    <input class="form-control" type="text" name="nama_pemilik"
+                           value="<?= set_value('nama_lengkap') ?>"/>
+                </div>
+                <div class="form-group label-floating">
+                    <label>Alamat Lengkap <span class="text-danger">*</span></label>
+                    <input class="form-control" type="text" name="alamat_lengkap"
+                           value="<?= set_value('alamat_lengkap') ?>"/>
+                </div>
+                <div class="form-group label-floating">
+                    <label>Latitude <span class="text-danger">*</span></label>
+                    <input class="form-control" type="text" name="lat" id="lat" value="<?= set_value('lat') ?>"
+                           readonly=""/>
+                </div>
+                <div class="form-group label-floating">
+                    <label>Longitude <span class="text-danger">*</span></label>
+                    <input class="form-control" type="text" id="lng" name="lng" value="<?= set_value('lng') ?>"
+                           readonly=""/>
+                </div>
+                <div class="form-group label-floating">
+                    <label>Keterangan</label>
+                    <input class="form-control" type="text" name="keterangan"
+                           value="<?= set_value('keterangan') ?>"/>
+                </div>
+                <div class="form-group label-floating">
+                    <label class="control-label">Foto Lokasi</label>
+                    <input type="file" name="file">
+                </div>
+                <div class="form-group">
+                    <a>
+                        <button class="btn btn-primary">
+                            <i class="material-icons">edit</i> Simpan
+                        </button>
+                    </a>
+                    <a class="btn btn-danger" href="<?= site_url('alternatif') ?>">
+                        <i class="material-icons">backspace</i> Kembali
+                    </a>
+                </div>
                 </form>
             </div>
         </div>
